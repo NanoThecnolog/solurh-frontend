@@ -1,0 +1,66 @@
+.container {
+    width: 100vw;
+    height: 100%;
+    //outline: 2px solid blue;
+    display: flex;
+    justify-content: center;
+
+
+    .box {
+        margin-top: -50px;
+        width: 80%;
+        height: 400px;
+        //outline: 2px solid red;
+        border-radius: 2rem;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 1) 50%),
+            url('/img/banner4.jpg');
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: contain;
+        box-shadow: 5px 5px 25px var(--shadow-blue);
+        z-index: 2;
+        display: flex;
+        justify-content: flex-end;
+
+
+        .textContainer {
+            color: var(--black);
+            width: 45%;
+            height: 100%;
+            //outline: 2px solid red;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+
+            h1 {
+                font-size: 4rem;
+                letter-spacing: 2px;
+                font-weight: 300;
+                color: var(--blue);
+                text-align: start;
+            }
+
+            h2 {
+                font-weight: 300;
+                text-align: end;
+            }
+
+            .buttonContainer {
+                width: 100%;
+                height: 100px;
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .buttonContainer {
+        button:hover {
+            transform: scale(1.05);
+        }
+    }
+}

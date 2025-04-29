@@ -1,0 +1,60 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .contentContainer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        width: 90%;
+        border-radius: 2rem;
+        overflow: hidden;
+        background-image: url('/img/fundo-azul.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        //padding: 20px;
+
+
+        .textContent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            color: var(--white);
+            width: 100%;
+            height: 100%;
+            padding-left: 100px;
+            //outline: 2px solid red;
+
+            h2 {
+                font-size: 3rem;
+                font-weight: 100;
+            }
+
+            p {
+                width: 70%;
+                text-align: justify;
+            }
+        }
+
+        .imgContent {
+            //outline: 2px solid red;
+            width: 100%;
+            text-align: center;
+            max-height: 500px;
+
+            img {
+                object-fit: cover;
+                object-position: center;
+                height: 500px;
+            }
+        }
+    }
+}

@@ -1,0 +1,74 @@
+.container {
+    //outline: 2px solid green;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+    .textContainer {
+        height: 100%;
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        color: var(--blue);
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 300;
+            text-align: center;
+
+            strong {
+                font-weight: 500;
+            }
+        }
+    }
+
+    .titleContainer {
+        margin: 40px 0;
+
+        h2 {
+            font-size: 1.7rem;
+            font-weight: 300;
+        }
+    }
+
+    .carouselContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .swiperContainer {
+            //outline: 2px solid red;
+            width: 70vw;
+
+            .swiperSlide {
+                width: 400px;
+                height: 200px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: 1rem;
+                }
+            }
+        }
+    }
+
+    .buttonContainer {
+        height: 100px;
+
+        button {
+            width: 100%;
+            background: var(--yellow-gradient);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

@@ -1,0 +1,52 @@
+@use 'sass:math';
+
+$gutter: 15px;
+$total-columns: 12;
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $gutter;
+    padding-right: $gutter;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -$gutter;
+    margin-right: -$gutter;
+}
+
+.col {
+    padding-left: $gutter;
+    padding-right: $gutter;
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+}
+
+// Gera .col-1 até .col-12
+@for $i from 1 through $total-columns {
+    .col-#{$i} {
+        flex: 0 0 math.percentage(math.div($i, $total-columns));
+        max-width: math.percentage(math.div($i, $total-columns));
+    }
+}
+
+// Breakpoints (sm, md, lg, xl)
+@mixin breakpoint($name, $min-width) {
+    @media (min-width: $min-width) {
+        @for $i from 1 through $total-columns {
+            .col-#{$name}-#{$i} {
+                flex: 0 0 math.percentage(math.div($i, $total-columns));
+                max-width: math.percentage(math.div($i, $total-columns));
+            }
+        }
+    }
+}
+
+@include breakpoint("sm", 576px);
+@include breakpoint("md", 768px);
+@include breakpoint("lg", 992px);
+@include breakpoint("xl", 1200px);
