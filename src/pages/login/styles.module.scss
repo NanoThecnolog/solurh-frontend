@@ -1,0 +1,77 @@
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .sectionContainer {
+        width: 50%;
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        background-color: var(--blue);
+        border-radius: 2rem;
+        box-shadow: 5px 5px 15px var(--shadow-blue);
+
+        .formulario {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 35%;
+
+            label {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                width: 100%;
+                //max-width: 300px;
+                color: var(--white);
+
+                input {
+                    height: 35px;
+                    padding: 5px 5px;
+                    background-color: var(--blue-input);
+                    color: var(--white);
+                    border-radius: .4rem;
+                    border: none;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 480px) {
+    .container {
+        .sectionContainer {
+            width: 95%;
+
+            .formulario {
+                width: 80%;
+            }
+        }
+    }
+}
+
+@media(min-width: 481px) and (max-width: 760px) {
+    .container {
+        .sectionContainer {
+            width: 95%;
+
+            .formulario {
+                width: 50%;
+            }
+        }
+    }
+}
+
+@media(min-width: 761px) and (max-width: 1200px) {
+    .container {
+        .sectionContainer {
+            width: 80%;
+        }
+    }
+}

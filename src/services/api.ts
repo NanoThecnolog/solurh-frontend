@@ -4,10 +4,12 @@ import { parseCookies } from "nookies";
 
 const url = process.env.NEXT_PUBLIC_BACKEND_URL
 if (!url) console.warn('URL do backend não carregada ou ausente.')
-const apiKey = process.env.NEXT_PUBLIC_API_KEY
+const apiKey = process.env.API_KEY
 if (!apiKey) console.warn("Chave da api não carregada ou ausente")
+
 export const api = axios.create({
-    baseURL: url
+    baseURL: url,
+    withCredentials: true
 })
 
 api.interceptors.request.use(async (config) => {
@@ -15,7 +17,7 @@ api.interceptors.request.use(async (config) => {
     if (apiKey) {
         config.headers['key'] = apiKey
     }
-    const { 'user': cookie } = parseCookies()
+    /*const { 'user': cookie } = parseCookies()
     if (cookie) {
         try {
             const user: UserProps = JSON.parse(cookie)
@@ -24,7 +26,7 @@ api.interceptors.request.use(async (config) => {
         } catch (err) {
             console.warn('Erro ao fazer o parse do cookie do usuario', err)
         }
-    }
+    }*/
     return config
 }, (err) => {
     return Promise.reject(err)

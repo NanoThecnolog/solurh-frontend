@@ -1,17 +1,19 @@
 import { CreateJobProps, JobCreatedProps, JobsProps, UpdateJobProps } from "@/@types/jobs"
 import { BackendService } from "./backendService"
 
-class Jobs extends BackendService {
-
+export class Jobs extends BackendService {
+    constructor(ctx?: any) {
+        super(ctx)
+    }
     public async create(data: CreateJobProps) {
         const job = await this.createJob(data)
         if (!job) return `Erro ao criar vaga. Dados enviados: ${data}`
-        this.success('Vaga criada com sucesso!')
+        this.debug.log('Vaga criada com sucesso!')
         return job
     }
     public async findJobs(): Promise<JobsProps[] | string> {
         const jobs = await this.getJobs()
-        this.debug.warn(jobs)
+        //this.debug.warn(jobs)
         if (!jobs) return 'Não foi possível buscar vagas.'
         return jobs
     }
@@ -23,13 +25,13 @@ class Jobs extends BackendService {
     public async update(id: string, data: UpdateJobProps): Promise<JobCreatedProps | string> {
         const update = await this.updateJob(id, data)
         if (!update) return `Não foi possível atualizar vaga.`
-        this.success('Vaga atualizada!')
+        this.debug.log('Vaga atualizada!')
         return update
     }
     public async remove(id: string): Promise<JobCreatedProps | string> {
         const remove = await this.removeJob(id)
         if (!remove) return 'Erro ao remover vaga.'
-        this.success('Vaga removida com sucesso.')
+        this.debug.log('Vaga removida com sucesso.')
         return remove
     }
 }

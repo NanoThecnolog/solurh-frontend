@@ -2,15 +2,10 @@
     //outline: 2px solid red;
 
     button {
-        background: var(--yellow-gradient);
+        //background: var(--yellow-gradient);
         display: flex;
         justify-content: center;
         align-items: center;
-
-        svg {
-            //font-size: 2rem;
-            //height: 20px;
-            //width: 20px;
-        }
+        gap: 10px;
     }
 }

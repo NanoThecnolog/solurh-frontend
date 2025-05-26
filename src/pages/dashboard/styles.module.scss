@@ -1,3 +1,36 @@
 .main {
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    padding-top: 150px;
+    width: 100%;
+
+    .container {
+        //outline: 2px solid red;
+        display: flex;
+        gap: 20px;
+        width: 80%;
+
+        .menu {
+            width: 20%;
+            height: 100%;
+
+            ul {
+                //outline: 2px solid blue;
+
+                li {
+                    //outline: 2px solid green;
+                    padding: 10px 20px;
+                    cursor: pointer;
+                    text-transform: capitalize;
+                }
+            }
+        }
+
+        .content {
+            width: 80%;
+        }
+    }
 }

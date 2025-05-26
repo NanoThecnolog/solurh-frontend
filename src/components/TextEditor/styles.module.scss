@@ -1,0 +1,112 @@
+.container {
+    max-width: 720px;
+    margin: 2rem auto;
+
+    .button {
+        background: #e0e0e0;
+        border: none;
+        padding: 0.2rem 1rem;
+        font-weight: 500;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s;
+
+        &:hover {
+            background: #ccc;
+        }
+    }
+
+    h2 {
+        color: white;
+    }
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+
+
+    .button {
+        background: #e0e0e0;
+        border: none;
+        padding: 0.2rem 1rem;
+        font-weight: 500;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s;
+
+        &:hover {
+            background: #ccc;
+        }
+    }
+
+    .select {
+        background-color: #e0e0e0;
+        color: var(--blue);
+    }
+}
+
+.editor {
+    min-height: 300px;
+    color: black;
+    background-color: var(--gray);
+    border-radius: .4rem;
+    padding: .5rem;
+    cursor: text;
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: .5rem 0;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin: .5rem 0;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        margin: .5rem 0;
+    }
+
+    ul,
+    ol {
+        padding-left: 1.4rem;
+        margin: .2rem 0;
+
+        li {
+            list-style: disc;
+            cursor: text;
+        }
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 1rem 0;
+        border-radius: 4px;
+    }
+
+    a {
+        color: #0066cc;
+        text-decoration: underline;
+    }
+}
+
+.htmlOutput {
+    background: #f4f4f4;
+    padding: 1rem;
+    margin-top: 1rem;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    border-radius: 6px;
+}

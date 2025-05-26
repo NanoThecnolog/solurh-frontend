@@ -14,7 +14,6 @@ export interface JobsProps {
     salario: number;
     createdBy: number;
 }
-
 export interface CreateJobProps {
     nome: string,
     localizacao: string,

@@ -1,3 +1,4 @@
+import { BannerProps } from "@/@types/bannerTemplate"
 import { TestmonialsProps } from "@/@types/testmonial"
 
 export const swiperBreakpoints = {
@@ -36,4 +37,31 @@ export const testmonials: TestmonialsProps[] = [
         text: 'A SoluRH é sinônimo de compromisso e competência. Essencial para o recrutamento e seleção, são cirúrgicos nas escolhas.',
         starsCount: 5,
     }
+]
+
+export const bannersContent: BannerProps[] = [
+    {
+        bannerImg: '/img/2-2.png',
+        buttonText: 'Chamada para ação',
+        textHighLight: 'Tecnologia e Consultoria num só lugar!',
+        logoImg: '/img/Logomarca/horizontal-white.png',
+        subText: 'um subtexto aleatório',
+        textParagraph: 'Quem somos'
+    },
+    {
+        bannerImg: '/img/news/equipe.png',
+        buttonText: 'Soluções',
+        textHighLight: 'Descubra os Melhores Talentos para o seu Negócio',
+        logoImg: '/img/Logomarca/4.png',
+        subText: 'Nosso serviço especializado em encontrar profissionais tem como foco o crescimento da sua empresa!',
+        textParagraph: 'Soluções Personalizadas'
+    },
+    {
+        bannerImg: '/img/5-no-bg.png',
+        buttonText: 'botão botão',
+        textHighLight: 'Um texto de destaque',
+        logoImg: '/img/Logomarca/4.png',
+        subText: 'um subtexto',
+        textParagraph: 'um simples parágrafo'
+    },
 ]

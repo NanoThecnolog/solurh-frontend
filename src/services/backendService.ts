@@ -12,11 +12,10 @@ inscrições da vaga
 import { AxiosError, AxiosInstance } from "axios";
 import { api } from "./api";
 
-import { toast } from "react-toastify";
 import { UserProps } from "@/@types/login";
-import { destroyCookie, setCookie } from "nookies";
 import { CreateJobProps, JobCreatedProps, JobsProps, UpdateJobProps } from "@/@types/jobs";
 import { debug } from "@/utils/DebugLogger";
+import { createAxiosInstance } from "@/utils/utilities";
 
 interface ResponseProps<T> {
     code: number,
@@ -27,9 +26,14 @@ export class BackendService {
     protected api: AxiosInstance
     protected debug: typeof debug
 
-    constructor() {
-        this.api = api
+    constructor(ctx?: any) {
         this.debug = debug
+
+        if (ctx?.req) {
+            this.api = createAxiosInstance(ctx)
+        } else {
+            this.api = api
+        }
     }
 
     protected validateEmail(email: string): boolean {
@@ -37,6 +41,7 @@ export class BackendService {
         return true
     }
     protected async validateUser(data: { email: string, password: string }): Promise<UserProps | null> {
+        this.debug.log('Data em validateUser', data)
         try {
             const response = await this.api.post<ResponseProps<UserProps>>('/login', data)
             return response.data.result
@@ -44,14 +49,9 @@ export class BackendService {
             if (err instanceof AxiosError) {
                 const status = err.response?.status
                 const message = err.response?.data?.message || 'Erro Inesperado'
-
-                if (status === 404) this.error("Email não encontrado.")
-                else if (status === 401) this.error("Senha incorreta.")
-                else this.error(message)
-                this.debug.log(`Erro ao validar usuario: ${message}`, err.response?.data)
+                this.debug.log(`Erro ${status} ao validar usuario: ${message}`, err.response?.data)
             }
             else {
-                this.error("Erro de conexão com o servidor.")
                 this.debug.error("Erro inesperado durante requisição.", err)
             }
             return null
@@ -96,16 +96,6 @@ export class BackendService {
             else this.debug.error('Erro Inesperado durante a criação da vaga.', err)
             return null
         }
-    }
-    protected setUserCookie(user: UserProps) {
-        destroyCookie(null, 'user')
-        setCookie(null, 'user', JSON.stringify(user))
-    }
-    protected success(message: string) {
-        toast.success(message)
-    }
-    protected error(message: string) {
-        toast.error(message)
     }
 
     protected async updateJob(id: string, data: UpdateJobProps): Promise<JobCreatedProps | null> {

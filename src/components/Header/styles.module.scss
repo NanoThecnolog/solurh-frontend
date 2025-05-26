@@ -3,9 +3,9 @@
     width: 100%;
     height: 100px;
     background: linear-gradient(to bottom, var(--blue)0%, rgba(255, 255, 255, 0)100%);
-    justify-content: space-around;
+    justify-content: space-between; //*
     align-items: center;
-    //outline: 2px solid red;
+    padding: 0 20px;
     position: absolute;
     top: 0;
     left: 0;
@@ -14,33 +14,91 @@
     .logo {
         width: 100px;
         height: 100%;
-        place-content: center;
+        display: flex;
+        align-items: center;
 
         img {
             width: 75%;
-            height: 75%;
+            height: auto;
         }
     }
 
     .menuContainer {
+        display: flex;
         height: 100%;
 
         .menu {
             display: flex;
-            justify-content: center;
             align-items: center;
             gap: 20px;
-            height: 100%;
             color: var(--white);
 
             //.menuItem {}
         }
     }
 
-    .buttonContainer {
-        button {
-            color: var(--white);
-            background: var(--yellow-gradient);
+    .mobileIcon {
+        display: none;
+        color: var(--white);
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 768px) {
+    .navContainer {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 20px;
+        background-color: var(--blue);
+
+
+
+        .mobileIcon {
+            display: block;
+        }
+
+        .menuContainer {
+            width: 100%;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            //display: none;
+            flex-direction: column;
+            transition: all 1s ease-in-out;
+
+
+
+            &.open {
+                //display: flex;
+                //flex-direction: column;
+                //align-items: flex-start;
+                //margin-top: 10px;
+                max-height: 500px;
+                opacity: 1;
+
+            }
+
+            .menu {
+                flex-direction: column;
+                width: 100%;
+                padding: 0;
+
+                .menuItem {
+                    padding: 10px 0;
+                    width: 100%;
+                    text-align: left;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                }
+            }
+        }
+
+        .buttonContainer {
+            width: 100%;
+            margin-top: 10px;
+
+            button {
+                display: none;
+            }
         }
     }
 }

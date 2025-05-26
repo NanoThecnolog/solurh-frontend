@@ -1,23 +1,25 @@
 import { destroyCookie } from "nookies"
 import { BackendService } from "./backendService"
+import { UserProps } from "@/@types/login"
 
-class LoginService extends BackendService {
+export class LoginService extends BackendService {
 
-    public async login(email: string, password: string): Promise<string | null> {
+    public async login(email: string, password: string): Promise<UserProps | null> {
         if (!this.validateEmail(email)) {
             this.debug.log('Email inválido', email)
-            return 'Email inválido!'
+            return null
         }
         const validUser = await this.validateUser({ email, password })
         if (!validUser) {
-            return 'Não foi possivel realizar login. Verifique email e senha.'
+            return null
         }
-        this.setUserCookie(validUser)
-        this.success(`Olá ${validUser.user.nome}. Bem vindo(a)!`)
+        //this.setUserCookie(validUser)
+        //this.debug.log(`Olá ${validUser.user.nome}. Bem vindo(a)!`)
         this.debug.log("Login bem sucedido", validUser)
 
-        return null
+        return validUser
     }
+
     public logout() {
         destroyCookie(null, 'user')
     }
