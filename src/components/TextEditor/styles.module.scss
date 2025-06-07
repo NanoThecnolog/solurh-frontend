@@ -35,7 +35,7 @@
         border: none;
         padding: 0.2rem 1rem;
         font-weight: 500;
-        border-radius: 6px;
+        border-radius: 2px;
         cursor: pointer;
         transition: background 0.2s;
 
@@ -48,15 +48,23 @@
         background-color: #e0e0e0;
         color: var(--blue);
     }
+
+    .inputColor {
+        width: 50px !important;
+        height: 40px;
+    }
 }
 
 .editor {
-    min-height: 300px;
     color: black;
-    background-color: var(--gray);
+    background-color: var(--gray-soft);
     border-radius: .4rem;
     padding: .5rem;
     cursor: text;
+
+    div {
+        min-height: 200px;
+    }
 
     p {
         margin-bottom: 1rem;

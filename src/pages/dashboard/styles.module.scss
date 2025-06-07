@@ -34,3 +34,20 @@
         }
     }
 }
+
+@media (hover: hover) and (pointer: fine) {
+    .main {
+        .container {
+            .menu {
+                ul {
+                    li {
+                        &:hover {
+                            background-color: var(--blue-input);
+                            color: var(--white);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

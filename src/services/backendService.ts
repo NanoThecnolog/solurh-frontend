@@ -13,9 +13,10 @@ import { AxiosError, AxiosInstance } from "axios";
 import { api } from "./api";
 
 import { UserProps } from "@/@types/login";
-import { CreateJobProps, JobCreatedProps, JobsProps, UpdateJobProps } from "@/@types/jobs";
+import { CreateJobProps, JobCreatedProps, JobsProps, SubscriptionDataProps, UpdateJobProps, UploadDocProps } from "@/@types/jobs";
 import { debug } from "@/utils/DebugLogger";
 import { createAxiosInstance } from "@/utils/utilities";
+import { InscricaoProps } from "@/@types/inscricoes";
 
 interface ResponseProps<T> {
     code: number,
@@ -119,6 +120,38 @@ export class BackendService {
                 const message = err.response?.data?.message || "Erro inesperado ao remover vaga."
                 this.debug.error(message, err.response?.data)
             } else this.debug.error('Erro ao remover vaga.', err)
+            return null
+        }
+    }
+    protected async createSub(data: SubscriptionDataProps): Promise<UploadDocProps | null> {
+        //debug.log("data", data)
+        try {
+            const formData = new FormData()
+            formData.append('file', data.file)
+            formData.append('vagaId', data.vagaId.toString())
+            const response = await this.api.post('/inscricoes/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            return response.data
+        } catch (err: any) {
+            if (err instanceof AxiosError) {
+                const message = err.response?.data.message || 'Erro inesperado ao inscrever candidato.'
+                this.debug.error(message, err.response?.data)
+            } else this.debug.error('Erro ao inscrever candidato.', err)
+            return null
+        }
+    }
+    protected async getAllSubs(): Promise<{ code: number, result: InscricaoProps[] } | null> {
+        try {
+            const response = await this.api.get('/inscricoes')
+            return response.data
+        } catch (err) {
+            if (err instanceof AxiosError) {
+                const message = err.response?.data.message || 'Erro inesperado ao inscrever candidato.'
+                this.debug.error(message, err.response?.data)
+            } else this.debug.error('Erro ao inscrever candidato.', err)
             return null
         }
     }

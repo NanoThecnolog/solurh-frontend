@@ -1,6 +1,7 @@
 .container {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    margin: 100px 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -10,7 +11,7 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-
+        padding-top: 100px;
         width: 90%;
         border-radius: 2rem;
         overflow: hidden;
@@ -58,3 +59,69 @@
         }
     }
 }
+
+@media(max-width: 399px) {
+    .container {
+        .contentContainer {
+            flex-direction: column;
+
+            .textContent {
+                padding-bottom: 100px;
+                padding-left: 50px;
+                padding-right: 20px;
+            }
+
+            .imgContent {
+                display: none;
+                max-height: 300px;
+
+                img {
+                    height: 300px;
+                }
+            }
+        }
+    }
+}
+
+@media(min-width: 400px) and (max-width: 639px) {
+    .container {
+        .contentContainer {
+            flex-direction: column;
+
+            .textContent {
+                padding-bottom: 100px;
+                padding-left: 50px;
+                padding-right: 20px;
+            }
+
+            .imgContent {
+                display: none;
+                max-height: 300px;
+
+                img {
+                    height: 300px;
+                }
+            }
+        }
+    }
+}
+
+@media(min-width: 640px) and (max-width: 914px) {
+    .container {
+        .contentContainer {
+            flex-direction: column;
+
+            .textContent {}
+
+            .imgContent {
+                max-height: 300px;
+
+                img {
+                    height: 300px;
+                }
+            }
+        }
+    }
+}
+
+@media(min-width: 915px) and (max-width: 1300px) {}

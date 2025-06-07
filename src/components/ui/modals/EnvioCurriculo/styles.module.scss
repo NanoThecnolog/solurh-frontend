@@ -1,0 +1,27 @@
+.modalContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--gray-transparent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    .modal {
+        width: 400px;
+        height: 200px;
+        border: 1px solid var(--shadow-blue);
+        border-radius: 1rem;
+        box-shadow: 5px 5px 5px var(--shadow-blue);
+        background-color: white;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+        z-index: 99;
+    }
+}

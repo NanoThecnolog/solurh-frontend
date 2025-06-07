@@ -2,10 +2,10 @@ import { BannerProps } from "@/@types/bannerTemplate"
 import { TestmonialsProps } from "@/@types/testmonial"
 
 export const swiperBreakpoints = {
-    400: { slidesPerView: 2 },
-    568: { slidesPerView: 2 },
-    620: { slidesPerView: 2 },
-    830: { slidesPerView: 3 },
+    400: { slidesPerView: 1 },
+    568: { slidesPerView: 1 },
+    620: { slidesPerView: 1 },
+    830: { slidesPerView: 2 },
     1024: { slidesPerView: 3 },
     1250: { slidesPerView: 3 },
     1440: { slidesPerView: 3 },

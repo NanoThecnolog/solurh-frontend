@@ -1,4 +1,4 @@
-import { CreateJobProps, JobCreatedProps, JobsProps, UpdateJobProps } from "@/@types/jobs"
+import { CreateJobProps, JobCreatedProps, JobsProps, SubscriptionDataProps, UpdateJobProps } from "@/@types/jobs"
 import { BackendService } from "./backendService"
 
 export class Jobs extends BackendService {
@@ -33,6 +33,26 @@ export class Jobs extends BackendService {
         if (!remove) return 'Erro ao remover vaga.'
         this.debug.log('Vaga removida com sucesso.')
         return remove
+    }
+
+    public async createSubscription(data: SubscriptionDataProps) {
+        //this.debug.log('data em createSubscription', data)
+        const createSub = await this.createSub(data)
+        if (!createSub) {
+            this.debug.warn('Erro ao inscrever candidato na vaga!')
+            return null
+        }
+        this.debug.log('Candidato inscrito com sucesso!', createSub)
+        return createSub
+    }
+    public async getAllSubscriptions() {
+        const subs = await this.getAllSubs()
+        if (!subs) {
+            this.debug.warn('Erro ao buscar candidaturas')
+            return []
+        }
+        this.debug.log('Candidaturas', subs)
+        return subs.result
     }
 }
 export const jobsService = new Jobs()

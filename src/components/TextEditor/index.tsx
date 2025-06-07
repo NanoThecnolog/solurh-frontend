@@ -98,6 +98,7 @@ const MenuBar = ({ editor }: { editor: any }) => {
             <button onClick={setLink} className={styles.button}><FaLink /></button>
 
             <input
+                className={styles.inputColor}
                 placeholder='Escreva aqui!'
                 type="color"
                 onInput={(e) =>

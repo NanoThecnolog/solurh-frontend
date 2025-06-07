@@ -9,25 +9,31 @@ export default function Footer() {
     return (
         <footer className={styles.footerContainer}>
             <section className={styles.sectionContainer}>
-                <div>
-                    <img src="/img/Logomarca/4.png" alt="Logomarca" />
+                <div className={styles.logoContainer}>
+                    <img src="/img/Logomarca/horizontal-logo-nobg.png" alt="Logomarca" />
                 </div>
                 <div className={styles.linkContainer}>
-                    <ul>
-                        <li>link 1</li>
-                        <li>link 2</li>
-                        <li>link 3</li>
-                        <li>link 4</li>
-                    </ul>
-                    <ul>
-                        <li>link 1</li>
-                        <li>link 2</li>
-                        <li>link 3</li>
-                        <li>link 4</li>
-                    </ul>
+                    <div className={styles.listaContainer}>
+                        <h4>Para Empresa</h4>
+                        <ul>
+                            <li>Consultoria</li>
+                            <li>Departamento Pessoal</li>
+                            <li>Recrutamento e Seleção</li>
+                            <li>Desenvolvimento Humano</li>
+                        </ul>
+                    </div>
+                    <div className={styles.listaContainer}>
+                        <h4>Para o Trabalhador</h4>
+                        <ul>
+                            <li>Vagas RHOPEN</li>
+                            <li>Termos de Uso</li>
+                            <li>Política de Privacidade</li>
+                            <li>Central de Denúncias</li>
+                        </ul>
+                    </div>
                 </div>
                 <div className={styles.contatoContainer}>
-                    <h4>Fale conosco</h4>
+                    <h3>Fale conosco</h3>
                     <Button text='(22)99290-5210' Svg={FaPhoneFlip} svgSize={20} />
                     <div className={styles.socialContainer}>
                         <Link href=''><AiFillInstagram size={40} /></Link>
@@ -35,9 +41,6 @@ export default function Footer() {
                     </div>
                 </div>
             </section>
-            <div>
-                endereço e cnpj
-            </div>
             <div className={styles.copyrightContainer}>
                 <h4>© Copyright 2025 - SolurH Soluções em Recursos Humanos LTDA</h4>
                 <p>Sistema Solurh Desenvolvido por <strong><Link href='https://ericssongomes.com'>Ericsson Gomes</Link></strong></p>

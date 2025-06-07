@@ -12,7 +12,7 @@ export default function Header() {
     return (
         <nav className={styles.navContainer}>
             <div className={styles.logo}>
-                <img src="/img/Logomarca/4.png" alt="Logo" />
+                <img src="/img/Logomarca/horizontal-white.png" alt="Logo" />
             </div>
             <div className={styles.mobileIcon} onClick={toggleMenu}>
                 {isMobile ? <FiX size={28} /> : <FiMenu size={28} />}

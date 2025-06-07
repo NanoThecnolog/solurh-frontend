@@ -5,11 +5,9 @@ import Footer from '@/components/Footer'
 export default function CompanyPage() {
     return (
         <>
-            <Header />
             <main className={styles.container}>
                 Página para emrpesas
             </main>
-            <Footer />
         </>
     )
 }

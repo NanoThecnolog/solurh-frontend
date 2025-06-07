@@ -1,7 +1,3 @@
-.page {
-  position: relative;
-}
-
 .main {
   display: flex;
   flex-direction: column;
@@ -13,6 +9,9 @@
   article {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 100px;
+    width: 100%;
   }
 }

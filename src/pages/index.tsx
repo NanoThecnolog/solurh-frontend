@@ -12,7 +12,6 @@ import Editor from "@/components/TextEditor";
 export default function Home() {
   return (
     <>
-      <Header />
       <main className={styles.main}>
         <Carousel />
         <article>
@@ -22,7 +21,6 @@ export default function Home() {
           <FourthContent />
           <FifthContent />
         </article>
-        <Footer />
       </main>
     </>
   )

@@ -33,9 +33,9 @@ export default function LoginPage() {
             clientCookie.setUserCookie(data.data)
             toast.success(data.message)
             router.push('/dashboard')
-        } catch (err) {
+        } catch (err: any) {
             debug.log('Erro ao realizar login!', err)
-            toast.error('Erro inesperado ocorreu! Contate o Desenvolvedor.')
+            toast.error(err.response.data.message)
         } finally {
             setLoading(false)
         }
@@ -44,9 +44,9 @@ export default function LoginPage() {
     //fazer a requisição ao backend next. Rota: /api/user/login
     return (
         <>
-            <Header />
             <main className={styles.container}>
                 <section className={styles.sectionContainer}>
+                    <img src="/img/Logomarca/horizontal-white.png" alt="" />
                     <form onSubmit={handleLogin} className={styles.formulario}>
                         <label htmlFor="email">
                             Email:
@@ -70,7 +70,6 @@ export default function LoginPage() {
                     </form>
                 </section>
             </main>
-            <Footer />
         </>
     )
 }

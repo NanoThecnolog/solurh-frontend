@@ -2,28 +2,70 @@ import { JobsProps } from '@/@types/jobs'
 import styles from './styles.module.scss'
 import { debug } from '@/utils/DebugLogger'
 import { ConvertValues } from '@/utils/conversions'
+import { InscricaoProps, VagaProps } from '@/@types/inscricoes'
+import { useEffect, useState } from 'react'
 
 interface GeralProps {
-    vagas: JobsProps[]
+    vagas: JobsProps[],
+    subs: InscricaoProps[]
 }
 
-export default function Geral({ vagas }: GeralProps) {
-
-    debug.log(vagas)
-    const converter = new ConvertValues()
+export default function Geral({ vagas, subs }: GeralProps) {
+    const [vagaMaisEscolhida, setVagaMaisEscolhida] = useState<{ vaga: VagaProps, total: number } | null>(null)
 
     if (vagas.length === 0) return
+
+    const vagaComMaisCurriculos = (): { vaga: VagaProps, total: number } | null => {
+        const count = new Map<String, { vaga: VagaProps; total: number }>()
+
+        for (const inscricao of subs) {
+            const vagaId = inscricao.vaga.id
+            if (!count.has(vagaId)) {
+                count.set(vagaId, { vaga: inscricao.vaga, total: 1 })
+            } else {
+                const atual = count.get(vagaId)
+                if (!atual) continue
+                atual.total++
+                count.set(vagaId, atual)
+            }
+        }
+        let moreSubs: { vaga: VagaProps; total: number } | null = null
+
+        for (const entry of count.values()) {
+            if (!moreSubs || entry.total > moreSubs.total) {
+                moreSubs = entry
+            }
+        }
+        return moreSubs
+
+    }
+
+    useEffect(() => {
+        if (!vagaMaisEscolhida) setVagaMaisEscolhida(vagaComMaisCurriculos())
+    }, [])
+
     return (
-        <>
+        <div>
+            <h1>Panorama Geral das Vagas</h1>
             <div className={styles.container}>
-                {vagas.map(vaga =>
-                    <div key={vaga.id}>
-                        <h1>{vaga.nome}</h1>
-                        <h4>{vaga.localizacao}</h4>
-                        <p>Salário: {vaga.salario > 0 ? converter.toReal(vaga.salario) : 'A Combinar'}</p>
+                <div className={styles.vagasContainer}>
+                    <h2>Vagas cadastradas</h2>
+                    <p>{vagas.length}</p>
+                    <div className={styles.highestSubs}>
+                        <h4>vaga com mais currículos:</h4>
+                        <div>
+                            {vagaMaisEscolhida?.vaga.nome}
+                        </div>
                     </div>
-                )}
+                </div>
+                <div className={styles.inscricoesContainer}>
+                    <h2>Currículos recebidos</h2>
+                    <p>{subs.length}</p>
+                    <div>
+                        ultima vaga que recebeu currículo
+                    </div>
+                </div>
             </div>
-        </>
+        </div>
     )
 }

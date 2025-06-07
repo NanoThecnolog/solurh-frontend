@@ -37,3 +37,20 @@ export interface UpdateJobProps {
     descricao?: string
     salario?: number
 }
+
+export interface UploadDocProps {
+    code: number,
+    result: {
+        message: string,
+        inscricao: {
+            id: string,
+            vagaId: string,
+            candidatoId: string,
+            createdAt: string
+        }
+    }
+}
+export interface SubscriptionDataProps {
+    vagaId: string
+    file: File
+}

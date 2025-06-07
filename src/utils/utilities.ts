@@ -24,7 +24,7 @@ export class Render extends ConvertValues {
     }
 }
 
-export function createAxiosInstance(ctx: any) {
+export function createAxiosInstance(ctx?: any) {
     const cookie = ctx.req.headers.cookie || '';
     const getCookieValue = (cookieString: string, name: string): string | undefined => {
         return cookieString
@@ -39,7 +39,7 @@ export function createAxiosInstance(ctx: any) {
         withCredentials: true,
         headers: {
             ...(token && { Authorization: `Bearer ${token}` }),
-            ...(process.env.API_KEY && { 'key': process.env.API_KEY })
+            ...(process.env.NEXT_PUBLIC_API_KEY && { 'key': process.env.NEXT_PUBLIC_API_KEY })
         },
     })
 }

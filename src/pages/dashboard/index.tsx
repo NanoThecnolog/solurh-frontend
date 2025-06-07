@@ -9,25 +9,28 @@ import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 import { clientCookie } from '@/services/cookieManager'
 import Geral from '@/components/dashboard/Geral'
-import { jobsService } from '@/services/jobService'
+import { Jobs, jobsService } from '@/services/jobService'
 import { JobsProps } from '@/@types/jobs'
 import Vagas from '@/components/dashboard/Vagas'
+import { InscricaoProps } from '@/@types/inscricoes'
 
 interface DashProps {
     user: User
-    jobs: JobsProps[]
+    jobs: JobsProps[],
+    subs: InscricaoProps[]
 }
 
-export default function Dashboard({ user, jobs }: DashProps) {
+export default function Dashboard({ user, jobs, subs }: DashProps) {
     const router = useRouter()
     const [componentToRender, setComponentToRender] = useState('a')
+    debug.log('subs', subs)
 
     const changeComponent = (value: string) => {
         setComponentToRender(value)
     }
     const renderComponent = () => {
         if (componentToRender === 'a') {
-            return <Geral vagas={jobs} />
+            return <Geral vagas={jobs} subs={subs} />
         }
         if (componentToRender === 'b') {
             return <Vagas vagas={jobs} />
@@ -46,6 +49,8 @@ export default function Dashboard({ user, jobs }: DashProps) {
             debug.log('Erro ao realizar logout', err)
         }
     }
+
+
 
     return (
         <>
@@ -83,12 +88,19 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     if (!token || !user) {
         return {
             redirect: {
-                destination: '/',
+                destination: '/login',
                 permanent: false
             }
         }
     }
     const vagas = await jobsService.findJobs()
+
+    const jobs = new Jobs(ctx)
+    const subs: InscricaoProps[] = await jobs.getAllSubscriptions()
+    //debug.log('Subs em getServerSideProps', subs)
+
+
+
 
     /*
     vagas .post => criar vaga
@@ -101,7 +113,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
         props: {
             user: JSON.parse(user),
-            jobs: vagas
+            jobs: vagas,
+            subs
         }
     }
 }

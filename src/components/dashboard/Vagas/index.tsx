@@ -19,7 +19,7 @@ export default function Vagas({ vagas }: VagasProps) {
     const [jobToShow, setJobToShow] = useState('')
     const [listaVagas, setListaVagas] = useState<JobsProps[]>([])
     const [htmlDesc, setHtmlDesc] = useState<string>('')
-    const [modalVisible, setModalVisible] = useState(true)
+    const [modalVisible, setModalVisible] = useState(false)
 
     const vagaToShow = () => {
         return render.vaga(vagas, jobToShow)
@@ -59,6 +59,9 @@ export default function Vagas({ vagas }: VagasProps) {
             return
         }
     }
+    const handleUpdate = () => {
+        setModalVisible(true)
+    }
 
 
     useEffect(() => {
@@ -92,7 +95,7 @@ export default function Vagas({ vagas }: VagasProps) {
                         <p>Vaga criada em: {render.dates(vaga.createdAt)}</p>
                         <p>Candidatos inscritos: {vaga.inscricoes.length}</p>
                         <div className={styles.buttonContainer}>
-                            <Button click={() => updateVaga(vaga)} text='Atualizar' height='30px' backgroundColor='#1c76dd' color='white' />
+                            <Button click={handleUpdate} text='Atualizar' height='30px' backgroundColor='#1c76dd' color='white' />
                             <Button click={() => removerVaga(vaga.id)} text='Excluir' height='30px' backgroundColor='red' color='white' />
                         </div>
                     </div>

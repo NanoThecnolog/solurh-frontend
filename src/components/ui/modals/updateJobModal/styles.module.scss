@@ -6,4 +6,28 @@
     padding: 50px;
     border-radius: 1rem;
     box-shadow: 5px 5px 15px var(--shadow-blue);
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        label {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+
+            h4 {
+                color: var(--white);
+            }
+
+            input {
+                background-color: var(--white);
+                color: var(--black);
+                border-radius: .4rem;
+                width: 300px;
+            }
+        }
+    }
 }
