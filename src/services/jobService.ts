@@ -1,8 +1,9 @@
 import { CreateJobProps, JobCreatedProps, JobsProps, SubscriptionDataProps, UpdateJobProps } from "@/@types/jobs"
 import { BackendService, ServerSideContext } from "./backendService"
+import { GetServerSidePropsContext } from "next"
 
 export class Jobs extends BackendService {
-    constructor(ctx?: ServerSideContext) {
+    constructor(ctx?: ServerSideContext | GetServerSidePropsContext) {
         super(ctx)
     }
     public async create(data: CreateJobProps) {

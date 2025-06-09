@@ -17,7 +17,7 @@ import { CreateJobProps, JobCreatedProps, JobsProps, SubscriptionDataProps, Upda
 import { debug } from "@/utils/DebugLogger";
 import { createAxiosInstance } from "@/utils/utilities";
 import { InscricaoProps } from "@/@types/inscricoes";
-import { NextApiRequest } from "next";
+import { GetServerSidePropsContext, NextApiRequest } from "next";
 
 interface ResponseProps<T> {
     code: number,
@@ -29,10 +29,10 @@ export class BackendService {
     protected api: AxiosInstance
     protected debug: typeof debug
 
-    constructor(ctx?: ServerSideContext) {
+    constructor(ctx?: ServerSideContext | GetServerSidePropsContext) {
         this.debug = debug
 
-        if (ctx?.req) {
+        if (ctx && 'req' in ctx!) {
             this.api = createAxiosInstance(ctx)
         } else {
             this.api = api
