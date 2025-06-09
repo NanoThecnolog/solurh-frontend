@@ -1,10 +1,10 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import styles from './styles.module.scss'
 import { FaLink } from 'react-icons/fa6';
 export default function Editor() {
     const [fontSize, setFontSize] = useState(3)
     const [fontFamily, setFontFamily] = useState('arial')
-    const editorRef = useRef<HTMLDivElement>(null)
+    //const editorRef = useRef<HTMLDivElement>(null)
 
     const exec = (cmd: string, value?: string) => {
         document.execCommand(cmd, false, value)

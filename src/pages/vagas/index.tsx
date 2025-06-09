@@ -1,4 +1,3 @@
-import Header from '@/components/Header'
 import styles from './styles.module.scss'
 import { useEffect, useState } from 'react'
 import { jobsService } from '@/services/jobService'

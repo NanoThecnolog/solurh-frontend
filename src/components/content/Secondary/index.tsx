@@ -25,7 +25,7 @@ export default function SecondaryContent() {
             image: '/img/12.jpg'
         },
     ]
-    const images = ['/img/7.png', '/img/8.png', '/img/9.jpg', '/img/12.jpg']
+    //const images = ['/img/7.png', '/img/8.png', '/img/9.jpg', '/img/12.jpg']
 
     return (
         <section className={styles.container}>

@@ -1,11 +1,11 @@
-import { JobsProps, UploadDocProps } from '@/@types/jobs'
+import { JobsProps } from '@/@types/jobs'
 import styles from './styles.module.scss'
 import Button from '../../Button'
 import { debug } from '@/utils/DebugLogger'
-import { Jobs, jobsService } from '@/services/jobService'
+import { Jobs } from '@/services/jobService'
 import { FormEvent, useState } from 'react'
 import { toast } from 'react-toastify'
-import axios from 'axios'
+//import axios from 'axios'
 
 interface SendProps {
     vaga: JobsProps

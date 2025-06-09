@@ -1,3 +1,4 @@
+import { MouseEventHandler } from 'react'
 import styles from './styles.module.scss'
 
 interface ButtonProps {
@@ -14,7 +15,7 @@ interface ButtonProps {
     svgSize?: number
     backgroundColor?: string
     loading?: boolean
-    click?: (value?: any) => void
+    click?: MouseEventHandler<HTMLButtonElement>
 
 }
 /**

@@ -2,7 +2,7 @@ import styles from './styles.module.scss'
 import { UpdateJobProps } from '@/@types/jobs'
 import Button from '../../Button'
 import { IoClose } from 'react-icons/io5'
-import { FormEvent, useState } from 'react'
+import { useState } from 'react'
 import Editor from '@/components/TextEditor'
 
 interface ModalProps {
@@ -10,23 +10,21 @@ interface ModalProps {
     setVisible: (value: boolean) => void
 }
 
-export default function UpdateJobModal({ updateJob, setVisible }: ModalProps) {
+export default function UpdateJobModal({ setVisible }: ModalProps) {
     const [data, setData] = useState<UpdateJobProps>({
         nome: '',
         localizacao: '',
         descricao: '',
         salario: 0
     })
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-
-
     }
     return (
         <section className={styles.container}>
             <div>
                 <IoClose onClick={() => setVisible(false)} />
-                <form action={handleSubmit} className={styles.form}>
+                <form onSubmit={handleSubmit} className={styles.form}>
                     <label htmlFor="title">
                         <h4>Título da Vaga</h4>
                         <input
@@ -52,7 +50,9 @@ export default function UpdateJobModal({ updateJob, setVisible }: ModalProps) {
                         <input type="text" id='salary' placeholder='digite salario da vaga' />
                     </label>
                     <label htmlFor='description'>
-                        <Editor />
+                        {
+                            <Editor />
+                        }
                     </label>
                     <div>
                         <Button type='submit' text='Atualizar' />

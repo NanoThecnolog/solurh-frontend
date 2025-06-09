@@ -1,7 +1,7 @@
 import { JobsProps } from '@/@types/jobs'
 import styles from './styles.module.scss'
-import { debug } from '@/utils/DebugLogger'
-import { ConvertValues } from '@/utils/conversions'
+//import { debug } from '@/utils/DebugLogger'
+//import { ConvertValues } from '@/utils/conversions'
 import { InscricaoProps, VagaProps } from '@/@types/inscricoes'
 import { useEffect, useState } from 'react'
 
@@ -13,10 +13,10 @@ interface GeralProps {
 export default function Geral({ vagas, subs }: GeralProps) {
     const [vagaMaisEscolhida, setVagaMaisEscolhida] = useState<{ vaga: VagaProps, total: number } | null>(null)
 
-    if (vagas.length === 0) return
+
 
     const vagaComMaisCurriculos = (): { vaga: VagaProps, total: number } | null => {
-        const count = new Map<String, { vaga: VagaProps; total: number }>()
+        const count = new Map<string, { vaga: VagaProps; total: number }>()
 
         for (const inscricao of subs) {
             const vagaId = inscricao.vaga.id
@@ -42,7 +42,9 @@ export default function Geral({ vagas, subs }: GeralProps) {
 
     useEffect(() => {
         if (!vagaMaisEscolhida) setVagaMaisEscolhida(vagaComMaisCurriculos())
-    }, [])
+        else return
+    }, [vagaMaisEscolhida])
+    if (vagas.length === 0) return
 
     return (
         <div>

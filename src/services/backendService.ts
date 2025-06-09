@@ -17,17 +17,19 @@ import { CreateJobProps, JobCreatedProps, JobsProps, SubscriptionDataProps, Upda
 import { debug } from "@/utils/DebugLogger";
 import { createAxiosInstance } from "@/utils/utilities";
 import { InscricaoProps } from "@/@types/inscricoes";
+import { NextApiRequest } from "next";
 
 interface ResponseProps<T> {
     code: number,
     result: T
 }
+export type ServerSideContext = { req: NextApiRequest }
 
 export class BackendService {
     protected api: AxiosInstance
     protected debug: typeof debug
 
-    constructor(ctx?: any) {
+    constructor(ctx?: ServerSideContext) {
         this.debug = debug
 
         if (ctx?.req) {
@@ -135,7 +137,7 @@ export class BackendService {
                 }
             })
             return response.data
-        } catch (err: any) {
+        } catch (err: unknown) {
             if (err instanceof AxiosError) {
                 const message = err.response?.data.message || 'Erro inesperado ao inscrever candidato.'
                 this.debug.error(message, err.response?.data)

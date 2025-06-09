@@ -1,6 +1,4 @@
-import Header from '@/components/Header'
 import styles from './styles.module.scss'
-import Footer from '@/components/Footer'
 import Button from '@/components/ui/Button'
 import { FormEvent, useState } from 'react'
 import axios from 'axios'
@@ -33,9 +31,16 @@ export default function LoginPage() {
             clientCookie.setUserCookie(data.data)
             toast.success(data.message)
             router.push('/dashboard')
-        } catch (err: any) {
-            debug.log('Erro ao realizar login!', err)
-            toast.error(err.response.data.message)
+        } catch (err: unknown) {
+            if (axios.isAxiosError(err)) {
+                debug.log('Erro ao realizar login!', err)
+                toast.error(err.response?.data?.message || 'Erro desconhecido ao fazer login')
+            }
+            else {
+                debug.log('Erro inesperado ao realizar login!', err)
+                toast.error('Erro inesperado ao fazer login')
+            }
+
         } finally {
             setLoading(false)
         }

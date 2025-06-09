@@ -1,6 +1,7 @@
 import { JobsProps } from "@/@types/jobs";
 import { ConvertValues } from "./conversions";
 import axios from "axios";
+import { ServerSideContext } from "@/services/backendService";
 
 export class Render extends ConvertValues {
     salario(value: number): string {
@@ -24,8 +25,8 @@ export class Render extends ConvertValues {
     }
 }
 
-export function createAxiosInstance(ctx?: any) {
-    const cookie = ctx.req.headers.cookie || '';
+export function createAxiosInstance(ctx?: ServerSideContext) {
+    const cookie = ctx?.req.headers.cookie || '';
     const getCookieValue = (cookieString: string, name: string): string | undefined => {
         return cookieString
             .split(';')

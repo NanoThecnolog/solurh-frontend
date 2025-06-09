@@ -1,4 +1,4 @@
-import { Jobs, jobsService } from "@/services/jobService";
+import { Jobs } from "@/services/jobService";
 import { debug } from "@/utils/DebugLogger";
 import { NextApiRequest, NextApiResponse } from "next";
 

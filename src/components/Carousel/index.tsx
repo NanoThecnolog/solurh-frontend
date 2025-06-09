@@ -7,7 +7,7 @@ import BannerTemplate from '../banner/Template';
 import { bannersContent } from '@/utils/variables';
 
 export default function Carousel() {
-    const banners = ['/img/banner-1.png', '/img/banner-2.png', '/img/banner-3.png']
+    //const banners = ['/img/banner-1.png', '/img/banner-2.png', '/img/banner-3.png']
     return (
         <section className={styles.container}>
             <Swiper
