@@ -1,0 +1,94 @@
+.container {
+    max-width: 1000px;
+    margin: 200px auto 200px auto;
+    padding: 2rem 1rem;
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--blue);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 1rem;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.5;
+    }
+}
+
+.contactMethods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+
+    .method {
+        background: #f5f5f5;
+        padding: 1.5rem;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+        .icon {
+            font-size: 2rem;
+            color: var(--blue);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                font-size: 0.95rem;
+                margin-bottom: 0.25rem;
+                cursor: default;
+            }
+        }
+
+        .location {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #555;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+
+            svg {
+                color: #999;
+            }
+        }
+    }
+
+    .hoverEffect:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+}
+
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 1.6rem;
+    }
+
+    .method {
+        padding: 1rem;
+    }
+}

@@ -59,7 +59,7 @@ export default function Vagas({ vagas }: VagasProps) {
             return
         }
     }
-    const handleUpdate = () => {
+    const handleCreate = () => {
         setModalVisible(true)
     }
 
@@ -76,34 +76,69 @@ export default function Vagas({ vagas }: VagasProps) {
     }, [vaga])
 
     return (
-        <div className={styles.container}>
-            <aside className={styles.listVagas}>
-                {listaVagas.map(vaga =>
-                    <div key={vaga.id} className={styles.listItem} onClick={() => setJobToShow(vaga.id)}>
-                        <h4>{vaga.nome}</h4>
-                        <p>Salário: {render.salario(vaga.salario)} - {vaga.localizacao}</p>
-                    </div>
-                )}
-            </aside>
-            <section className={styles.vagaContainer}>
-                {vaga ?
-                    <div key={vaga.id} className={styles.vaga}>
-                        <h3>{vaga.nome}</h3>
-                        <p>{vaga.localizacao}</p>
-                        <p>Salário: {render.salario(vaga.salario)}</p>
-                        <p dangerouslySetInnerHTML={{ __html: htmlDesc }}></p>
-                        <p>Vaga criada em: {render.dates(vaga.createdAt)}</p>
-                        <p>Candidatos inscritos: {vaga.inscricoes.length}</p>
-                        <div className={styles.buttonContainer}>
-                            <Button click={handleUpdate} text='Atualizar' height='30px' backgroundColor='#1c76dd' color='white' />
-                            <Button click={() => removerVaga(vaga.id)} text='Excluir' height='30px' backgroundColor='red' color='white' />
+        <>
+            <div className={styles.container}>
+                <aside className={styles.listVagas}>
+                    {listaVagas.map((vaga) => (
+                        <div
+                            key={vaga.id}
+                            className={styles.listItem}
+                            onClick={() => setJobToShow(vaga.id)}
+                        >
+                            <h4>{vaga.nome}</h4>
+                            <p>
+                                Salário: {render.salario(vaga.salario)} — {vaga.localizacao}
+                            </p>
                         </div>
-                    </div>
-                    : null}
+                    ))}
+                </aside>
+
+                <section className={styles.vagaContainer}>
+                    {vaga && (
+                        <div key={vaga.id} className={styles.vaga}>
+                            <h3>{vaga.nome}</h3>
+                            <span className={styles.local}>{vaga.localizacao}</span>
+                            <span className={styles.salario}>Salário: {render.salario(vaga.salario)}</span>
+
+                            <div className={styles.descricao} dangerouslySetInnerHTML={{ __html: htmlDesc }} />
+
+                            <span className={styles.data}>Criada em: {render.dates(vaga.createdAt)}</span>
+                            <span className={styles.inscritos}>Candidatos: {vaga.inscricoes.length}</span>
+
+                            <div className={styles.buttonContainer}>
+                                {
+                                    /**
+                                    <Button
+                                    click={handleUpdate}
+                                    text="Atualizar"
+                                    height="36px"
+                                    backgroundColor="#1c76dd"
+                                    color="white"
+                                />
+                                    */
+                                }
+                                <Button
+                                    click={() => removerVaga(vaga.id)}
+                                    text="Excluir"
+                                    height="36px"
+                                    backgroundColor="red"
+                                    color="white"
+                                />
+                            </div>
+                        </div>
+                    )}
+                </section>
+
+
+                {modalVisible && (
+                    <UpdateJobModal updateJob={updateVaga} setVisible={setModalVisible} />
+                )}
+            </div>
+            <section>
+                <Button text='Adicionar' click={handleCreate} color='var(--white)' width='150px' backgroundColor='var(--blue)' />
             </section>
-            {
-                modalVisible && <UpdateJobModal updateJob={updateVaga} setVisible={setModalVisible} />
-            }
-        </div>
+        </>
+
+
     )
 }

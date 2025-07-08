@@ -1,7 +1,15 @@
 import Button from '@/components/ui/Button'
 import styles from './styles.module.scss'
+import { useRouter } from 'next/navigation'
 
 export default function ThirdContent() {
+    const router = useRouter()
+    const handleCandidatoClick = () => {
+        router.push('/vagas')
+    }
+    const handleCompanyClick = () => {
+        router.push('/company')
+    }
     return (
         <section className={styles.container}>
             <div className={styles.imageContainer}>
@@ -25,7 +33,7 @@ export default function ThirdContent() {
                         </h3>
                     </div>
                     <div>
-                        <Button text='Encontre sua vaga' width='240px' />
+                        <Button text='Encontre sua vaga' width='240px' click={handleCandidatoClick} />
                     </div>
                 </div>
                 <div className={styles.content}>
@@ -45,7 +53,7 @@ export default function ThirdContent() {
                         </h4>
                     </div>
                     <div>
-                        <Button text='Soluções para Empresas' width='240px' />
+                        <Button text='Soluções para Empresas' width='240px' click={handleCompanyClick} />
                     </div>
                 </div>
             </div>

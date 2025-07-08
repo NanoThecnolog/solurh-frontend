@@ -1,0 +1,275 @@
+$secondary: #f0f4ff;
+$dark: #1a1a1a;
+$gray: #666;
+$accent: #ff7a59;
+$border-radius: 12px;
+$max-width: 1200px;
+$spacing: 8rem;
+
+.container {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-bottom: 200px;
+
+    .results {
+        position: absolute;
+        top: 930px;
+        background-color: var(--blue-light);
+        color: var(--white);
+        width: 90%;
+        height: 250px;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 3rem;
+        gap: 10px;
+
+        .resultsPrincipal {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+
+            h2 {
+                text-align: start;
+                font-size: 2rem;
+            }
+
+            p {
+                width: 80%;
+            }
+
+        }
+
+        .statistics {
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+
+            svg {
+                color: var(--blue-light);
+                background-color: white;
+                border-radius: 50%;
+                padding: 5px;
+            }
+
+            h4 {
+                font-size: 1.3rem;
+            }
+
+            p {
+                font-size: 2rem;
+            }
+        }
+    }
+
+    .articleContainer {
+        max-width: $max-width;
+        margin-top: 250px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing;
+
+        .sectionContainer {
+            display: flex;
+            flex-direction: column;
+            gap: $spacing;
+
+            .title {
+                text-align: center;
+
+                h1 {
+                    font-size: 3rem;
+                    font-weight: 700;
+                    color: var(--blue);
+                }
+            }
+
+            .content {
+                display: flex;
+                flex-direction: column;
+                gap: $spacing;
+
+                .about,
+                .mission,
+                .vision,
+                .values {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 2rem;
+                    align-items: center;
+
+                    &:nth-child(even) {
+                        flex-direction: row-reverse;
+                    }
+
+                    p {
+                        flex: 1 1 50%;
+                        font-size: 1.125rem;
+                        color: $gray;
+                        line-height: 1.7;
+                        text-align: justify;
+                    }
+
+                    h3 {
+                        flex: 1 1 40%;
+                        font-size: 2rem;
+                        color: var(--blue);
+                        font-weight: 600;
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
+
+                .mission {
+
+
+                    .missionContainer {
+
+                        img {
+                            width: 300px;
+                        }
+                    }
+                }
+            }
+
+            .callToAction {
+                background: $secondary;
+                border-radius: $border-radius;
+                padding: 3rem 2rem;
+                text-align: center;
+
+                h2 {
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: $dark;
+                    margin-bottom: 1rem;
+                }
+
+                p {
+                    font-size: 1.125rem;
+                    color: $gray;
+                    max-width: 700px;
+                    margin: 0 auto 2rem;
+                }
+
+                .buttonContainer {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 1024px) {
+    .container {
+        .results {
+            //display: none;
+        }
+
+        .articleContainer {
+            padding: 0 40px;
+        }
+    }
+}
+
+@media(max-width: 1024px) {
+    .container {
+        padding-bottom: 100px;
+
+        .results {
+            position: static;
+            flex-direction: column;
+            height: auto;
+            padding: 2rem 1rem;
+            margin-top: 2rem;
+            text-align: center;
+
+            .resultsPrincipal {
+                gap: 1rem;
+
+                h2 {
+                    font-size: 1.5rem;
+                    text-align: center;
+                }
+
+                p {
+                    width: 100%;
+                    font-size: 1rem;
+                }
+            }
+
+            .statistics {
+                flex-direction: column;
+                gap: 10px;
+
+                svg {
+                    width: 50px;
+                    height: 50px;
+                }
+
+                h4 {
+                    font-size: 1.1rem;
+                }
+
+                p {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .articleContainer {
+            padding: 0 1rem;
+
+            .sectionContainer {
+                gap: 4rem;
+
+                .title h1 {
+                    font-size: 2rem;
+                }
+
+                .content {
+                    gap: 4rem;
+
+                    .about,
+                    .mission,
+                    .vision,
+                    .values {
+                        flex-direction: column !important;
+                        gap: 1.5rem;
+
+                        h3 {
+                            font-size: 1.5rem;
+                        }
+
+                        p {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+
+                .callToAction {
+                    padding: 2rem 1rem;
+
+                    h2 {
+                        font-size: 1.5rem;
+                    }
+
+                    p {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}

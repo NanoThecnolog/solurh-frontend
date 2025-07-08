@@ -16,6 +16,8 @@ import { FaLink } from 'react-icons/fa6';
 
 export default function TextEditor() {
     const [htmlOutput, setHtmlOutput] = useState('')
+    const [showLinkInput, setShowLinkInput] = useState(false)
+    const [linkUrl, setLinkUrl] = useState('')
 
     const editor = useEditor({
         immediatelyRender: false,
@@ -31,8 +33,6 @@ export default function TextEditor() {
             ListItem,
             Underline
         ],
-        //content: 'Escreva aqui!',
-
     })
 
     const exportHTML = () => {

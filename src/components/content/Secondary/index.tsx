@@ -5,11 +5,13 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { swiperBreakpoints } from '@/utils/variables'
 import { IoIosArrowForward } from 'react-icons/io'
 import Button from '@/components/ui/Button'
+import { useRouter } from 'next/navigation'
 
 export default function SecondaryContent() {
+    const router = useRouter()
     const content = [
         {
-            title: 'RPO',
+            title: 'Treinamento & Desenvolvimento',
             image: '/img/7.png'
         },
         {
@@ -17,16 +19,26 @@ export default function SecondaryContent() {
             image: '/img/8.png'
         },
         {
-            title: 'Acelerador de RH',
+            title: 'Implantação de RH',
             image: '/img/9.jpg'
         },
         {
-            title: 'Soluções de RH',
+            title: 'Pesquisa de Clima Organizacional',
             image: '/img/12.jpg'
         },
+        {
+            title: 'Consultoria de Carreira',
+            image: '/img/10.jpg'
+        },
+        {
+            title: 'BPO de RH',
+            image: '/img/11.jpg'
+        },
     ]
-    //const images = ['/img/7.png', '/img/8.png', '/img/9.jpg', '/img/12.jpg']
 
+    function handleClick() {
+        router.push('/company')
+    }
     return (
         <section className={styles.container}>
             <div className={styles.textContainer}>
@@ -58,7 +70,7 @@ export default function SecondaryContent() {
                     </Swiper>
                 </div>
             </div>
-            <Button text='Conheça nossa soluções' Svg={IoIosArrowForward} />
+            <Button click={handleClick} text='Conheça nossa soluções' Svg={IoIosArrowForward} />
         </section>
     )
 }

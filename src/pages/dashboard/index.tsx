@@ -13,6 +13,7 @@ import { Jobs, jobsService } from '@/services/jobService'
 import { JobsProps } from '@/@types/jobs'
 import Vagas from '@/components/dashboard/Vagas'
 import { InscricaoProps } from '@/@types/inscricoes'
+import Candidatos from '@/components/dashboard/Candidatos'
 
 interface DashProps {
     user: User
@@ -35,7 +36,9 @@ export default function Dashboard({ user, jobs, subs }: DashProps) {
         if (componentToRender === 'b') {
             return <Vagas vagas={jobs} />
         }
-        if (componentToRender === 'c') { }
+        if (componentToRender === 'c') {
+            return <Candidatos subs={subs} />
+        }
     }
 
     const handleLogout = async () => {
@@ -55,26 +58,19 @@ export default function Dashboard({ user, jobs, subs }: DashProps) {
     return (
         <>
             <main className={styles.main}>
-                <div>Olá, {user.nome}! Essa é a página de dashboard!</div>
+                <header className={styles.header}>
+                    <h2>Olá, {user.nome}!</h2>
+                </header>
                 <article className={styles.container}>
                     <aside className={styles.menu}>
                         <ul>
-                            <li
-                                onClick={() => changeComponent('a')}
-                            >início</li>
-                            <li
-                                onClick={() => changeComponent('b')}
-                            >vagas</li>
-                            <li
-                                onClick={() => changeComponent('c')}
-                            >candidatos</li>
-                            <li
-                                onClick={handleLogout}
-                            >sair</li>
+                            <li onClick={() => changeComponent('a')}>🏠 início</li>
+                            <li onClick={() => changeComponent('b')}>📋 vagas</li>
+                            <li onClick={() => changeComponent('c')}>👤 candidatos</li>
+                            <li onClick={handleLogout}>🚪 sair</li>
                         </ul>
                     </aside>
                     <section className={styles.content}>
-                        sessão com os conteúdos do menu
                         {renderComponent()}
                     </section>
                 </article>

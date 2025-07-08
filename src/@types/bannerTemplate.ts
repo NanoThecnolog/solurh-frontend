@@ -4,5 +4,6 @@ export interface BannerProps {
     subText?: string,
     textParagraph?: string,
     buttonText: string,
-    bannerImg: string
+    bannerImg: string,
+    buttonLink?: string
 }

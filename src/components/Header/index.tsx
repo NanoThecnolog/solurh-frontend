@@ -20,10 +20,10 @@ export default function Header() {
             <div className={`${styles.menuContainer} ${isMobile ? styles.open : ''}`}>
                 <ul className={styles.menu}>
                     <li className={styles.menuItem}><Link href='/'>Home</Link></li>
+                    <li className={styles.menuItem}><Link href='/about'>Quem Somos</Link></li>
                     <li className={styles.menuItem}><Link href='/company'>Empresas</Link></li>
-                    <li className={styles.menuItem}>Candidatos</li>
-                    <li className={styles.menuItem}>Vagas</li>
-                    <li className={styles.menuItem}>Contato</li>
+                    <li className={styles.menuItem}><Link href='/vagas'>Vagas</Link></li>
+                    <li className={styles.menuItem}><Link href='/contact'>Contato</Link></li>
                 </ul>
             </div>
             <div className={styles.buttonContainer}>

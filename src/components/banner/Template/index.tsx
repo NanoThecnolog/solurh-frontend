@@ -7,6 +7,11 @@ interface TemplateProps {
     data: BannerProps
 }
 export default function BannerTemplate({ data }: TemplateProps) {
+
+
+    const handleClick = () => {
+        if (data.buttonLink) window.open(data.buttonLink, '_blank')
+    }
     return (
         <section className={styles.container}>
             <div className={styles.left}>
@@ -28,14 +33,19 @@ export default function BannerTemplate({ data }: TemplateProps) {
                     }
                 </div>
                 <div className={styles.buttonContainer}>
-                    <Button
-                        text={data.buttonText}
-                        backgroundColor='var(--white)'
-                        fontSize='1.2rem'
-                        fontWeight='900'
-                        fontFamily='Segoe UI, Tahoma, Geneva, Verdana, sans-serif'
-                        textTransform='uppercase'
-                    />
+                    {
+                        data.buttonText && <Button
+                            text={data.buttonText}
+                            click={handleClick}
+                            backgroundColor='var(--white)'
+                            height='60px'
+                            fontSize='1rem'
+                            fontWeight='900'
+                            fontFamily='Segoe UI, Tahoma, Geneva, Verdana, sans-serif'
+                            textTransform='uppercase'
+                        />
+                    }
+
                 </div>
             </div>
             <div className={styles.right}>

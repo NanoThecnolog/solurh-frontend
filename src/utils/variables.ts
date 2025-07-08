@@ -1,6 +1,8 @@
 import { BannerProps } from "@/@types/bannerTemplate"
 import { TestmonialsProps } from "@/@types/testmonial"
 
+export const whatsappLink = "https://api.whatsapp.com/send/?phone=5522992905210&text=Ol%C3%A1%21+Gostaria+de+tirar+uma+d%C3%BAvida%21%21&type=phone_number&app_absent=0"
+
 export const swiperBreakpoints = {
     400: { slidesPerView: 1 },
     568: { slidesPerView: 1 },
@@ -42,26 +44,43 @@ export const testmonials: TestmonialsProps[] = [
 export const bannersContent: BannerProps[] = [
     {
         bannerImg: '/img/2-2.png',
-        buttonText: 'Chamada para ação',
-        textHighLight: 'Tecnologia e Consultoria num só lugar!',
+        buttonText: 'Solicitar Diagnóstico Gratuito',
+        buttonLink: whatsappLink,
+        textHighLight: 'Transformamos a Gestão de Pessoas em Resultados Reais',
         logoImg: '/img/Logomarca/horizontal-white.png',
-        subText: 'um subtexto aleatório',
-        textParagraph: 'Quem somos'
+        subText: 'Na SoluRH, unimos estratégia, experiência e sensibilidade humana para desenvolver soluções personalizadas em Recursos Humanos.',
+        textParagraph: 'Somos a SoluRH'
     },
     {
-        bannerImg: '/img/news/equipe.png',
-        buttonText: 'Soluções',
+        bannerImg: '/img/3-nobg.png',
+        buttonText: '',
         textHighLight: 'Descubra os Melhores Talentos para o seu Negócio',
-        logoImg: '/img/Logomarca/4.png',
-        subText: 'Nosso serviço especializado em encontrar profissionais tem como foco o crescimento da sua empresa!',
+        logoImg: '/img/Logomarca/horizontal-white.png',
+        subText: 'Nossos serviços são especializados em encontrar soluções com foco no crescimento da sua empresa!',
         textParagraph: 'Soluções Personalizadas'
     },
     {
         bannerImg: '/img/5-no-bg.png',
-        buttonText: 'botão botão',
-        textHighLight: 'Um texto de destaque',
-        logoImg: '/img/Logomarca/4.png',
-        subText: 'um subtexto',
-        textParagraph: 'um simples parágrafo'
-    },
+        buttonText: '',
+        textHighLight: 'Consultoria estratégica em Recursos Humanos',
+        logoImg: '/img/Logomarca/horizontal-white.png',
+        subText: 'Unimos experiência e inovação para impulsionar negócios',
+        textParagraph: 'Mais de 10 anos conectando pessoas e empresas'
+    }
 ]
+
+export const solurhInformation = {
+    email: 'contato@solurh.com.br',
+    telefones: {
+        rj: '(22) 99290-5210',
+        sp: '(11) 97608-5287',
+        mg: '(34) 9906-9116',
+    },
+    whatsapp: '(22) 99290-5210',
+    socialMedia: {
+        linkedin: 'https://www.linkedin.com/in/tania-viannarh/',
+        instagram: 'https://www.instagram.com/solu.rh?utm_source=qr&igsh=d2hkN3pweThtcHAz'
+    }
+
+}
+

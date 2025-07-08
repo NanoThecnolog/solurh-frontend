@@ -10,7 +10,7 @@ export default function Carousel() {
     //const banners = ['/img/banner-1.png', '/img/banner-2.png', '/img/banner-3.png']
     return (
         <section className={styles.container}>
-            <Swiper
+            {/*<Swiper
                 modules={[Autoplay, EffectFade]}
                 className={styles.carousel}
                 spaceBetween={0}
@@ -31,7 +31,8 @@ export default function Carousel() {
                         </SwiperSlide>
                     )
                 }
-            </Swiper>
+            </Swiper>*/}
+            <BannerTemplate data={bannersContent[0]} />
         </section>
     )
 }

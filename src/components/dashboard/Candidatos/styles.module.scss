@@ -1,0 +1,70 @@
+.container {
+    width: 100%;
+    padding: 24px;
+    background-color: var(--gray);
+    border-radius: 1rem;
+
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 24px;
+        color: var(--text-dark);
+    }
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    p {
+        color: #6b7280;
+    }
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: translateY(-3px);
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        color: var(--primary);
+    }
+
+    .local {
+        color: #4b5563;
+        font-size: 0.95rem;
+    }
+
+    .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 12px;
+
+        p {
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        .cvLink {
+            font-size: 0.9rem;
+            color: var(--primary);
+            text-decoration: underline;
+            font-weight: 500;
+
+            &:hover {
+                color: var(--hover);
+            }
+        }
+    }
+}

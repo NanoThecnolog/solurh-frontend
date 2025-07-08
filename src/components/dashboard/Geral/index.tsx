@@ -12,6 +12,7 @@ interface GeralProps {
 
 export default function Geral({ vagas, subs }: GeralProps) {
     const [vagaMaisEscolhida, setVagaMaisEscolhida] = useState<{ vaga: VagaProps, total: number } | null>(null)
+    const [ultimaVaga, setUltimaVaga] = useState<VagaProps>()
 
 
 
@@ -37,7 +38,6 @@ export default function Geral({ vagas, subs }: GeralProps) {
             }
         }
         return moreSubs
-
     }
 
     useEffect(() => {
@@ -47,27 +47,31 @@ export default function Geral({ vagas, subs }: GeralProps) {
     if (vagas.length === 0) return
 
     return (
-        <div>
-            <h1>Panorama Geral das Vagas</h1>
+        <div className={styles.panorama}>
+            <h1>📊 Panorama Geral das Vagas</h1>
+
             <div className={styles.container}>
-                <div className={styles.vagasContainer}>
+                <div className={styles.card}>
                     <h2>Vagas cadastradas</h2>
-                    <p>{vagas.length}</p>
-                    <div className={styles.highestSubs}>
-                        <h4>vaga com mais currículos:</h4>
-                        <div>
-                            {vagaMaisEscolhida?.vaga.nome}
-                        </div>
+                    <p className={styles.count}>{vagas.length}</p>
+
+                    <div className={styles.detail}>
+                        <h4>Vaga com mais currículos:</h4>
+                        <span>{vagaMaisEscolhida?.vaga.nome || 'Nenhuma ainda'}</span>
                     </div>
                 </div>
-                <div className={styles.inscricoesContainer}>
+
+                <div className={styles.card}>
                     <h2>Currículos recebidos</h2>
-                    <p>{subs.length}</p>
-                    <div>
-                        ultima vaga que recebeu currículo
+                    <p className={styles.count}>{subs.length}</p>
+
+                    <div className={styles.detail}>
+                        <h4>Última vaga que recebeu currículo:</h4>
+                        <span>{ultimaVaga?.nome || 'Nenhuma ainda'}</span>
                     </div>
                 </div>
             </div>
         </div>
+
     )
 }
