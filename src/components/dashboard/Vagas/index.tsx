@@ -50,9 +50,9 @@ export default function Vagas({ vagas }: VagasProps) {
             return []
         }
     }
-    const updateVaga = async (data: UpdateJobProps) => {
+    const createVaga = async (data: UpdateJobProps) => {
         try {
-            const response = await axios.put(`/api/job/update/${vaga?.id}`, { data })
+            const response = await axios.post(`/api/job/create`, { data })
             debug.log(response)
         } catch (err) {
             debug.error('Erro ao atualizar vaga', err)
@@ -131,7 +131,7 @@ export default function Vagas({ vagas }: VagasProps) {
 
 
                 {modalVisible && (
-                    <UpdateJobModal updateJob={updateVaga} setVisible={setModalVisible} />
+                    <UpdateJobModal updateJob={createVaga} setVisible={setModalVisible} />
                 )}
             </div>
             <section>
