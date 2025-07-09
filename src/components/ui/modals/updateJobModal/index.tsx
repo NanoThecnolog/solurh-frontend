@@ -69,6 +69,7 @@ import Button from '../../Button'
 import { IoClose } from 'react-icons/io5'
 import { useState } from 'react'
 import Editor from '@/components/TextEditor'
+import { debug } from '@/utils/DebugLogger'
 
 interface ModalProps {
     updateJob: (data: UpdateJobProps) => void
@@ -85,6 +86,7 @@ export default function UpdateJobModal({ setVisible, updateJob }: ModalProps) {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        debug.log("data na rota de criar vaga", data)
         updateJob(data)
         setVisible(false)
     }
@@ -133,7 +135,7 @@ export default function UpdateJobModal({ setVisible, updateJob }: ModalProps) {
 
                     <label htmlFor="description">
                         <span>Descrição</span>
-                        <Editor />
+                        <Editor changeDescription={(desc) => setData(prev => ({ ...prev, descricao: desc }))} />
                     </label>
 
                     <div className={styles.actions}>

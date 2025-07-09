@@ -12,7 +12,8 @@ interface GeralProps {
 
 export default function Geral({ vagas, subs }: GeralProps) {
     const [vagaMaisEscolhida, setVagaMaisEscolhida] = useState<{ vaga: VagaProps, total: number } | null>(null)
-    const [ultimaVaga, setUltimaVaga] = useState<VagaProps>()
+    const [ultimaVaga, /*setUltimaVaga*/] = useState<VagaProps>()
+
 
 
 

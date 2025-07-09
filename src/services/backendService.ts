@@ -116,6 +116,7 @@ export class BackendService {
     protected async removeJob(id: string) {
         try {
             const response = await this.api.delete(`/vagas/${id}`)
+            debug.log(response.data)
             return response.data
         } catch (err: unknown) {
             if (err instanceof AxiosError) {

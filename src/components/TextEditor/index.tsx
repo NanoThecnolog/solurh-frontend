@@ -10,14 +10,17 @@ import BulletList from '@tiptap/extension-bullet-list';
 import Image from '@tiptap/extension-image';
 import OrderedList from '@tiptap/extension-ordered-list';
 import ListItem from '@tiptap/extension-list-item';
-import { debug } from '@/utils/DebugLogger';
+//import { debug } from '@/utils/DebugLogger';
 import Underline from '@tiptap/extension-underline'
-import { FaLink } from 'react-icons/fa6';
+//import { FaLink } from 'react-icons/fa6';
 
-export default function TextEditor() {
-    const [htmlOutput, setHtmlOutput] = useState('')
-    const [showLinkInput, setShowLinkInput] = useState(false)
-    const [linkUrl, setLinkUrl] = useState('')
+interface EditorProps {
+    changeDescription: (e: string) => void
+}
+export default function TextEditor({ changeDescription }: EditorProps) {
+    const [htmlOutput, /*setHtmlOutput*/] = useState('')
+    //const [showLinkInput, setShowLinkInput] = useState(false)
+    //const [linkUrl, setLinkUrl] = useState('')
 
     const editor = useEditor({
         immediatelyRender: false,
@@ -33,21 +36,27 @@ export default function TextEditor() {
             ListItem,
             Underline
         ],
+        onUpdate: ({ editor }) => {
+            const html = editor.getHTML()
+            changeDescription(html)
+        }
     })
 
-    const exportHTML = () => {
+    /*const exportHTML = () => {
         if (!editor) return
         const html = editor.getHTML()
         setHtmlOutput(html)
         debug.log('conteudo html exportado', html)
-    }
+    }*/
 
 
     return (
         <div className={styles.container}>
             <MenuBar editor={editor} />
             <EditorContent className={styles.editor} editor={editor} />
-            <button className={styles.button} style={{ marginTop: '1rem' }} onClick={exportHTML}>Exportar HTML</button>
+            {
+                //<button className={styles.button} style={{ marginTop: '1rem' }} onClick={exportHTML}>Exportar HTML</button>
+            }
 
             {htmlOutput &&
                 <div>
@@ -99,18 +108,18 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
         const url = window.prompt('URL da imagem')
         if (url) editor.chain().focus().setImage({ src: url }).run()
     }*/
-    const setLink = () => {
+    /*const setLink = () => {
         const previousUrl = editor.getAttributes('link').href
         const url = window.prompt('Digite o link', previousUrl)
         const selection = editor.state.selection
         const isEmpty = selection.empty
         if (url === null) return
 
-        if (url === '') return editor.chain().focus().extendMarkRange('link').unsetLink(/*{ href: url }*/).run()
+        if (url === '') return editor.chain().focus().extendMarkRange('link').unsetLink(/*{ href: url }).run()
         if (!isEmpty) {
             editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
         } else alert(`Selecione um texto para aplicar o link`)
-    }
+    }*/
     const handleSelect = (level: Level) => {
         if (level > 0) editor.chain().focus().toggleHeading({ level }).run()
         else editor.chain().focus().setParagraph().run()
@@ -119,9 +128,9 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
 
     return (
         <div className={styles.menu}>
-            <button onClick={() => editor.chain().focus().toggleBold().run()} className={styles.button}>Bold</button>
-            <button onClick={() => editor.chain().focus().toggleItalic().run()} className={styles.button}>Italic</button>
-            <button onClick={() => editor.chain().focus().toggleUnderline().run()} className={styles.button}>Underline</button>
+            <button type='button' onClick={() => editor.chain().focus().toggleBold().run()} className={styles.button}>Bold</button>
+            <button type='button' onClick={() => editor.chain().focus().toggleItalic().run()} className={styles.button}>Italic</button>
+            <button type='button' onClick={() => editor.chain().focus().toggleUnderline().run()} className={styles.button}>Underline</button>
 
 
             <select
@@ -138,10 +147,14 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
                 )}
             </select>
 
-            <button onClick={() => editor.chain().focus().toggleBulletList().run()} className={styles.button}>Lista</button>
-            <button onClick={() => editor.chain().focus().toggleOrderedList().run()} className={styles.button}>Numerada</button>
 
-            <button onClick={setLink} className={styles.button}><FaLink /></button>
+            <button type='button' onClick={() => editor.chain().focus().toggleBulletList().run()} className={styles.button}>Lista</button>
+
+
+
+            {//<button onClick={setLink} className={styles.button}><FaLink /></button>
+                //<button type='button' onClick={() => editor.chain().focus().toggleOrderedList().run()} className={styles.button}>Numerada</button>
+            }
 
             <input
                 className={styles.inputColor}

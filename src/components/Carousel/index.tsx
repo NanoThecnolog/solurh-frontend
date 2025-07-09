@@ -1,8 +1,8 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
+//import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import styles from './styles.module.scss'
-import { Autoplay, EffectFade } from 'swiper/modules';
+//import { Autoplay, EffectFade } from 'swiper/modules';
 import BannerTemplate from '../banner/Template';
 import { bannersContent } from '@/utils/variables';
 

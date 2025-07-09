@@ -40,9 +40,10 @@ export default function Vagas({ vagas }: VagasProps) {
             const response = await axios.delete(`/api/job/remover/${id}`)
             debug.log('request para deletar vaga', response)
             toast.success(response.data.message)
-            setJobToShow('')
+
             const vagas = await refreshVagas()
             debug.log("vagas antes de setar listavagas", vagas)
+            setJobToShow('')
             setListaVagas(vagas.request)
             //router.refresh()
         } catch (err) {

@@ -7,6 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { data } = req.body;
     //    const { id } = req.query
 
+
     const jobsService = new Jobs({ req })
     const create = await jobsService.create(data)
     if (!create) return res.status(500).end()
