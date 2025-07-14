@@ -1,11 +1,13 @@
 import { InscricaoProps } from '@/@types/inscricoes'
 import styles from './styles.module.scss'
 
+
 interface CandidatosProps {
     subs: InscricaoProps[]
 }
 
 export default function Candidatos({ subs }: CandidatosProps) {
+    const url = process.env.NEXT_PUBLIC_BACKEND_URL || ''
     return (
         <div className={styles.container}>
             <h1>📥 Inscrições de Candidatos</h1>
@@ -23,7 +25,7 @@ export default function Candidatos({ subs }: CandidatosProps) {
                         <div className={styles.info}>
                             <p>Inscrição em: {new Date(inscricao.createdAt).toLocaleDateString()}</p>
                             <a
-                                href={`http://localhost:6565/${inscricao.candidato.cv_path}`}
+                                href={`${url}/${inscricao.candidato.cv_path}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.cvLink}
