@@ -21,7 +21,7 @@ export default function LoginPage() {
         const credentials = { email, password: pass }
         debug.log(credentials)
         try {
-            const response = await axios.post<{ message: string, data: User }>('http://localhost:4000/api/user/login', credentials)
+            const response = await axios.post<{ message: string, data: User }>('/api/user/login', credentials)
             const data = response.data
             if (!data.data) {
                 debug.log('Verifique a const data na funcao de login')
