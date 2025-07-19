@@ -14,6 +14,7 @@ import { JobsProps } from '@/@types/jobs'
 import Vagas from '@/components/dashboard/Vagas'
 import { InscricaoProps } from '@/@types/inscricoes'
 import Candidatos from '@/components/dashboard/Candidatos'
+import SEO from '@/components/SEO'
 
 interface DashProps {
     user: User
@@ -57,6 +58,10 @@ export default function Dashboard({ user, jobs, subs }: DashProps) {
 
     return (
         <>
+            <SEO
+                title="Dashboard | Solurh - Soluções em Recursos Humanos"
+                description="Painel administrativo"
+            />
             <main className={styles.main}>
                 <header className={styles.header}>
                     <h2>Olá, {user.nome}!</h2>

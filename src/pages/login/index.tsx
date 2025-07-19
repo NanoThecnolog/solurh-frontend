@@ -7,6 +7,7 @@ import { User } from '@/@types/login'
 import { toast } from 'react-toastify'
 import { clientCookie } from '@/services/cookieManager'
 import { useRouter } from 'next/navigation'
+import SEO from '@/components/SEO'
 
 export default function LoginPage() {
     const router = useRouter()
@@ -49,6 +50,10 @@ export default function LoginPage() {
     //fazer a requisição ao backend next. Rota: /api/user/login
     return (
         <>
+            <SEO
+                title="Login | Solurh - Soluções em Recursos Humanos"
+                description="Private Access"
+            />
             <main className={styles.container}>
                 <section className={styles.sectionContainer}>
                     <img src="/img/Logomarca/horizontal-white.png" alt="" />

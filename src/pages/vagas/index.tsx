@@ -7,6 +7,7 @@ import { Render } from '@/utils/utilities'
 import DOMPurify from 'dompurify'
 import Button from '@/components/ui/Button'
 import SendCurriculo from '@/components/ui/modals/EnvioCurriculo'
+import SEO from '@/components/SEO'
 
 export default function Jobs() {
     const [jobs, setJobs] = useState<JobsProps[]>([])
@@ -40,6 +41,10 @@ export default function Jobs() {
     }, [])
     return (
         <>
+            <SEO
+                title="Vagas | Solurh - Soluções em Recursos Humanos"
+                description="Candidate-se hoje mesmo para a vaga que mais combina com seu perfil"
+            />
             <main className={styles.mainContainer}>
                 <article className={styles.articleContainer}>
                     <aside className={styles.asideContainer}>

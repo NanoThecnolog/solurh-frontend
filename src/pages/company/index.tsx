@@ -1,10 +1,15 @@
 import BannerTemplate from '@/components/banner/Template'
 import styles from './styles.module.scss'
 import { bannersContent } from '@/utils/variables'
+import SEO from '@/components/SEO'
 
 export default function CompanyPage() {
     return (
         <>
+            <SEO
+                title="Para Empresas | Solurh - Soluções em Recursos Humanos"
+                description="Conheça nossos Serviços para sua empresa!"
+            />
             <BannerTemplate data={bannersContent[1]} />
             <main className={styles.container}>
                 <section className={styles.intro}>
