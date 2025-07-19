@@ -52,7 +52,7 @@ export const bannersContent: BannerProps[] = [
         textParagraph: 'Somos a SoluRH'
     },
     {
-        bannerImg: '/img/3-nobg.png',
+        bannerImg: '',
         buttonText: '',
         textHighLight: 'Descubra os Melhores Talentos para o seu Negócio',
         logoImg: '/img/Logomarca/horizontal-white.png',
@@ -60,7 +60,7 @@ export const bannersContent: BannerProps[] = [
         textParagraph: 'Soluções Personalizadas'
     },
     {
-        bannerImg: '/img/5-no-bg.png',
+        bannerImg: '',
         buttonText: '',
         textHighLight: 'Consultoria estratégica em Recursos Humanos',
         logoImg: '/img/Logomarca/horizontal-white.png',
