@@ -38,13 +38,25 @@ export const testmonials: TestmonialsProps[] = [
         imgPath: '/img/clients/Lift.png',
         text: 'A SoluRH é sinônimo de compromisso e competência. Essencial para o recrutamento e seleção, são cirúrgicos nas escolhas.',
         starsCount: 5,
+    },
+    {
+        name: 'Point S',
+        imgPath: '/img/clients/PointS.png',
+        text: 'Nossa experiência com a consultoria está sendo excelente, principalmente na seleção de perfis específicos como mecânicos e vendedores para nossas lojas de auto centers, em diversas regiões do Brasil. O comprometimento e a agilidade da equipe têm feito toda a diferença. Além disso, percebo grande cuidado no alinhamento dos candidatos com a cultura da nossa empresa, o que agiliza o processo de integração. Sem dúvida, essa parceria tem agregado muito valor ao nosso negócio. Muito obrigado!',
+        starsCount: 5
+    },
+    {
+        name: 'MService',
+        imgPath: '/img/clients/MS5.png',
+        text: 'A Solurh foi essencial em um momento estratégico da nossa empresa. A consultoria trouxe clareza, estrutura e soluções práticas para nossos desafios. O profissionalismo e a escuta ativa da equipe fizeram toda a diferença. Recomendo com confiança!',
+        starsCount: 5
     }
 ]
 
 export const bannersContent: BannerProps[] = [
     {
         bannerImg: '/img/2-2.png',
-        buttonText: 'Solicitar Diagnóstico Gratuito',
+        buttonText: 'Como podemos te ajudar?',
         buttonLink: whatsappLink,
         textHighLight: 'Transformamos a Gestão de Pessoas em Resultados Reais',
         logoImg: '/img/Logomarca/horizontal-white.png',
