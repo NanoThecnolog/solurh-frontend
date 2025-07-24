@@ -3,11 +3,17 @@ import Button from '../ui/Button'
 import styles from './styles.module.scss'
 import { FiMenu, FiX } from 'react-icons/fi'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function Header() {
+    const router = useRouter()
     const [isMobile, setIsMobile] = useState(false)
 
     const toggleMenu = () => setIsMobile(!isMobile)
+
+    const handleClick = () => {
+        router.push('/contact')
+    }
 
     return (
         <nav className={styles.navContainer}>
@@ -27,7 +33,7 @@ export default function Header() {
                 </ul>
             </div>
             <div className={styles.buttonContainer}>
-                <Button text='Contato' color='var(--white)' />
+                <Button text='Contato' color='var(--white)' click={handleClick} />
             </div>
         </nav>
     )
