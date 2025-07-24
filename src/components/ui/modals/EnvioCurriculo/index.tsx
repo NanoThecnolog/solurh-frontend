@@ -32,8 +32,8 @@ export default function SendCurriculo({ vaga, func }: SendProps) {
             }
             //debug.log(response)
             const message: string = response.result.message
-            toast.success(message)
             func(false)
+            toast.success(message)
         } catch (err) {
             debug.log('Erro ao criar inscrição', err)
             toast.error('Erro interno ao cadastrar currículo. Tente novamente mais tarde!')

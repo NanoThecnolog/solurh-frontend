@@ -1,3 +1,163 @@
 .main {
+    max-width: 960px;
+    margin: 10rem auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+    color: #1f1f1f;
+
     display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .title {
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    .company {
+        font-size: 1.2rem;
+        color: #6c6c6c;
+    }
+
+    .location {
+        font-size: 1rem;
+        color: #909090;
+    }
+
+    .salary {
+        font-size: 1rem;
+        color: #909090;
+    }
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    .badge {
+        background-color: #edf3f8;
+        color: #0073b1;
+        padding: 0.4rem 0.8rem;
+        border-radius: 16px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+}
+
+.description {
+    line-height: 1.6;
+    color: #333;
+    font-size: 1rem;
+
+    div {
+        min-height: 200px;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: .5rem 0;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin: .5rem 0;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        margin: .5rem 0;
+    }
+
+    ul,
+    ol {
+        padding-left: 1.4rem;
+        margin: .2rem 0;
+
+        li {
+            list-style: disc;
+            cursor: text;
+        }
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 1rem 0;
+        border-radius: 4px;
+    }
+
+    a {
+        color: #0066cc;
+        text-decoration: underline;
+    }
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .section {
+        .section-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-content {
+            color: #444;
+            font-size: 0.95rem;
+        }
+    }
+}
+
+.applyButton {
+    align-self: flex-start;
+    background-color: var(--blue-light);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .4s ease;
+
+    &:hover {
+        background-color: var(--hover);
+    }
+}
+
+@media (max-width: 600px) {
+    .main {
+        padding: 1rem;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .applyButton {
+        width: 100%;
+        text-align: center;
+    }
 }

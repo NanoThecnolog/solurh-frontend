@@ -75,7 +75,7 @@ export default function Editor() {
             <div
                 contentEditable
                 suppressContentEditableWarning
-            >escrever essa porra..</div>
+            >escrever...</div>
         </div>
     );
 }

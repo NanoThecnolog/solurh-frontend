@@ -1,5 +1,7 @@
 import { InscricaoProps } from '@/@types/inscricoes'
 import styles from './styles.module.scss'
+import { Render } from '@/utils/utilities'
+import Link from 'next/link'
 
 
 interface CandidatosProps {
@@ -8,6 +10,7 @@ interface CandidatosProps {
 
 export default function Candidatos({ subs }: CandidatosProps) {
     const url = process.env.NEXT_PUBLIC_BACKEND_URL || ''
+    const render = new Render()
     return (
         <div className={styles.container}>
             <h1>📥 Inscrições de Candidatos</h1>
@@ -19,19 +22,19 @@ export default function Candidatos({ subs }: CandidatosProps) {
                     <div key={inscricao.id} className={styles.card}>
                         <h3>{inscricao.vaga.nome}</h3>
                         <p className={styles.local}>
-                            {inscricao.vaga.localizacao} — Salário: R$ {inscricao.vaga.salario.toLocaleString()}
+                            {inscricao.vaga.localizacao} — Salário: R$ {render.salario(inscricao.vaga.salario)}
                         </p>
 
                         <div className={styles.info}>
                             <p>Inscrição em: {new Date(inscricao.createdAt).toLocaleDateString()}</p>
-                            <a
+                            <Link
                                 href={`${url}/${inscricao.candidato.cv_path}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.cvLink}
                             >
                                 📄 Ver Currículo
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 ))}

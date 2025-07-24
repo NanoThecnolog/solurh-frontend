@@ -56,8 +56,9 @@ export default function Vagas({ vagas }: VagasProps) {
             const response = await axios.post(`/api/job/create`, { data })
             debug.log(response)
             const dataResponse = response.data
-            toast.success(`Vaga ${dataResponse.nome} criada com sucesso!`)
+            toast.success(`Vaga ${dataResponse.request.nome} criada com sucesso!`)
             const vagas = await refreshVagas()
+            setJobToShow('')
             setListaVagas(vagas.request)
 
         } catch (err) {
@@ -110,6 +111,7 @@ export default function Vagas({ vagas }: VagasProps) {
 
                             <span className={styles.data}>Criada em: {render.dates(vaga.createdAt)}</span>
                             <span className={styles.inscritos}>Candidatos: {vaga.inscricoes.length}</span>
+                            <span>link: https://solurh.pro/vaga/${vaga.id}</span>
 
                             <div className={styles.buttonContainer}>
                                 <Button
