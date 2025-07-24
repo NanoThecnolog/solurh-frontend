@@ -55,6 +55,11 @@ export default function Vagas({ vagas }: VagasProps) {
         try {
             const response = await axios.post(`/api/job/create`, { data })
             debug.log(response)
+            const dataResponse = response.data
+            toast.success(`Vaga ${dataResponse.nome} criada com sucesso!`)
+            const vagas = await refreshVagas()
+            setListaVagas(vagas.request)
+
         } catch (err) {
             debug.error('Erro ao atualizar vaga', err)
             return
@@ -107,17 +112,6 @@ export default function Vagas({ vagas }: VagasProps) {
                             <span className={styles.inscritos}>Candidatos: {vaga.inscricoes.length}</span>
 
                             <div className={styles.buttonContainer}>
-                                {
-                                    /**
-                                    <Button
-                                    click={handleUpdate}
-                                    text="Atualizar"
-                                    height="36px"
-                                    backgroundColor="#1c76dd"
-                                    color="white"
-                                />
-                                    */
-                                }
                                 <Button
                                     click={() => removerVaga(vaga.id)}
                                     text="Excluir"
