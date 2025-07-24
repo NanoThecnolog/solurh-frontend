@@ -29,6 +29,11 @@
         p {
             font-weight: 300;
             text-align: justify;
+            display: -webkit-box;
+            -webkit-line-clamp: 7;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 

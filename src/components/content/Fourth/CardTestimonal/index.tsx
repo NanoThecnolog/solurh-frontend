@@ -12,7 +12,7 @@ export default function CardTestmonial({ card }: cardTestmonialProps) {
             <div className={styles.titleContainer}>
                 <img src={card.imgPath} alt={`Logo ${card.name}`} height={50} />
                 <h4>{card.name}</h4>
-                <p>&quot;{card.text}&quot;</p>
+                <p title={card.text}>&quot;{card.text}&quot;</p>
             </div>
             <div className={styles.starContainer}>
                 <div>
