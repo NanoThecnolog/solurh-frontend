@@ -1,19 +1,19 @@
 import { useState } from 'react'
-import Button from '../ui/Button'
+//import Button from '../ui/Button'
 import styles from './styles.module.scss'
 import { FiMenu, FiX } from 'react-icons/fi'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+//import { useRouter } from 'next/navigation'
 
 export default function Header() {
-    const router = useRouter()
+    //const router = useRouter()
     const [isMobile, setIsMobile] = useState(false)
 
     const toggleMenu = () => setIsMobile(!isMobile)
 
-    const handleClick = () => {
+    /*const handleClick = () => {
         router.push('/contact')
-    }
+    }*/
 
     return (
         <nav className={styles.navContainer}>
