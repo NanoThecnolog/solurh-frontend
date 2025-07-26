@@ -33,7 +33,7 @@ export default function Header() {
                 </ul>
             </div>
             <div className={styles.buttonContainer}>
-                <Button text='Contato' color='var(--white)' click={handleClick} />
+
             </div>
         </nav>
     )
