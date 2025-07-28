@@ -111,7 +111,7 @@ export default function Vagas({ vagas }: VagasProps) {
 
                             <span className={styles.data}>Criada em: {render.dates(vaga.createdAt)}</span>
                             <span className={styles.inscritos}>Candidatos: {vaga.inscricoes.length}</span>
-                            <span>link: https://solurh.pro/vaga/${vaga.id}</span>
+                            <span>link: https://solurh.pro/vaga/{vaga.id}</span>
 
                             <div className={styles.buttonContainer}>
                                 <Button

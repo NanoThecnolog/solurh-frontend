@@ -33,7 +33,6 @@ export default function Header() {
                 </ul>
             </div>
             <div className={styles.buttonContainer}>
-
             </div>
         </nav>
     )
