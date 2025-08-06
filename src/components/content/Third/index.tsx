@@ -13,7 +13,7 @@ export default function ThirdContent() {
     return (
         <section className={styles.container}>
             <div className={styles.imageContainer}>
-                <img src="/img/5-no-bg.png" alt="banner" />
+                <img src="/img/circulo-1.png" alt="banner" />
             </div>
             <div className={styles.contentContainer}>
                 <div className={styles.content}>
@@ -49,7 +49,7 @@ export default function ThirdContent() {
                     </div>
                     <div>
                         <h4>
-                            Somos especialistas em atrair talentos...bla bla bla buscar um texto do site antigo...
+                            Somos especialistas em atrair talentos...
                         </h4>
                     </div>
                     <div>
