@@ -112,7 +112,8 @@ $spacing: 8rem;
                         flex-direction: row-reverse;
                     }
 
-                    p {
+                    p,
+                    li {
                         flex: 1 1 50%;
                         font-size: 1.125rem;
                         color: $gray;
