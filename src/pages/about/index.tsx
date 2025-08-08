@@ -89,7 +89,7 @@ export default function AboutPage() {
                         </div>
                         <div className={styles.content}>
                             <div className={styles.about}>
-                                <p>A SoluRH A SoluRH é uma consultoria especializada em Recursos Humanos com foco em soluções estratégicas para empresas e profissionais. Combinamos mais de 10 anos de experiência na área com uma abordagem moderna, ética e orientada a resultados. Acreditamos que o sucesso de qualquer negócio começa pelas pessoas — por isso, atuamos com inteligência de processos, empatia e visão de futuro.</p>
+                                <p>A SoluRH é uma consultoria especializada em Recursos Humanos com foco em soluções estratégicas para empresas e profissionais. Combinamos mais de 10 anos de experiência na área com uma abordagem moderna, ética e orientada a resultados. Acreditamos que o sucesso de qualquer negócio começa pelas pessoas — por isso, atuamos com inteligência de processos, empatia e visão de futuro.</p>
                             </div>
                             <div className={styles.mission}>
                                 {//<div className={styles.missionContainer}>
