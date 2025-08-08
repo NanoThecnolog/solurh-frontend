@@ -1,6 +1,6 @@
 import { solurhInformation } from '@/utils/variables';
 import styles from './styles.module.scss';
-import { FaWhatsapp, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaWhatsapp, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 import SEO from '@/components/SEO';
 
 export default function ContactPage() {
@@ -28,7 +28,9 @@ export default function ContactPage() {
                         <FaWhatsapp className={styles.icon} />
                         <h2>Atendimento direto via WhatsApp</h2>
                         <p>Atendemos em todo o Brasil</p>
-                        <span className={styles.location}><FaMapMarkerAlt /> Base no RJ e SP</span>
+                        {
+                            //<span className={styles.location}><FaMapMarkerAlt /> Base no RJ e SP</span>
+                        }
                     </div>
 
                     <div className={`${styles.method} ${styles.hoverEffect}`} onClick={handleEmailClick}>

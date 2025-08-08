@@ -13,23 +13,34 @@ export default function Footer() {
                 </div>
                 <div className={styles.linkContainer}>
                     <div className={styles.listaContainer}>
-                        <h4>Para Empresa</h4>
+                        <h4>Serviços para Empresas</h4>
                         <ul>
-                            <li><Link href={'/company'}>Consultoria</Link></li>
-                            <li><Link href={'/contact'}></Link>Recrutamento e Seleção</li>
+                            <li><Link href={'/company'}>Consultoria Estratégica de RH</Link></li>
+                            <li><Link href={'/company'}>Recrutamento e Seleção</Link></li>
+                            <li><Link href={'/company'}>Avaliação de Desempenho</Link></li>
+                            <li><Link href={'/company'}>Pesquisa de Clima Organizacional</Link></li>
                         </ul>
                     </div>
                     <div className={styles.listaContainer}>
-                        <h4>Para o Trabalhador</h4>
+                        <h4>Para Profissionais</h4>
                         <ul>
-                            <li><Link href={'/vagas'}>Vagas Solurh</Link></li>
-                            <li>Política de Privacidade</li>
+                            <li><Link href={'/vagas'}>Vagas Abertas</Link></li>
+                            <li><Link href={'/vagas'}>Cadastro de Currículo</Link></li>
+                            <li><Link href={'/contact'}>Dicas de Carreira</Link></li>
+                        </ul>
+                    </div>
+                    <div className={styles.listaContainer}>
+                        <h4>Institucional</h4>
+                        <ul>
+                            <li><Link href={'/about'}>Quem Somos</Link></li>
+                            <li><Link href={'/privacy'}>Política de Privacidade</Link></li>
+                            <li><Link href={'/contact'}>Fale Conosco</Link></li>
                         </ul>
                     </div>
                 </div>
                 <div className={styles.contatoContainer}>
-                    <h3>Fale conosco</h3>
-                    <p>📍 Atendemos em todo o Brasil | Base no RJ e SP</p>
+                    <h3>Onde Atendemos</h3>
+                    <p>📍 Atendemos em todo o Brasil</p>
                     <p>Rio de Janeiro: (22)99290-5210</p>
                     <p>São Paulo: (11)97608-5287</p>
                     <p>Minas Gerais: (34)9906-9116</p>

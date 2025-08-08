@@ -13,43 +13,44 @@ export default function ThirdContent() {
     return (
         <section className={styles.container}>
             <div className={styles.imageContainer}>
-                <img src="/img/tania.png" alt="banner" />
+                <img src="/img/terceira-sessao.png" alt="banner" />
             </div>
             <div className={styles.contentContainer}>
                 <div className={styles.content}>
                     <div>
                         <h1>
-                            Solurh Oportunidades
+                            Banco de Talentos Solurh
                         </h1>
                     </div>
                     <div>
                         <h2>
-                            Não perca nenhuma oportunidade! Encontre sua vaga.
+                            Banco de Talentos Solurh
+                            Estamos sempre em busca de bons profissionais.
                         </h2>
                     </div>
                     <div>
                         <h3>
-                            Envie seu currículo para se candidatar!
+                            Preencha o formulário e faça parte da nossa base para futuras seleções.
                         </h3>
                     </div>
                     <div>
-                        <Button text='Encontre sua vaga' width='240px' click={handleCandidatoClick} />
+                        <Button text='Enviar meu currículo' width='240px' click={handleCandidatoClick} />
                     </div>
                 </div>
                 <div className={styles.content}>
                     <div>
                         <h1>
-                            Para Empresas
+                            Para Empresas que Valorizam Pessoas
                         </h1>
                     </div>
                     <div>
                         <h2>
-                            Contrate com agilidade e segurança
+                            Encontrar o talento certo exige mais do que currículos: exige estratégia, sensibilidade e experiência.
                         </h2>
                     </div>
                     <div>
                         <h4>
-                            Somos especialistas em atrair talentos...
+                            Na SoluRH, oferecemos soluções completas em atração de talentos, desenvolvidas sob medida para a realidade da sua empresa.
                         </h4>
                     </div>
                     <div>

@@ -55,7 +55,7 @@ export const testmonials: TestmonialsProps[] = [
 
 export const bannersContent: BannerProps[] = [
     {
-        bannerImg: '/img/2-2.png',
+        bannerImg: '/img/tania.png',
         buttonText: 'Como podemos te ajudar?',
         buttonLink: whatsappLink,
         textHighLight: 'Transformamos a Gestão de Pessoas em Resultados Reais',

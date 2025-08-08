@@ -100,15 +100,21 @@ export default function AboutPage() {
                                 }
                                 {//</div>
                                 }
-                                <p>Conectar pessoas e organizações por meio de soluções em Recursos Humanos que geram valor, desenvolvimento e transformação.</p>
+                                <p>Conectar pessoas e empresas por meio de soluções estratégicas e humanizadas em Recursos Humanos, oferecendo recrutamento, treinamentos e serviços de RH que promovam resultados reais e duradouros.</p>
                             </div>
                             <div className={styles.vision}>
                                 <h3>Nossa Visão</h3>
-                                <p>Ser referência em consultoria de Recursos Humanos estratégicos no Brasil, reconhecida pela excelência, inovação e humanização no atendimento.</p>
+                                <p>Ser reconhecida no mercado como uma consultoria referência em qualidade, proximidade e assertividade, transformando a gestão de pessoas em empresas de todos os portes.</p>
                             </div>
                             <div className={styles.values}>
                                 <h3>Nossos Valores</h3>
-                                <p>Ética, Respeito, Comprometimento, Resultado, Desenvolvimento contínuo</p>
+                                <ul>
+                                    <li>Humanização: Valorizamos as pessoas em cada etapa do processo.</li>
+                                    <li>Excelência: Atuamos com qualidade e compromisso em cada entrega.</li>
+                                    <li>Proximidade: Mantemos relações genuínas com nossos clientes e candidatos.</li>
+                                    <li>Resultado: Foco em soluções que geram impacto positivo e mensurável.</li>
+                                    <li>Ética: Trabalhamos com transparência, respeito e responsabilidade.</li>
+                                </ul>
                             </div>
                         </div>
                         <div className={styles.callToAction}>

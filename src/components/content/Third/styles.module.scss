@@ -13,6 +13,9 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 50px;
 
         img {
             height: 70%;
