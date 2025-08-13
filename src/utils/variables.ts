@@ -93,6 +93,64 @@ export const solurhInformation = {
         linkedin: 'https://www.linkedin.com/in/tania-viannarh/',
         instagram: 'https://www.instagram.com/solu.rh?utm_source=qr&igsh=d2hkN3pweThtcHAz'
     }
-
 }
+export const cargos = [
+    // RH e DP
+    "Analista de RH",
+    "Assistente de RH",
+    "Coordenador de RH",
+    "Gerente de RH",
+    "Diretor de RH",
+    "Estagiário de RH",
+    "Recrutador",
+    "Analista de DP",
+    "Assistente de DP",
+    "Coordenador de DP",
+    "Gerente de DP",
+    "Diretor de DP",
+    "Estagiário de DP",
+    "Business Partner de RH",
+    "Especialista em Treinamento e Desenvolvimento",
+    "Especialista em Cargos e Salários",
+    "Analista de Folha de Pagamento",
+    "Assistente de Folha de Pagamento",
+    "Consultor de RH",
 
+    // Cargos administrativos e gerais
+    "Administrador",
+    "Assistente Administrativo",
+    "Analista Administrativo",
+    "Coordenador Administrativo",
+    "Gerente Administrativo",
+    "Diretor Administrativo",
+
+    // Área de contabilidade e finanças
+    "Contador",
+    "Assistente Contábil",
+    "Analista Contábil",
+    "Analista Financeiro",
+    "Assistente Financeiro",
+    "Gerente Financeiro",
+    "Diretor Financeiro",
+
+    // Área de educação
+    "Professor",
+    "Coordenador Pedagógico",
+    "Diretor Escolar",
+    "Estudante",
+    "Instrutor",
+    "Treinador Corporativo",
+
+    // Outros cargos comuns
+    "Estagiário",
+    "Auxiliar Administrativo",
+    "Secretária",
+    "Supervisor",
+    "Gerente",
+    "Diretor",
+    "Presidente",
+    "CEO",
+    "COO",
+    "CFO",
+    "Sócio",
+];

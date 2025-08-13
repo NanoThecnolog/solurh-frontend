@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+
+
+    .sectionContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        text-align: center;
+
+        .contentContainer {
+            p {
+                font-size: 1.8rem;
+                font-weight: 700;
+
+                strong {
+                    color: var(--yellow-Heavy);
+                }
+            }
+
+            .buttonContainer {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}

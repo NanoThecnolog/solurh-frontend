@@ -1,0 +1,120 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    .carouselContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        overflow: hidden;
+        background: white;
+        padding: 20px 0;
+        //outline: 2px solid red;
+        width: 40%;
+
+        .carouselText {
+            display: flex;
+            flex-direction: column;
+            //justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            h1 {
+                font-size: 2.3rem;
+            }
+        }
+
+
+        .track {
+            display: flex;
+            width: max-content;
+            //outline: 2px solid red;
+
+
+            .logoItem {
+                flex: 0 0 auto;
+                padding: 0 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .trackLeft {
+            animation: scrollLeft 20s linear infinite;
+        }
+
+        .trackRight {
+            animation: scrollRight 20s linear infinite;
+        }
+    }
+
+    .benefitsContainer {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .benefitsText {
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .advantagesContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            gap: 10px;
+
+            .left {
+                border-radius: 2.5rem;
+                background-color: #8a1eb4;
+                color: var(--white);
+                padding: 40px;
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .right {
+                width: 50%;
+                //height: 500px;
+                border-radius: 2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                //outline: 2px solid blue;
+            }
+        }
+    }
+}
+
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scrollRight {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

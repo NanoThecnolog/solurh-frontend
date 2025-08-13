@@ -2,6 +2,11 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import styles from './styles.module.scss'
 import { gtag } from '@/utils/GoogleTag'
 import { useEffect } from 'react'
+import Hero from '@/components/landing/Hero'
+import Benefits from '@/components/landing/Benefits'
+import Testimonials from '@/components/landing/Testimonials'
+import CTASection from '@/components/landing/CTASection'
+import Footer from '@/components/Footer'
 
 interface LandingProps {
     id: string
@@ -27,9 +32,10 @@ export default function Landing({ id }: LandingProps) {
     return (
         <>
             <main className={styles.container}>
-                <h3>Conteudo da landing page</h3>
-                {id && <p>{id}</p>}
-                <button type='button' onClick={handleClick}>teste</button>
+                <Hero />
+                <Benefits />
+                <Testimonials />
+                <CTASection />
             </main>
         </>
     )
