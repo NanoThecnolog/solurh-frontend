@@ -1,6 +1,6 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import styles from './styles.module.scss'
-import { gtag } from '@/utils/GoogleTag'
+//import { gtag } from '@/utils/GoogleTag'
 import { useEffect } from 'react'
 import Hero from '@/components/landing/Hero'
 import Benefits from '@/components/landing/Benefits'
@@ -13,7 +13,7 @@ interface LandingProps {
 
 export default function Landing({ id }: LandingProps) {
 
-    const handleClick = async () => {
+    /*const handleClick = async () => {
         gtag.event('teste-de-conversao', {
             send_to: 'AW-17359122520/IxBBCK-f2_8aENjgvNVA',
             value: 1.0,
@@ -23,7 +23,7 @@ export default function Landing({ id }: LandingProps) {
                 console.log('evento disparado.')
             }
         })
-    }
+    }*/
 
     useEffect(() => {
         console.log(id)
