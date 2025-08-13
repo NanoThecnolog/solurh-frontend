@@ -6,7 +6,6 @@ import Hero from '@/components/landing/Hero'
 import Benefits from '@/components/landing/Benefits'
 import Testimonials from '@/components/landing/Testimonials'
 import CTASection from '@/components/landing/CTASection'
-import Footer from '@/components/Footer'
 
 interface LandingProps {
     id: string
