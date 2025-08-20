@@ -33,6 +33,7 @@
   --green-gradient: linear-gradient(210deg, var(--green-light) 30%, var(--green-heavy) 90%);
   --background: #ffffff;
   --foreground: #171717;
+  --red: #ff5353;
 
   //gradientes
   --yellow-gradient: linear-gradient(to right, var(--yellow-Orange)30%, var(--yellow-Heavy)90%);
@@ -108,6 +109,13 @@ input {
   &:hover {
     border: none;
   }
+}
+
+
+.stroke {
+  color: var(--red);
+  font-weight: 900;
+  //-webkit-text-stroke: .2px white;
 }
 
 @media (prefers-color-scheme: dark) {

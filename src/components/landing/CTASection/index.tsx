@@ -6,9 +6,11 @@ export default function CTASection() {
         <article className={styles.container}>
             <section className={styles.sectionContainer}>
                 <div className={styles.contentContainer}>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, sapiente. <strong>Harum eligendi reiciendis deleniti iure saepe!</strong>
-                    </p>
+                    <h2 className={styles.title}>
+                        Clique aqui para falar com uma consultora! <span className='stroke'>É gratuito.</span>
+                    </h2>
+                    <p className={styles.text}>Ela vai te explicar como funciona o processo e estudar seu caso individualmente para te
+                        guiar para a melhor solução para sua contratação!​</p>
                     <div className={styles.buttonContainer}>
                         <Button text='Quero Descomplicar o meu RH' color='var(--black)' />
                     </div>

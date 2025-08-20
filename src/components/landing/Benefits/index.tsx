@@ -15,8 +15,9 @@ export default function Benefits() {
         <article className={styles.container}>
             <section className={styles.carouselContainer}>
                 <div className={styles.carouselText}>
-                    <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem illum est beatae quae! Magni, voluptatibus distinctio adipisci!</p>
+                    <h1>O sucesso não vem do trabalho, mas sim das <span className='stroke'>pessoas</span> que o executam!</h1>
+                    <p>Todas essas empresas cresceram porque colocaram as pessoas certas nas melhores
+                        posições, <span className='stroke'>e isso é o que importa!</span></p>
                 </div>
                 <div className={`${styles.track} ${styles.trackLeft}`}>
                     {[...renderLogos(10), ...renderLogos(10)].map((logo, index) => (
@@ -36,34 +37,45 @@ export default function Benefits() {
             <section className={styles.benefitsContainer}>
                 <div className={styles.benefitsText}>
                     <h1>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit?
+                        O que eu ganho com isso?
                     </h1>
                 </div>
                 <div className={styles.advantagesContainer}>
                     <div className={styles.left}>
-                        <div>
-                            <h3>Doloribus officiis aut doloremque corrupti.</h3>
+                        <div className={styles.leftItem}>
+                            <h3>Planejamento Completo (Gratuito)</h3>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam culpa labore modi fuga ea veritatis.
+                                Responda um simples formulário e receba
+                                gratuitamente um passo a passo profissional e direcionado para a sua necessidade (vagas
+                                limitadas).
                             </p>
                         </div>
-                        <div>
-                            <h3>Doloribus officiis aut doloremque corrupti.</h3>
+                        <div className={styles.leftItem}>
+                            <h3>Seleção extremamente qualificada</h3>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam culpa labore modi fuga ea veritatis.
+                                Garantimos os melhores resultados com alta taxa de
+                                retenção.
                             </p>
                         </div>
-                        <div>
-                            <h3>Doloribus officiis aut doloremque corrupti.</h3>
+                        <div className={styles.leftItem}>
+                            <h3>0% de risco</h3>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam culpa labore modi fuga ea veritatis.
+                                Se o candidato não se adaptar realizamos novamente a seleção sem custo,
+                                ou seja, seu candidato está garantido de uma forma ou outra!
                             </p>
                         </div>
-                        <div>
-                            <h3>Doloribus officiis aut doloremque corrupti.</h3>
+                        <div className={styles.leftItem}>
+                            <h3>Sem desperdício de investimento</h3>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam culpa labore modi fuga ea veritatis.
+                                Você investe numa contratação garantida conosco,
+                                sem medo de errar o candidato e aumentar a rotação do time
                             </p>
+                        </div>
+                        <div className={styles.leftItem}>
+                            <h3>Não perca tempo</h3>
+                            <p>Transformamos toda a triagem e seleção extensa e complexa em
+                                decisões rápidas e práticas para seu dia a dia, que gastam pouquíssimo tempo e geram
+                                mais produtividade</p>
                         </div>
                         <Button text='Solicitar Demonstração' color='var(--black)' />
                     </div>

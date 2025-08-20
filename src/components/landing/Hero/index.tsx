@@ -14,20 +14,22 @@ export default function Hero() {
             <section className={styles.sectionContainer}>
                 <div className={styles.left}>
                     <h1>
-                        Logomarca
+                        Solurh
                     </h1>
                     <h2>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda rerum maxime molestiae cupiditate nemo, iure inventore consectetur similique. Odio hic et voluptas recusandae ad autem dignissimos nesciunt doloremque perferendis quia.
+                        Não gaste seu tempo e dinheiro em <span className='stroke'>contratações erradas!</span>
                     </h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dicta, quasi soluta culpa molestiae beatae! Eaque voluptatibus consequuntur, culpa dolore harum ipsum dignissimos facilis, id unde maxime placeat molestiae quis!
+                        Te entregamos uma lista com os mais bem qualificados candidatos para a vaga, e se o profissional não se adaptar no período de experiência realizamos o processo novamente <span className='stroke'>sem custos adicionais!</span>
                     </p>
                 </div>
                 <div className={styles.right}>
                     <form className={styles.form} onSubmit={handleSubmit}>
                         <div className={styles.text}>
-                            <h2>Lorem ipsum dolor dolorim</h2>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                            <h2>Planejamento Gratuito</h2>
+                            <p>Faça <span className='stroke'>gratuitamente</span> um planejamento completo com todas as etapas para seu recrutamento
+                                feito por nossas coordenadoras de Human Resources apenas respondendo um formulário
+                                simples e direto (não há vínculo com serviço)</p>
                         </div>
                         <label htmlFor="name">
                             <input

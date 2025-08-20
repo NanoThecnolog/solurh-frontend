@@ -15,13 +15,23 @@
         text-align: center;
 
         .contentContainer {
-            p {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            .title {
                 font-size: 1.8rem;
                 font-weight: 700;
 
                 strong {
                     color: var(--yellow-Heavy);
                 }
+            }
+
+            .text {
+                font-size: 1.3rem;
             }
 
             .buttonContainer {
