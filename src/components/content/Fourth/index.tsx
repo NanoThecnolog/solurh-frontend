@@ -1,6 +1,6 @@
 import styles from './styles.module.scss'
 import CardTestmonial from './CardTestimonal'
-import { testmonials } from '@/utils/variables'
+import { testmonialsClient } from '@/variables/testmonials'
 
 export default function FourthContent() {
 
@@ -11,7 +11,7 @@ export default function FourthContent() {
             </div>
             <div className={styles.testimonials}>
                 {
-                    testmonials.map((card, index) => <CardTestmonial key={index} card={card} />)
+                    testmonialsClient.map((card, index) => <CardTestmonial key={index} card={card} />)
                 }
             </div>
         </section>

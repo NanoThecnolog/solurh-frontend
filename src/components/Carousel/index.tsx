@@ -4,7 +4,7 @@ import 'swiper/css/effect-fade';
 import styles from './styles.module.scss'
 //import { Autoplay, EffectFade } from 'swiper/modules';
 import BannerTemplate from '../banner/Template';
-import { bannersContent } from '@/utils/variables';
+import { bannersContent } from '@/variables/bannersContent';
 
 export default function Carousel() {
     //const banners = ['/img/banner-1.png', '/img/banner-2.png', '/img/banner-3.png']

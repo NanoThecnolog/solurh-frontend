@@ -1,5 +1,5 @@
 //import { useRouter } from 'next/navigation';
-import { whatsappLink } from '@/utils/variables';
+import { whatsappLink } from '@/variables/whatsappLink';
 import styles from './styles.module.scss'
 import { RiWhatsappFill } from "react-icons/ri";
 

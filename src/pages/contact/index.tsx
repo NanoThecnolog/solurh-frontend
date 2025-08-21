@@ -1,7 +1,7 @@
-import { solurhInformation } from '@/utils/variables';
 import styles from './styles.module.scss';
 import { FaWhatsapp, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 import SEO from '@/components/SEO';
+import { solurhInformation } from '@/variables/solurhInformation';
 
 export default function ContactPage() {
 

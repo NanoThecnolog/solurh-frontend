@@ -1,7 +1,8 @@
 import { FormEvent } from 'react'
 import styles from './styles.module.scss'
-import { cargos } from '@/utils/variables'
 import Button from '@/components/ui/Button'
+import { formJobs } from '@/variables/formJobs'
+import Image from 'next/image'
 
 export default function Hero() {
 
@@ -13,9 +14,9 @@ export default function Hero() {
         <article className={styles.container}>
             <section className={styles.sectionContainer}>
                 <div className={styles.left}>
-                    <h1>
-                        Solurh
-                    </h1>
+                    <div className={styles.imageContainer}>
+                        <Image src='/img/Logomarca/horizontal-white.png' alt='Logomarca SoluRH' fill />
+                    </div>
                     <h2>
                         Não gaste seu tempo e dinheiro em <span className='stroke'>contratações erradas!</span>
                     </h2>
@@ -54,7 +55,7 @@ export default function Hero() {
                         </label>
                         <select name="" id="">
                             <option value="">Selecione seu Cargo*</option>
-                            {cargos.map((cargo, index) =>
+                            {formJobs.map((cargo, index) =>
                                 <option
                                     key={cargo + index}
                                     value={cargo}

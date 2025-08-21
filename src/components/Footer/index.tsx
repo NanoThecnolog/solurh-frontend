@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styles from './styles.module.scss'
 import { AiFillInstagram } from 'react-icons/ai'
 import { FaLinkedin } from 'react-icons/fa'
-import { solurhInformation } from '@/utils/variables'
+import { solurhInformation } from '@/variables/solurhInformation'
 
 export default function Footer() {
     return (

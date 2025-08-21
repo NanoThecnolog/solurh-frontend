@@ -1,7 +1,7 @@
 import BannerTemplate from '@/components/banner/Template'
 import styles from './styles.module.scss'
-import { bannersContent } from '@/utils/variables'
 import SEO from '@/components/SEO'
+import { bannersContent } from '@/variables/bannersContent'
 
 export default function CompanyPage() {
     return (

@@ -2,10 +2,10 @@
 import { Autoplay, Navigation } from 'swiper/modules'
 import styles from './styles.module.scss'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { swiperBreakpoints } from '@/utils/variables'
 import { IoIosArrowForward } from 'react-icons/io'
 import Button from '@/components/ui/Button'
 import { useRouter } from 'next/navigation'
+import { swiperBreakpoints } from '@/variables/swiperBreakpoints'
 
 export default function SecondaryContent() {
     const router = useRouter()

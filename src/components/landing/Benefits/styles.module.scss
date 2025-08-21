@@ -6,6 +6,7 @@
     margin-bottom: 20px;
 
 
+
     .carouselContainer {
         display: flex;
         flex-direction: column;
@@ -70,10 +71,27 @@
         align-items: center;
         flex-direction: column;
 
+        @media(max-width: 560px) {
+            padding: 0 20px;
+        }
+
         .benefitsText {
             h1 {
                 font-size: 2rem;
             }
+
+            @media(max-width: 560px) {
+                width: 90%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                h1 {
+                    font-size: 1.5rem;
+                }
+            }
+
+
         }
 
         .advantagesContainer {
@@ -135,8 +153,17 @@
         .carouselContainer {
             //padding: 15px 0;
             //outline: 2px solid blue;
+            //justify-content: center;
+            align-items: center;
+            width: 85%;
+
 
             .carouselText {
+                max-width: 90%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
                 h1 {
                     font-size: 1.5rem;
                 }

@@ -2,7 +2,6 @@ import BannerTemplate from '@/components/banner/Template';
 import styles from './styles.module.scss'
 import Button from "@/components/ui/Button";
 import { useRouter } from "next/navigation";
-import { bannersContent } from '@/utils/variables';
 import { FaRegHandshake } from 'react-icons/fa6';
 import { IoIosPeople } from 'react-icons/io';
 import { MdWorkHistory } from "react-icons/md";
@@ -10,6 +9,7 @@ import { useCallback, useEffect, useState } from 'react';
 import debounce from 'lodash.debounce'
 import { debug } from '@/utils/DebugLogger';
 import SEO from '@/components/SEO';
+import { bannersContent } from '@/variables/bannersContent';
 
 export default function AboutPage() {
     const router = useRouter()

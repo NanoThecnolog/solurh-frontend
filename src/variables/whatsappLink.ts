@@ -1,0 +1,1 @@
+export const whatsappLink = "https://api.whatsapp.com/send/?phone=5522992905210&text=Ol%C3%A1%21+Gostaria+de+tirar+uma+d%C3%BAvida%21%21&type=phone_number&app_absent=0"
