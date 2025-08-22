@@ -17,9 +17,9 @@ export default function Hero() {
                     <div className={styles.imageContainer}>
                         <Image src='/img/Logomarca/horizontal-white.png' alt='Logomarca SoluRH' fill />
                     </div>
-                    <h2>
+                    <h1>
                         Não gaste seu tempo e dinheiro em <span className='stroke'>contratações erradas!</span>
-                    </h2>
+                    </h1>
                     <p>
                         Te entregamos uma lista com os mais bem qualificados candidatos para a vaga, e se o profissional não se adaptar no período de experiência realizamos o processo novamente <span className='stroke'>sem custos adicionais!</span>
                     </p>
