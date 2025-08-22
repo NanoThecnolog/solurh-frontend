@@ -4,7 +4,41 @@ import { AiFillInstagram } from 'react-icons/ai'
 import { FaLinkedin } from 'react-icons/fa'
 import { solurhInformation } from '@/variables/solurhInformation'
 
+interface LinksProps {
+    title: string,
+    items: {
+        href: string,
+        text: string
+    }[]
+}
 export default function Footer() {
+    const links: LinksProps[] = [
+        {
+            title: "Serviços para Empresas",
+            items: [
+                { href: "/company", text: "Consultoria Estratégica de RH" },
+                { href: "/company", text: "Recrutamento e Seleção" },
+                { href: "/company", text: "Avaliação de Desempenho" },
+                { href: "/company", text: "Pesquisa de Clima Organizacional" },
+            ],
+        },
+        {
+            title: "Para Profissionais",
+            items: [
+                { href: "/vagas", text: "Vagas Abertas" },
+                { href: "/vagas", text: "Cadastro de Currículo" },
+                { href: "/contact", text: "Dicas de Carreira" },
+            ],
+        },
+        {
+            title: "Institucional",
+            items: [
+                { href: "/about", text: "Quem Somos" },
+                { href: "/privacy", text: "Política de Privacidade" },
+                { href: "/contact", text: "Fale Conosco" },
+            ],
+        },
+    ];
     return (
         <footer className={styles.footerContainer}>
             <section className={styles.sectionContainer}>
@@ -12,31 +46,20 @@ export default function Footer() {
                     <img src="/img/Logomarca/horizontal-logo-nobg.png" alt="Logomarca" />
                 </div>
                 <div className={styles.linkContainer}>
-                    <div className={styles.listaContainer}>
-                        <h4>Serviços para Empresas</h4>
-                        <ul>
-                            <li><Link href={'/company'}>Consultoria Estratégica de RH</Link></li>
-                            <li><Link href={'/company'}>Recrutamento e Seleção</Link></li>
-                            <li><Link href={'/company'}>Avaliação de Desempenho</Link></li>
-                            <li><Link href={'/company'}>Pesquisa de Clima Organizacional</Link></li>
-                        </ul>
-                    </div>
-                    <div className={styles.listaContainer}>
-                        <h4>Para Profissionais</h4>
-                        <ul>
-                            <li><Link href={'/vagas'}>Vagas Abertas</Link></li>
-                            <li><Link href={'/vagas'}>Cadastro de Currículo</Link></li>
-                            <li><Link href={'/contact'}>Dicas de Carreira</Link></li>
-                        </ul>
-                    </div>
-                    <div className={styles.listaContainer}>
-                        <h4>Institucional</h4>
-                        <ul>
-                            <li><Link href={'/about'}>Quem Somos</Link></li>
-                            <li><Link href={'/privacy'}>Política de Privacidade</Link></li>
-                            <li><Link href={'/contact'}>Fale Conosco</Link></li>
-                        </ul>
-                    </div>
+                    {links.map((category, index) => (
+                        <div key={index} className={styles.listaContainer}>
+                            <h4>{category.title}</h4>
+                            <ul>
+                                {category.items.map((item, i) => (
+                                    <li key={i}>
+                                        <Link href={item.href}>
+                                            {item.text}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
                 </div>
                 <div className={styles.contatoContainer}>
                     <h3>Onde Atendemos</h3>
@@ -55,8 +78,6 @@ export default function Footer() {
                 <h4>© Copyright 2025 - SolurH Soluções em Recursos Humanos LTDA. Todos os direitos reservados.</h4>
                 <p>Sistema Desenvolvido por <strong><Link href='https://ericssongomes.com'>Ericsson Gomes</Link></strong></p>
             </div>
-
-
         </footer>
     )
 }

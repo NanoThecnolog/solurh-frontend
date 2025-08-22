@@ -1,13 +1,28 @@
-import { FormEvent } from 'react'
+import { FormEvent, useState } from 'react'
 import styles from './styles.module.scss'
 import Button from '@/components/ui/Button'
 import { formJobs } from '@/variables/formJobs'
 import Image from 'next/image'
+import { validator } from '@/services/Validator'
+import { toast } from 'react-toastify'
 
 export default function Hero() {
+    const [name, setName] = useState<string>('')
+    const [email, setEmail] = useState<string>('')
+    const [phone, setPhone] = useState<string>('')
+    const [job, setJob] = useState<string>('')
 
-    const handleSubmit = (e: FormEvent) => {
+
+
+    const handleSubmit = (e: FormEvent): void => {
         e.preventDefault()
+        if (validator.email(email) && validator.phone(phone) && job) {
+
+
+        } else {
+            console.log('Email inválido')
+            toast.error('Email Inválido. Use outro email')
+        }
         return
     }
     return (
@@ -37,6 +52,8 @@ export default function Hero() {
                                 type="text"
                                 id='name'
                                 placeholder='Nome*'
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                             />
                         </label>
                         <label htmlFor="email">
@@ -44,6 +61,8 @@ export default function Hero() {
                                 type="text"
                                 id='email'
                                 placeholder='E-mail Corporativo*'
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </label>
                         <label htmlFor="number">
@@ -51,9 +70,14 @@ export default function Hero() {
                                 type="text"
                                 id='number'
                                 placeholder='Numero de Telefone*'
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
                             />
                         </label>
-                        <select name="" id="">
+                        <select
+                            value={job}
+                            onChange={(e) => setJob(e.target.value)}
+                        >
                             <option value="">Selecione seu Cargo*</option>
                             {formJobs.map((cargo, index) =>
                                 <option
