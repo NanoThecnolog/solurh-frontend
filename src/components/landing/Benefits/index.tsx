@@ -5,9 +5,9 @@ export default function Benefits() {
 
 
     const renderLogos = (quantidade: number) => {
-        const logomarca: string[] = []
-        for (let i = 0; i < quantidade; i++) {
-            logomarca.push('LogoMarca')
+        const logomarca: number[] = []
+        for (let i = 1; i <= quantidade; i++) {
+            logomarca.push(i)
         }
         return logomarca
     }
@@ -20,16 +20,16 @@ export default function Benefits() {
                         posições, <span className='stroke'>e isso é o que importa!</span></p>
                 </div>
                 <div className={`${styles.track} ${styles.trackLeft}`}>
-                    {[...renderLogos(10), ...renderLogos(10)].map((logo, index) => (
+                    {renderLogos(16).map((logo, index) => (
                         <div className={styles.logoItem} key={`linha1-${index}`}>
-                            {logo}
+                            <img src={`/img/marcas/${logo}.png`} alt={`logo${index}`} width={140} />
                         </div>
                     ))}
                 </div>
                 <div className={`${styles.track} ${styles.trackRight}`}>
-                    {[...renderLogos(10), ...renderLogos(10)].map((logo, index) => (
+                    {renderLogos(16).map((logo, index) => (
                         <div className={styles.logoItem} key={`linha1-${index}`}>
-                            {logo}
+                            <img src={`/img/marcas/${logo}.png`} alt={`logo${index}`} width={140} />
                         </div>
                     ))}
                 </div>

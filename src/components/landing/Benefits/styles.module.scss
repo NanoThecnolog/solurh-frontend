@@ -177,6 +177,14 @@
                 max-width: 500px;
             }
 
+            .trackLeft {
+                animation: scrollLeft 10s linear infinite;
+            }
+
+            .trackRight {
+                animation: scrollRight 10s linear infinite;
+            }
+
         }
 
         .benefitsContainer {
