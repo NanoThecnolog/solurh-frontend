@@ -1,5 +1,6 @@
 import Button from '@/components/ui/Button'
 import styles from './styles.module.scss'
+import { shuffle } from '@/utils/utilities'
 
 export default function Benefits() {
 
@@ -9,7 +10,7 @@ export default function Benefits() {
         for (let i = 1; i <= quantidade; i++) {
             logomarca.push(i)
         }
-        return logomarca
+        return shuffle(logomarca)
     }
     return (
         <article className={styles.container}>
@@ -20,14 +21,14 @@ export default function Benefits() {
                         posições, <span className='stroke'>e isso é o que importa!</span></p>
                 </div>
                 <div className={`${styles.track} ${styles.trackLeft}`}>
-                    {renderLogos(16).map((logo, index) => (
+                    {[...renderLogos(16), ...renderLogos(16)].map((logo, index) => (
                         <div className={styles.logoItem} key={`linha1-${index}`}>
                             <img src={`/img/marcas/${logo}.png`} alt={`logo${index}`} width={140} />
                         </div>
                     ))}
                 </div>
                 <div className={`${styles.track} ${styles.trackRight}`}>
-                    {renderLogos(16).map((logo, index) => (
+                    {[...renderLogos(16), ...renderLogos(16)].map((logo, index) => (
                         <div className={styles.logoItem} key={`linha1-${index}`}>
                             <img src={`/img/marcas/${logo}.png`} alt={`logo${index}`} width={140} />
                         </div>
