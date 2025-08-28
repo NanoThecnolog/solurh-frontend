@@ -77,7 +77,7 @@ export default function Benefits() {
                                 decisões rápidas e práticas para seu dia a dia, que gastam pouquíssimo tempo e geram
                                 mais produtividade</p>
                         </div>
-                        <Button text='Solicitar Demonstração' color='var(--black)' />
+                        <Button text='Solicitar Demonstração' color='var(--blue)' />
                     </div>
                     <div className={styles.right}>
                         <div className={styles.demonstration}>Imagem</div>
