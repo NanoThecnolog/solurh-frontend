@@ -11,6 +11,7 @@ interface CandidatosProps {
 export default function Candidatos({ subs }: CandidatosProps) {
     const url = 'https://solurh.pro/uploads/curriculos'
     const render = new Render()
+    const getFileName = (path: string) => path.split('/').pop() || path;
     return (
         <div className={styles.container}>
             <h1>📥 Inscrições de Candidatos</h1>
@@ -28,7 +29,7 @@ export default function Candidatos({ subs }: CandidatosProps) {
                         <div className={styles.info}>
                             <p>Inscrição em: {new Date(inscricao.createdAt).toLocaleDateString()}</p>
                             <Link
-                                href={`${url}/${inscricao.candidato.cv_path}`}
+                                href={`${url}/${getFileName(inscricao.candidato.cv_path)}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.cvLink}
