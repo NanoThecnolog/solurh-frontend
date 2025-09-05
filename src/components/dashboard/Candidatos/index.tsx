@@ -9,7 +9,7 @@ interface CandidatosProps {
 }
 
 export default function Candidatos({ subs }: CandidatosProps) {
-    const url = process.env.NEXT_PUBLIC_BACKEND_URL || ''
+    const url = 'https://solurh.pro/uploads/curriculos'
     const render = new Render()
     return (
         <div className={styles.container}>
