@@ -44,7 +44,7 @@ export default function Benefits() {
                 <div className={styles.advantagesContainer}>
                     <div className={styles.left}>
                         <div className={styles.leftItem}>
-                            <h3>Planejamento Completo (Gratuito)</h3>
+                            <h3>Planejamento Completo <span>(Gratuito)</span></h3>
                             <p>
                                 Responda um simples formulário e receba
                                 gratuitamente um passo a passo profissional e direcionado para a sua necessidade (vagas
@@ -81,7 +81,9 @@ export default function Benefits() {
                         <Button text='Solicitar Demonstração' color='var(--blue)' />
                     </div>
                     <div className={styles.right}>
-                        <div className={styles.demonstration}>Imagem</div>
+                        <div className={styles.demonstration}>
+                            <img src="/img/landingpage_ilustracao_nobg.png" alt="landingpage" />
+                        </div>
                     </div>
                 </div>
             </section>

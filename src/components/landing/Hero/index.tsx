@@ -36,7 +36,7 @@ export default function Hero() {
                         Não gaste seu tempo e dinheiro em <span className='stroke'>contratações erradas!</span>
                     </h1>
                     <p>
-                        Te entregamos uma lista com os mais bem qualificados candidatos para a vaga, e se o profissional não se adaptar no período de experiência realizamos o processo novamente <span className='stroke'>sem custos adicionais!</span>
+                        Te entregamos uma lista com os mais bem <span className='stroke'>qualificados candidatos</span> para a vaga, e se o profissional não se adaptar no período de experiência <span className='stroke'>realizamos o processo novamente sem custos adicionais!</span>
                     </p>
                 </div>
                 <div className={styles.right}>
