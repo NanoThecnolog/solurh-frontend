@@ -46,8 +46,13 @@ export default function Jobs() {
                 description="Candidate-se hoje mesmo para a vaga que mais combina com seu perfil"
             />
             <main className={styles.mainContainer}>
+
                 <article className={styles.articleContainer}>
+                    {
+                        //<h3>Lista de Vagas</h3>
+                    }
                     <aside className={styles.asideContainer}>
+
                         {jobs.length > 0 && jobs.map((job) =>
                             <div key={job.id} className={styles.jobsContainer} onClick={() => setVaga(job)}>
                                 <h4>{job.nome}</h4>

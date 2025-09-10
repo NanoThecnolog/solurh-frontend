@@ -69,7 +69,7 @@ export default function Hero() {
                             <input
                                 type="text"
                                 id='number'
-                                placeholder='Numero de Telefone*'
+                                placeholder='Numero de Whatsapp Comunicável*'
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
                             />
