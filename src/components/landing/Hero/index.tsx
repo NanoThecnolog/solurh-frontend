@@ -5,6 +5,7 @@ import { formJobs } from '@/variables/formJobs'
 import Image from 'next/image'
 import { validator } from '@/services/Validator'
 import { toast } from 'react-toastify'
+import axios from 'axios'
 
 export default function Hero() {
     const [name, setName] = useState<string>('')
@@ -12,18 +13,41 @@ export default function Hero() {
     const [phone, setPhone] = useState<string>('')
     const [job, setJob] = useState<string>('')
 
+    const webhook = 'https://hook.us2.make.com/cwf67xtkefj4pibdgfut2wcyvop4dedm'
 
 
-    const handleSubmit = (e: FormEvent): void => {
+
+    const handleSubmit = async (e: FormEvent): Promise<void> => {
         e.preventDefault()
-        if (validator.email(email) && validator.phone(phone) && job) {
+        if (validator.email(email) && validator.phone(phone)) {
+            try {
+                const formData = new FormData()
+                formData.append('name', name)
+                formData.append('email', email)
+                formData.append('phone', phone)
+                formData.append('job', job)
 
+                const response = await axios.post(webhook, formData, {
+                    headers: { 'Content-Type': 'multipart/form-data' }
+                })
+                const data = response.data
+                console.log('dados da requisição', data)
+                if (response.status === 200) {
+                    toast.success("Formulário enviado com sucesso!");
+                    setName("");
+                    setEmail("");
+                    setPhone("");
+                    setJob("");
+                } else toast.error('Erro ao enviar o formulário. Tente novamente.')
 
+            } catch (err) {
+                console.error('Erro ao enviar formulário:', err)
+                toast.error('Falaha na conexão com o servidor do formulário. Tente novamente mais tarde.')
+            }
         } else {
-            console.log('Email inválido')
-            toast.error('Email Inválido. Use outro email')
+            console.log('campos mal preenchidos', name, email, phone, job)
+            toast.error('Preencha os camos corretamente antes de enviar.')
         }
-        return
     }
     return (
         <article className={styles.container}>
@@ -92,7 +116,7 @@ export default function Hero() {
                             <p>Ao enviar este formulário, declaro que li e aceito a <strong>Política de Privacidade.</strong></p>
                         </div>
                         <div className={styles.buttonContainer}>
-                            <Button text='Solicitar Demonstração' width='300px' fontSize='1.3rem' color='var(--black)' />
+                            <Button type='submit' text='Solicitar Demonstração' width='300px' fontSize='1.3rem' color='var(--black)' />
                         </div>
                     </form>
                 </div>

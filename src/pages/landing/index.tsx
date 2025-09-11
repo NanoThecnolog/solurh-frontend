@@ -1,17 +1,19 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import styles from './styles.module.scss'
 //import { gtag } from '@/utils/GoogleTag'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Hero from '@/components/landing/Hero'
 import Benefits from '@/components/landing/Benefits'
 import Testimonials from '@/components/landing/Testimonials'
 import CTASection from '@/components/landing/CTASection'
+import ModalLanding from '@/components/ui/modals/ModalLanding'
 
 interface LandingProps {
     id: string
 }
 
 export default function Landing({ id }: LandingProps) {
+    const [modalVisible, setModalVisible] = useState(true)
 
     /*const handleClick = async () => {
         gtag.event('teste-de-conversao', {
@@ -35,6 +37,9 @@ export default function Landing({ id }: LandingProps) {
                 <Benefits />
                 <Testimonials />
                 <CTASection />
+                {
+                    modalVisible && <ModalLanding closeFunction={setModalVisible} />
+                }
             </main>
         </>
     )

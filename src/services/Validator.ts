@@ -38,7 +38,7 @@ class Validator {
     public phone(phone: string): boolean {
         const cleaned = this.cleanPhoneNumber(phone)
         if (!this.phoneRegex.test(cleaned)) return false
-        if (cleaned.length === 11 && cleaned[2] !== '9') return false
+        if (cleaned.length <= 10 && cleaned[2] !== '9') return false
         return true
     }
 }
