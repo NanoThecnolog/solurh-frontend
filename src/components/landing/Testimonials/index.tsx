@@ -1,9 +1,10 @@
 import Button from '@/components/ui/Button'
 import styles from './styles.module.scss'
 import { testmonialsContent } from '@/variables/testmonials'
+import { ScrollProps } from '@/@types/scrollProps'
 
 
-export default function Testimonials() {
+export default function Testimonials({ scrollFunc }: ScrollProps) {
 
     return (
         <article className={styles.container}>
@@ -22,7 +23,7 @@ export default function Testimonials() {
                     )}
                 </div>
                 <div className={styles.buttonContainer}>
-                    <Button text='Agendar Demonstração' color='var(--black)' />
+                    <Button text='Agendar Demonstração' color='var(--black)' click={scrollFunc} />
                 </div>
             </section>
         </article>

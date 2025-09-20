@@ -2,7 +2,11 @@ import Button from '@/components/ui/Button'
 import styles from './styles.module.scss'
 import { shuffle } from '@/utils/utilities'
 
-export default function Benefits() {
+interface ScrollProps {
+    scrollFunc: () => void
+}
+
+export default function Benefits({ scrollFunc }: ScrollProps) {
 
 
     const renderLogos = (quantidade: number) => {
@@ -78,7 +82,7 @@ export default function Benefits() {
                                 decisões rápidas e práticas para seu dia a dia, que gastam pouquíssimo tempo e geram
                                 mais produtividade</p>
                         </div>
-                        <Button text='Solicitar Demonstração' color='var(--blue)' />
+                        <Button text='Solicitar Demonstração' color='var(--blue)' type='button' click={scrollFunc} />
                     </div>
                     <div className={styles.right}>
                         <div className={styles.demonstration}>

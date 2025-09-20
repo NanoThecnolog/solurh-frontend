@@ -1,4 +1,6 @@
 export const formJobs = [
+    "Selecione seu Cargo*",
+
     // RH e DP
     "Analista de RH",
     "Assistente de RH",

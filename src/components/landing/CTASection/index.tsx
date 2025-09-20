@@ -1,7 +1,8 @@
 import Button from '@/components/ui/Button'
 import styles from './styles.module.scss'
+import { ScrollProps } from '@/@types/scrollProps'
 
-export default function CTASection() {
+export default function CTASection({ scrollFunc }: ScrollProps) {
     return (
         <article className={styles.container}>
             <section className={styles.sectionContainer}>
@@ -12,7 +13,7 @@ export default function CTASection() {
                     <p className={styles.text}>Ela vai te explicar como funciona o processo e estudar seu caso individualmente para te
                         guiar para a melhor solução para sua contratação!​</p>
                     <div className={styles.buttonContainer}>
-                        <Button text='Quero Descomplicar o meu RH' color='var(--black)' />
+                        <Button text='Quero Descomplicar o meu RH' color='var(--black)' click={scrollFunc} />
                     </div>
                 </div>
             </section>

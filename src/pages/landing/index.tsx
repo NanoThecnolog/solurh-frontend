@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import styles from './styles.module.scss'
 //import { gtag } from '@/utils/GoogleTag'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Hero from '@/components/landing/Hero'
 import Benefits from '@/components/landing/Benefits'
 import Testimonials from '@/components/landing/Testimonials'
@@ -14,6 +14,11 @@ interface LandingProps {
 
 export default function Landing({ id }: LandingProps) {
     const [modalVisible, setModalVisible] = useState(true)
+    const sectionRef = useRef<HTMLFormElement | null>(null)
+
+    const scrollToSection = () => {
+        sectionRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
 
     /*const handleClick = async () => {
         gtag.event('teste-de-conversao', {
@@ -33,10 +38,10 @@ export default function Landing({ id }: LandingProps) {
     return (
         <>
             <main className={styles.container}>
-                <Hero />
-                <Benefits />
-                <Testimonials />
-                <CTASection />
+                <Hero sectionRef={sectionRef} />
+                <Benefits scrollFunc={scrollToSection} />
+                <Testimonials scrollFunc={scrollToSection} />
+                <CTASection scrollFunc={scrollToSection} />
                 {
                     modalVisible && <ModalLanding closeFunction={setModalVisible} />
                 }
