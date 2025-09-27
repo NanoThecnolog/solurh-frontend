@@ -10,9 +10,9 @@ import DOMPurify from 'dompurify'
 import CreateJobModal from '@/components/ui/modals/createJobModal'
 import UpdateJobModal from '@/components/ui/modals/updateJobModal'
 
-interface VagasProps {
+/*interface VagasProps {
     vagas: JobsProps[]
-}
+}*/
 
 export default function Vagas(/*{ vagas }: VagasProps*/) {
     //const router = useRouter()
