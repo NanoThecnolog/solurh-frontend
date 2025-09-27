@@ -23,7 +23,7 @@ export default function CreateJobModal({ setVisible, createJob }: ModalProps) {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         debug.log("data na rota de criar vaga", data)
-        let salario = data.salario ?? 0
+        const salario = data.salario ?? 0
         if (typeof salario !== "number" || isNaN(salario) || salario < 0) {
             toast.error("Salário deve ser um número válido.")
             return
