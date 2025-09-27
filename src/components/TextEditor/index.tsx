@@ -16,11 +16,15 @@ import Underline from '@tiptap/extension-underline'
 
 interface EditorProps {
     changeDescription: (e: string) => void
+    value?: string
 }
-export default function TextEditor({ changeDescription }: EditorProps) {
-    const [htmlOutput, /*setHtmlOutput*/] = useState('')
+export default function TextEditor({ changeDescription, value }: EditorProps) {
+    //const [htmlOutput, setHtmlOutput] = useState('')
     //const [showLinkInput, setShowLinkInput] = useState(false)
     //const [linkUrl, setLinkUrl] = useState('')
+    /*useEffect(() => {
+        if (value) setHtmlOutput(value)
+    }, [value])*/
 
     const editor = useEditor({
         immediatelyRender: false,
@@ -36,19 +40,12 @@ export default function TextEditor({ changeDescription }: EditorProps) {
             ListItem,
             Underline
         ],
+        content: value || "",
         onUpdate: ({ editor }) => {
             const html = editor.getHTML()
             changeDescription(html)
         }
     })
-
-    /*const exportHTML = () => {
-        if (!editor) return
-        const html = editor.getHTML()
-        setHtmlOutput(html)
-        debug.log('conteudo html exportado', html)
-    }*/
-
 
     return (
         <div className={styles.container}>
@@ -58,11 +55,11 @@ export default function TextEditor({ changeDescription }: EditorProps) {
                 //<button className={styles.button} style={{ marginTop: '1rem' }} onClick={exportHTML}>Exportar HTML</button>
             }
 
-            {htmlOutput &&
+            {/*htmlOutput &&
                 <div>
                     <h2 style={{ marginTop: '2rem' }}>HTML exportado</h2>
                     <pre className={styles.htmlOutput}>{htmlOutput}</pre>
-                </div>
+                </div>*/
             }
         </div>
     )

@@ -1,70 +1,5 @@
-/*import styles from './styles.module.scss'
-import { UpdateJobProps } from '@/@types/jobs'
-import Button from '../../Button'
-import { IoClose } from 'react-icons/io5'
-import { useState } from 'react'
-import Editor from '@/components/TextEditor'
-
-interface ModalProps {
-    updateJob: (data: UpdateJobProps) => void
-    setVisible: (value: boolean) => void
-}
-
-export default function UpdateJobModal({ setVisible }: ModalProps) {
-    const [data, setData] = useState<UpdateJobProps>({
-        nome: '',
-        localizacao: '',
-        descricao: '',
-        salario: 0
-    })
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-    }
-    return (
-        <section className={styles.container}>
-            <div>
-                <IoClose onClick={() => setVisible(false)} />
-                <form onSubmit={handleSubmit} className={styles.form}>
-                    <label htmlFor="title">
-                        <h4>Título da Vaga</h4>
-                        <input
-                            type="text"
-                            id="title"
-                            value={data.nome}
-                            onChange={(e) => setData(prev => ({ ...prev, nome: e.target.value }))}
-                            placeholder='digite titulo da vaga'
-                        />
-                    </label>
-                    <label htmlFor='local'>
-                        <h4>Local</h4>
-                        <input
-                            type="text"
-                            id="local"
-                            placeholder='digite local da vaga'
-                            onChange={(e) => setData(prev => ({ ...prev, localizacao: e.target.value }))}
-                            aria-placeholder='Digite o local da vaga'
-                        />
-                    </label>
-                    <label htmlFor='salary'>
-                        <h4>Salário</h4>
-                        <input type="text" id='salary' placeholder='digite salario da vaga' />
-                    </label>
-                    <label htmlFor='description'>
-                        {
-                            <Editor />
-                        }
-                    </label>
-                    <div>
-                        <Button type='submit' text='Atualizar' />
-                    </div>
-                </form>
-            </div>
-        </section>
-    )
-}*/
-
 import styles from './styles.module.scss'
-import { UpdateJobProps } from '@/@types/jobs'
+import { JobsProps, UpdateJobProps } from '@/@types/jobs'
 import Button from '../../Button'
 import { IoClose } from 'react-icons/io5'
 import { useState } from 'react'
@@ -72,22 +7,23 @@ import Editor from '@/components/TextEditor'
 import { debug } from '@/utils/DebugLogger'
 
 interface ModalProps {
-    updateJob: (data: UpdateJobProps) => void
+    updateJob: (id: string, data: UpdateJobProps) => void
     setVisible: (value: boolean) => void
+    job: JobsProps
 }
 
-export default function UpdateJobModal({ setVisible, updateJob }: ModalProps) {
+export default function UpdateJobModal({ setVisible, updateJob, job }: ModalProps) {
     const [data, setData] = useState<UpdateJobProps>({
-        nome: '',
-        localizacao: '',
-        descricao: '',
-        salario: 0,
+        nome: job.nome || "",
+        localizacao: job.localizacao || '',
+        descricao: job.descricao || '',
+        salario: job.salario || 0,
     })
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        debug.log("data na rota de criar vaga", data)
-        updateJob(data)
+        debug.log("data na rota de editar vaga", data)
+        updateJob(job.id, data)
         setVisible(false)
     }
 
@@ -95,7 +31,7 @@ export default function UpdateJobModal({ setVisible, updateJob }: ModalProps) {
         <section className={styles.container}>
             <div className={styles.modal}>
                 <header className={styles.header}>
-                    <h2>Cadastro de Vaga</h2>
+                    <h2>Editar Vaga</h2>
                     <IoClose className={styles.closeIcon} onClick={() => setVisible(false)} />
                 </header>
 
@@ -135,11 +71,12 @@ export default function UpdateJobModal({ setVisible, updateJob }: ModalProps) {
 
                     <label htmlFor="description">
                         <span>Descrição</span>
-                        <Editor changeDescription={(desc) => setData(prev => ({ ...prev, descricao: desc }))} />
+                        <Editor changeDescription={(desc) => setData(prev => ({ ...prev, descricao: desc }))} value={data.descricao} />
                     </label>
 
                     <div className={styles.actions}>
-                        <Button type="submit" text="Cadastrar" backgroundColor="#1c76dd" color="white" />
+                        <Button type="button" text="cancelar" backgroundColor="#851d03ff" color="white" width='120px' click={() => setVisible(false)} />
+                        <Button type="submit" text="Salvar" backgroundColor="#1c76dd" color="white" width='120px' />
                     </div>
                 </form>
             </div>

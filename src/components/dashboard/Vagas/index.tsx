@@ -7,6 +7,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import { debug } from '@/utils/DebugLogger'
 import DOMPurify from 'dompurify'
+import CreateJobModal from '@/components/ui/modals/createJobModal'
 import UpdateJobModal from '@/components/ui/modals/updateJobModal'
 
 interface VagasProps {
@@ -20,6 +21,7 @@ export default function Vagas({ vagas }: VagasProps) {
     const [listaVagas, setListaVagas] = useState<JobsProps[]>([])
     const [htmlDesc, setHtmlDesc] = useState<string>('')
     const [modalVisible, setModalVisible] = useState(false)
+    const [editModal, setEditModal] = useState(false)
 
     const vagaToShow = () => {
         return render.vaga(vagas, jobToShow)
@@ -62,7 +64,20 @@ export default function Vagas({ vagas }: VagasProps) {
             setListaVagas(vagas.request)
 
         } catch (err) {
-            debug.error('Erro ao atualizar vaga', err)
+            debug.error('Erro ao criar vaga', err)
+            return
+        }
+    }
+    const editVaga = async (id: string, data: UpdateJobProps) => {
+        try {
+            const response = await axios.put(`/api/job/update/${id}`, { data })
+            const dataResponse = response.data
+            toast.success(`Vaga ${dataResponse.request.nome} editada com sucesso!`)
+            const vagas = await refreshVagas()
+            setJobToShow("")
+            setListaVagas(vagas.request)
+        } catch (err) {
+            debug.error("Erro ao atualizar vaga", err)
             return
         }
     }
@@ -121,14 +136,23 @@ export default function Vagas({ vagas }: VagasProps) {
                                     backgroundColor="red"
                                     color="white"
                                 />
+                                <Button
+                                    click={() => setEditModal(true)}
+                                    text="Editar Vaga"
+                                    height="36px"
+                                    backgroundColor="blue"
+                                    color="white"
+                                />
+
                             </div>
                         </div>
                     )}
                 </section>
-
-
                 {modalVisible && (
-                    <UpdateJobModal updateJob={createVaga} setVisible={setModalVisible} />
+                    <CreateJobModal createJob={createVaga} setVisible={setModalVisible} />
+                )}
+                {editModal && vaga && (
+                    <UpdateJobModal updateJob={editVaga} setVisible={setEditModal} job={vaga} />
                 )}
             </div>
             <section>
