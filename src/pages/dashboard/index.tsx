@@ -35,7 +35,7 @@ export default function Dashboard({ user, jobs, subs }: DashProps) {
             return <Geral vagas={jobs} subs={subs} />
         }
         if (componentToRender === 'b') {
-            return <Vagas vagas={jobs} />
+            return <Vagas />
         }
         if (componentToRender === 'c') {
             return <Candidatos subs={subs} />

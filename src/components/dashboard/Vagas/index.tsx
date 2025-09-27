@@ -14,7 +14,7 @@ interface VagasProps {
     vagas: JobsProps[]
 }
 
-export default function Vagas({ vagas }: VagasProps) {
+export default function Vagas(/*{ vagas }: VagasProps*/) {
     //const router = useRouter()
     const render = new Render()
     const [jobToShow, setJobToShow] = useState('')
@@ -22,18 +22,19 @@ export default function Vagas({ vagas }: VagasProps) {
     const [htmlDesc, setHtmlDesc] = useState<string>('')
     const [modalVisible, setModalVisible] = useState(false)
     const [editModal, setEditModal] = useState(false)
+    const [vaga, setVaga] = useState<JobsProps | null>(null)
 
     const vagaToShow = () => {
-        return render.vaga(vagas, jobToShow)
+        return render.vaga(listaVagas, jobToShow)
     }
-    const vaga = vagaToShow()
+
     const refreshVagas = async () => {
         try {
             const response = await axios.get('/api/job/all')
             const data = response.data
-            return data
+            setListaVagas(data.request)
         } catch (err) {
-            debug.log('Erro ao fazer o update da vaga', err)
+            console.error('Erro ao fazer o update da vaga', err)
         }
     }
 
@@ -42,14 +43,13 @@ export default function Vagas({ vagas }: VagasProps) {
             const response = await axios.delete(`/api/job/remover/${id}`)
             debug.log('request para deletar vaga', response)
             toast.success(response.data.message)
-
-            const vagas = await refreshVagas()
-            debug.log("vagas antes de setar listavagas", vagas)
+            //debug.log("vagas antes de setar listavagas", vagas)
             setJobToShow('')
-            setListaVagas(vagas.request)
+            refreshVagas()
             //router.refresh()
         } catch (err) {
-            debug.error('Erro ao remover vaga', err)
+            console.error('Erro ao remover vaga', err)
+            toast.error("Erro inesperado ao remover vaga. Tente novamente mais tarde ou entre em contato com o Desenvolvedor.")
             return []
         }
     }
@@ -59,12 +59,12 @@ export default function Vagas({ vagas }: VagasProps) {
             debug.log(response)
             const dataResponse = response.data
             toast.success(`Vaga ${dataResponse.request.nome} criada com sucesso!`)
-            const vagas = await refreshVagas()
             setJobToShow('')
-            setListaVagas(vagas.request)
+            refreshVagas()
 
         } catch (err) {
-            debug.error('Erro ao criar vaga', err)
+            console.error('Erro ao criar vaga', err)
+            toast.error("Erro inesperado ao criar vaga. Tente novamente mais tarde ou entre em contato com o Desenvolvedor.")
             return
         }
     }
@@ -73,11 +73,11 @@ export default function Vagas({ vagas }: VagasProps) {
             const response = await axios.put(`/api/job/update/${id}`, { data })
             const dataResponse = response.data
             toast.success(`Vaga ${dataResponse.request.nome} editada com sucesso!`)
-            const vagas = await refreshVagas()
             setJobToShow("")
-            setListaVagas(vagas.request)
+            refreshVagas()
         } catch (err) {
-            debug.error("Erro ao atualizar vaga", err)
+            console.error("Erro ao atualizar vaga", err)
+            toast.error("Erro inesperado ao atualizar vaga. Tente novamente mais tarde ou entre em contato com o Desenvolvedor.")
             return
         }
     }
@@ -86,9 +86,11 @@ export default function Vagas({ vagas }: VagasProps) {
     }
 
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (vagas.length > 0) setListaVagas(vagas)
-    }, [vagas])
+        //const vaga = vagaToShow()
+        //setVaga(vaga)
+    }, [vagas])*/
 
     useEffect(() => {
         if (vaga) {
@@ -96,6 +98,12 @@ export default function Vagas({ vagas }: VagasProps) {
             setHtmlDesc(safeHtml)
         }
     }, [vaga])
+    useEffect(() => {
+        setVaga(vagaToShow())
+    }, [jobToShow, listaVagas])
+    useEffect(() => {
+        refreshVagas()
+    }, [])
 
     return (
         <>
