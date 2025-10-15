@@ -12,7 +12,7 @@ interface GeralProps {
 
 export default function Geral({ vagas, subs }: GeralProps) {
     const [vagaMaisEscolhida, setVagaMaisEscolhida] = useState<{ vaga: VagaProps, total: number } | null>(null)
-    const [ultimaVaga, /*setUltimaVaga*/] = useState<VagaProps>()
+    //const [ultimaVaga, /*setUltimaVaga*/] = useState<VagaProps>()
 
 
 
@@ -40,6 +40,7 @@ export default function Geral({ vagas, subs }: GeralProps) {
         }
         return moreSubs
     }
+    //const data = subs.map(item => item.createdAt)
 
     useEffect(() => {
         if (!vagaMaisEscolhida) setVagaMaisEscolhida(vagaComMaisCurriculos())
@@ -65,14 +66,8 @@ export default function Geral({ vagas, subs }: GeralProps) {
                 <div className={styles.card}>
                     <h2>Currículos recebidos</h2>
                     <p className={styles.count}>{subs.length}</p>
-
-                    <div className={styles.detail}>
-                        <h4>Última vaga que recebeu currículo:</h4>
-                        <span>{ultimaVaga?.nome || 'Nenhuma ainda'}</span>
-                    </div>
                 </div>
             </div>
         </div>
-
     )
 }
