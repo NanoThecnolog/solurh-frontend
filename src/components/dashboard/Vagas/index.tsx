@@ -15,7 +15,6 @@ import UpdateJobModal from '@/components/ui/modals/updateJobModal'
 }*/
 
 export default function Vagas(/*{ vagas }: VagasProps*/) {
-    //const router = useRouter()
     const render = new Render()
     const [jobToShow, setJobToShow] = useState('')
     const [listaVagas, setListaVagas] = useState<JobsProps[]>([])
@@ -38,21 +37,6 @@ export default function Vagas(/*{ vagas }: VagasProps*/) {
         }
     }
 
-    const removerVaga = async (id: string) => {
-        try {
-            const response = await axios.delete(`/api/job/remover/${id}`)
-            debug.log('request para deletar vaga', response)
-            toast.success(response.data.message)
-            //debug.log("vagas antes de setar listavagas", vagas)
-            setJobToShow('')
-            refreshVagas()
-            //router.refresh()
-        } catch (err) {
-            console.error('Erro ao remover vaga', err)
-            toast.error("Erro inesperado ao remover vaga. Tente novamente mais tarde ou entre em contato com o Desenvolvedor.")
-            return []
-        }
-    }
     const createVaga = async (data: UpdateJobProps) => {
         try {
             const response = await axios.post(`/api/job/create`, { data })
@@ -81,6 +65,22 @@ export default function Vagas(/*{ vagas }: VagasProps*/) {
             return
         }
     }
+    const removerVaga = async (id: string) => {
+        try {
+            const response = await axios.delete(`/api/job/remover/${id}`)
+            debug.log('request para deletar vaga', response)
+            toast.success(response.data.message)
+            //debug.log("vagas antes de setar listavagas", vagas)
+            setJobToShow('')
+            refreshVagas()
+            //router.refresh()
+        } catch (err) {
+            console.error('Erro ao remover vaga', err)
+            toast.error("Erro inesperado ao remover vaga. Tente novamente mais tarde ou entre em contato com o Desenvolvedor.")
+            return []
+        }
+    }
+
     const handleCreate = () => {
         setModalVisible(true)
     }
