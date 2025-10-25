@@ -16,7 +16,7 @@ export default function Candidatos({ subs, talentBank = false }: CandidatosProps
     const getFileName = (path: string) => path.split('/').pop() || path;
     return (
         <div className={styles.container}>
-            <h1><FaStar color='white' size={30} /> Inscrições no Banco de Talentos</h1>
+            <h1> {talentBank ? <p><FaStar color='white' size={30} /> Inscrições no Banco de Talentos</p> : <p>Inscrições de Candidatos</p>}</h1>
 
             <div className={styles.list}>
                 {subs.length === 0 && talentBank ? <p>Nenhuma inscrição no banco de Talentos.</p> : <p>Nenhuma inscrição encontrada.</p>}
