@@ -16,6 +16,7 @@ interface ButtonProps {
     backgroundColor?: string
     loading?: boolean
     click?: MouseEventHandler<HTMLButtonElement>
+    padding?: string
 
 }
 /**
@@ -33,9 +34,10 @@ interface ButtonProps {
  * @param backgroundColor (Optional) custom background color
  * @param loading (Optional) boolean
  * @param click (optional) send function to onClick
+ * @param padding (optional) custom padding
  * 
  */
-export default function Button({ click, text, type = 'button', fontSize, fontWeight, fontFamily, textTransform, color, height, width, Svg, svgSize, backgroundColor, loading = false }: ButtonProps) {
+export default function Button({ click, text, type = 'button', fontSize, fontWeight, fontFamily, textTransform, color, height, width, Svg, svgSize, backgroundColor, loading = false, padding }: ButtonProps) {
     return (
         <div className={styles.buttonContainer}>
             <button
@@ -51,7 +53,8 @@ export default function Button({ click, text, type = 'button', fontSize, fontWei
                     width,
                     background: `${!backgroundColor ? 'var(--yellow-gradient)' : ''}`,
                     backgroundColor,
-                    cursor: `${loading ? 'progress' : 'pointer'}`
+                    cursor: `${loading ? 'progress' : 'pointer'}`,
+                    padding
                 }}
             >{loading ? 'Aguarde...' : text} {Svg && <Svg fontSize={svgSize ?? 25} />}</button>
         </div>

@@ -39,6 +39,13 @@ export default function Jobs() {
         }
         fetchJobs()
     }, [])
+
+    const handleTalentBank = () => {
+        const talentBank = jobs.find(vaga => vaga.id === "ee5d2858-9d60-4ebf-a222-2345c58a41e1")
+        if (!talentBank) return
+        setVaga(talentBank)
+        setModalVisible(true)
+    }
     return (
         <>
             <SEO
@@ -46,6 +53,18 @@ export default function Jobs() {
                 description="Candidate-se hoje mesmo para a vaga que mais combina com seu perfil"
             />
             <main className={styles.mainContainer}>
+                <section className={styles.talentsContainer}>
+                    <div className={styles.text}>
+                        {
+                            //<h1>Banco de Talentos</h1>
+                        }
+                        <h1>Envie seu currículo para nosso banco de talentos</h1>
+                    </div>
+                    <Button text='Enviar Currículo' padding='20px' click={handleTalentBank} />
+                </section>
+                <section className={styles.titleContainer}>
+                    <h1>Vagas Disponiveis</h1>
+                </section>
 
                 <article className={styles.articleContainer}>
                     {
@@ -53,12 +72,14 @@ export default function Jobs() {
                     }
                     <aside className={styles.asideContainer}>
 
-                        {jobs.length > 0 && jobs.map((job) =>
-                            <div key={job.id} className={styles.jobsContainer} onClick={() => setVaga(job)}>
+                        {jobs.length > 0 && jobs.map((job) => {
+                            if (job.id === "ee5d2858-9d60-4ebf-a222-2345c58a41e1") return
+                            return <div key={job.id} className={styles.jobsContainer} onClick={() => setVaga(job)}>
                                 <h4>{job.nome}</h4>
                                 <h5>{job.localizacao}</h5>
                                 <p>{render.salario(job.salario)}</p>
                             </div>
+                        }
                         )}
                     </aside>
                     <section className={styles.sectionContainer}>

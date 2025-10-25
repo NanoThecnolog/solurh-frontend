@@ -13,12 +13,16 @@ interface SendProps {
 }
 export default function SendCurriculo({ vaga, func }: SendProps) {
     const [file, setFile] = useState<File | null>(null)
+    /** 
+     * posso criar uma vaga chamada banco de talentos, deixar invisível nas paginas de vagas e no dashboard, para evitar edição, mostrar somente no menu de candidatos do dashboard
+    */
+    //console.log(vaga)
 
     const handleInscrition = async (e: FormEvent) => {
         e.preventDefault()
         if (!file) {
             debug.warn('Arquivo não enviado.')
-            toast.warn('Por favor, seleciona um arquivo antes de enviar.')
+            toast.warn('Por favor, selecione um arquivo antes de enviar.')
             return
         }
 

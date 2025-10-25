@@ -14,9 +14,6 @@ export default function Geral({ vagas, subs }: GeralProps) {
     const [vagaMaisEscolhida, setVagaMaisEscolhida] = useState<{ vaga: VagaProps, total: number } | null>(null)
     //const [ultimaVaga, /*setUltimaVaga*/] = useState<VagaProps>()
 
-
-
-
     const vagaComMaisCurriculos = (): { vaga: VagaProps, total: number } | null => {
         const count = new Map<string, { vaga: VagaProps; total: number }>()
 
@@ -55,8 +52,7 @@ export default function Geral({ vagas, subs }: GeralProps) {
             <div className={styles.container}>
                 <div className={styles.card}>
                     <h2>Vagas cadastradas</h2>
-                    <p className={styles.count}>{vagas.length}</p>
-
+                    <p className={styles.count}>{vagas.length - (vagas.some(vaga => vaga.id === "ee5d2858-9d60-4ebf-a222-2345c58a41e1") ? 1 : 0)}</p>
                     <div className={styles.detail}>
                         <h4>Vaga com mais currículos:</h4>
                         <span>{vagaMaisEscolhida?.vaga.nome || 'Nenhuma ainda'}</span>

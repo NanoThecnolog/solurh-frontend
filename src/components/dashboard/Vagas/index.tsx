@@ -109,18 +109,21 @@ export default function Vagas(/*{ vagas }: VagasProps*/) {
         <>
             <div className={styles.container}>
                 <aside className={styles.listVagas}>
-                    {listaVagas.map((vaga) => (
-                        <div
-                            key={vaga.id}
-                            className={styles.listItem}
-                            onClick={() => setJobToShow(vaga.id)}
-                        >
-                            <h4>{vaga.nome}</h4>
-                            <p>
-                                Salário: {render.salario(vaga.salario)} — {vaga.localizacao}
-                            </p>
-                        </div>
-                    ))}
+                    {listaVagas.map((vaga) => {
+                        if (vaga.id === "ee5d2858-9d60-4ebf-a222-2345c58a41e1") return
+                        return (
+                            <div
+                                key={vaga.id}
+                                className={styles.listItem}
+                                onClick={() => setJobToShow(vaga.id)}
+                            >
+                                <h4>{vaga.nome}</h4>
+                                <p>
+                                    Salário: {render.salario(vaga.salario)} — {vaga.localizacao}
+                                </p>
+                            </div>
+                        )
+                    })}
                 </aside>
 
                 <section className={styles.vagaContainer}>

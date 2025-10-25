@@ -2,22 +2,24 @@ import { InscricaoProps } from '@/@types/inscricoes'
 import styles from './styles.module.scss'
 import { Render } from '@/utils/utilities'
 import Link from 'next/link'
+import { FaStar } from 'react-icons/fa'
 
 
 interface CandidatosProps {
     subs: InscricaoProps[]
+    talentBank?: boolean
 }
 
-export default function Candidatos({ subs }: CandidatosProps) {
+export default function Candidatos({ subs, talentBank = false }: CandidatosProps) {
     const url = 'https://solurh.pro/uploads/curriculos'
     const render = new Render()
     const getFileName = (path: string) => path.split('/').pop() || path;
     return (
         <div className={styles.container}>
-            <h1>📥 Inscrições de Candidatos</h1>
+            <h1><FaStar color='white' size={30} /> Inscrições no Banco de Talentos</h1>
 
             <div className={styles.list}>
-                {subs.length === 0 && <p>Nenhuma inscrição encontrada.</p>}
+                {subs.length === 0 && talentBank ? <p>Nenhuma inscrição no banco de Talentos.</p> : <p>Nenhuma inscrição encontrada.</p>}
 
                 {subs.map((inscricao) => (
                     <div key={inscricao.id} className={styles.card}>

@@ -15,6 +15,7 @@ import Vagas from '@/components/dashboard/Vagas'
 import { InscricaoProps } from '@/@types/inscricoes'
 import Candidatos from '@/components/dashboard/Candidatos'
 import SEO from '@/components/SEO'
+import { FaStar } from 'react-icons/fa'
 
 interface DashProps {
     user: User
@@ -38,7 +39,12 @@ export default function Dashboard({ user, jobs, subs }: DashProps) {
             return <Vagas />
         }
         if (componentToRender === 'c') {
-            return <Candidatos subs={subs} />
+            const normalSubs = subs.filter(sub => sub.vaga.id !== "ee5d2858-9d60-4ebf-a222-2345c58a41e1")
+            return <Candidatos subs={normalSubs} />
+        }
+        if (componentToRender === 'd') {
+            const talentSubs = subs.filter(sub => sub.vaga.id === "ee5d2858-9d60-4ebf-a222-2345c58a41e1")
+            return <Candidatos subs={talentSubs} talentBank={true} />
         }
     }
 
@@ -72,6 +78,7 @@ export default function Dashboard({ user, jobs, subs }: DashProps) {
                             <li onClick={() => changeComponent('a')}>🏠 início</li>
                             <li onClick={() => changeComponent('b')}>📋 vagas</li>
                             <li onClick={() => changeComponent('c')}>👤 candidatos</li>
+                            <li onClick={() => changeComponent('d')}><FaStar /> banco de talentos</li>
                             <li onClick={handleLogout}>🚪 sair</li>
                         </ul>
                     </aside>
