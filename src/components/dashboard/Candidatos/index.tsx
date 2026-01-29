@@ -26,47 +26,34 @@ export default function Candidatos({ subs, talentBank = false }: CandidatosProps
                 )}
 
                 {subs.map(inscricao => {
-                    if (inscricao.id !== "ccc3b486-9da3-4af3-b702-6e422d343287") {
-                        return (
-                            <div key={inscricao.id} className={styles.card}>
-                                <h3>{inscricao.vaga.nome}</h3>
+                    return (
+                        <div key={inscricao.id} className={styles.card}>
+                            <h3>{inscricao.vaga.nome}</h3>
+
+                            {!talentBank && (
                                 <p className={styles.local}>
-                                    {inscricao.vaga.localizacao ? inscricao.vaga.localizacao : 'Sem local definido'} — Salário: R$ {render.salario(inscricao.vaga.salario)}
+                                    {inscricao.vaga.localizacao || 'Sem local definido'} — Salário: R${' '}
+                                    {render.salario(inscricao.vaga.salario)}
+                                </p>
+                            )}
+
+                            <div className={styles.info}>
+                                <p>
+                                    Inscrição em:{' '}
+                                    {new Date(inscricao.createdAt).toLocaleDateString()}
                                 </p>
 
-                                <div className={styles.info}>
-                                    <p>Inscrição em: {new Date(inscricao.createdAt).toLocaleDateString()}</p>
-                                    <Link
-                                        href={`${url}/${getFileName(inscricao.candidato.cv_path)}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={styles.cvLink}
-                                    >
-                                        📄 Ver Currículo
-                                    </Link>
-                                </div>
+                                <Link
+                                    href={`${url}/${getFileName(inscricao.candidato.cv_path)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.cvLink}
+                                >
+                                    📄 Ver Currículo
+                                </Link>
                             </div>
-                        )
-                    } else {
-                        return (
-                            <div key={inscricao.id} className={styles.card}>
-                                <h3>{inscricao.vaga.nome}</h3>
-                                <div className={styles.info}>
-                                    <p>Inscrição em: {new Date(inscricao.createdAt).toLocaleDateString()}</p>
-                                    <Link
-                                        href={`${url}/${getFileName(inscricao.candidato.cv_path)}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={styles.cvLink}
-                                    >
-                                        📄 Ver Currículo
-                                    </Link>
-                                </div>
-                            </div>
-                        )
-                    }
-
-
+                        </div>
+                    )
                 })}
             </div>
         </div>
