@@ -8,6 +8,7 @@
     border-radius: 1rem;
     padding: 24px;
     margin-bottom: 25px;
+    //outline: 2px solid red;
 
     .listVagas {
         display: flex;
@@ -49,6 +50,7 @@
     .vagaContainer {
         flex: 1;
         padding: 8px 16px;
+        //outline: 2px solid red;
 
         .vaga {
             background-color: white;

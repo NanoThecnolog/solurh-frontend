@@ -1,6 +1,8 @@
 .container {
-    max-width: 720px;
+    max-width: 100%;
     margin: 2rem auto;
+    //outline: 2px solid red;
+    width: 100%;
 
     .button {
         background: #e0e0e0;
@@ -61,6 +63,9 @@
     border-radius: .4rem;
     padding: .5rem;
     cursor: text;
+    //outline: 2px solid red;
+    //overflow-y: auto;
+    width: 100%;
 
     div {
         min-height: 200px;

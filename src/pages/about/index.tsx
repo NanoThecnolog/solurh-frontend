@@ -50,7 +50,7 @@ export default function AboutPage() {
         }
     }, [handleScroll])
     function handleClick() {
-        router.push('/contato')
+        router.push('/contact')
     }
 
     return (
