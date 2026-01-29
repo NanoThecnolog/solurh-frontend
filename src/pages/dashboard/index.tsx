@@ -32,6 +32,7 @@ export default function Dashboard({ user, jobs, subs }: DashProps) {
         setComponentToRender(value)
     }
     const renderComponent = () => {
+        //O filter utilizado aqui é referente ao banco de talentos
         if (componentToRender === 'a') {
             return <Geral vagas={jobs} subs={subs} />
         }
@@ -39,11 +40,11 @@ export default function Dashboard({ user, jobs, subs }: DashProps) {
             return <Vagas />
         }
         if (componentToRender === 'c') {
-            const normalSubs = subs.filter(sub => sub.vaga.id !== "ee5d2858-9d60-4ebf-a222-2345c58a41e1")
+            const normalSubs = subs.filter(sub => sub.vaga.id !== "ccc3b486-9da3-4af3-b702-6e422d343287")
             return <Candidatos subs={normalSubs} />
         }
         if (componentToRender === 'd') {
-            const talentSubs = subs.filter(sub => sub.vaga.id === "ee5d2858-9d60-4ebf-a222-2345c58a41e1")
+            const talentSubs = subs.filter(sub => sub.vaga.id === "ccc3b486-9da3-4af3-b702-6e422d343287")
             return <Candidatos subs={talentSubs} talentBank={true} />
         }
     }

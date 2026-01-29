@@ -13,6 +13,7 @@ interface SendProps {
 }
 export default function SendCurriculo({ vaga, func }: SendProps) {
     const [file, setFile] = useState<File | null>(null)
+    const [loading, setLoading] = useState(false)
     /** 
      * posso criar uma vaga chamada banco de talentos, deixar invisível nas paginas de vagas e no dashboard, para evitar edição, mostrar somente no menu de candidatos do dashboard
     */
@@ -20,6 +21,7 @@ export default function SendCurriculo({ vaga, func }: SendProps) {
 
     const handleInscrition = async (e: FormEvent) => {
         e.preventDefault()
+
         if (!file) {
             debug.warn('Arquivo não enviado.')
             toast.warn('Por favor, selecione um arquivo antes de enviar.')
@@ -27,6 +29,7 @@ export default function SendCurriculo({ vaga, func }: SendProps) {
         }
 
         try {
+            setLoading(true)
             const data = { vagaId: vaga.id, file }
             const jobService = new Jobs()
             const response = await jobService.createSubscription(data)
@@ -41,6 +44,8 @@ export default function SendCurriculo({ vaga, func }: SendProps) {
         } catch (err) {
             debug.log('Erro ao criar inscrição', err)
             toast.error('Erro interno ao cadastrar currículo. Tente novamente mais tarde!')
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -58,7 +63,7 @@ export default function SendCurriculo({ vaga, func }: SendProps) {
                 {
                     //file && <p>Arquivo selecionado: {file.name}</p>
                 }
-                <Button text='Enviar' type='submit' />
+                <Button text='Enviar' type='submit' width='100%' loading={loading} />
             </form>
         </div>
     )

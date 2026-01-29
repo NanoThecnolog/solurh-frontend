@@ -110,7 +110,8 @@ export default function Vagas(/*{ vagas }: VagasProps*/) {
             <div className={styles.container}>
                 <aside className={styles.listVagas}>
                     {listaVagas.map((vaga) => {
-                        if (vaga.id === "ee5d2858-9d60-4ebf-a222-2345c58a41e1") return
+                        //filtra para remover a vaga de banco de talentos da lista
+                        if (vaga.id === "ccc3b486-9da3-4af3-b702-6e422d343287") return
                         return (
                             <div
                                 key={vaga.id}

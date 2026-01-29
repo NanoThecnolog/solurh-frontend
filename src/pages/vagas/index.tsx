@@ -41,9 +41,10 @@ export default function Jobs() {
     }, [])
 
     const handleTalentBank = () => {
-        const talentBank = jobs.find(vaga => vaga.id === "ee5d2858-9d60-4ebf-a222-2345c58a41e1")
-        if (!talentBank) return
-        setVaga(talentBank)
+        //busca pela vaga de banco de talentos
+        const talentBank = jobs.find(vaga => vaga.id === "ccc3b486-9da3-4af3-b702-6e422d343287")
+        if (talentBank) setVaga(talentBank)
+
         setModalVisible(true)
     }
     return (
@@ -71,9 +72,9 @@ export default function Jobs() {
                         //<h3>Lista de Vagas</h3>
                     }
                     <aside className={styles.asideContainer}>
-
                         {jobs.length > 0 && jobs.map((job) => {
-                            if (job.id === "ee5d2858-9d60-4ebf-a222-2345c58a41e1") return
+                            //vaga equivalente ao banco de talentos
+                            if (job.id === "ccc3b486-9da3-4af3-b702-6e422d343287") return
                             return <div key={job.id} className={styles.jobsContainer} onClick={() => setVaga(job)}>
                                 <h4>{job.nome}</h4>
                                 <h5>{job.localizacao}</h5>
@@ -83,7 +84,7 @@ export default function Jobs() {
                         )}
                     </aside>
                     <section className={styles.sectionContainer}>
-                        {vaga &&
+                        {vaga && vaga.id !== "ccc3b486-9da3-4af3-b702-6e422d343287" &&
                             <>
                                 <div>
                                     <h1>{vaga.nome}</h1>
