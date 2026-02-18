@@ -34,7 +34,6 @@ export default function Footer() {
             title: "Institucional",
             items: [
                 { href: "/about", text: "Quem Somos" },
-                { href: "/privacy", text: "Política de Privacidade" },
                 { href: "/contact", text: "Fale Conosco" },
             ],
         },

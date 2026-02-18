@@ -21,11 +21,8 @@ export default function FifthContent() {
                 </div>
                 <div className={styles.imgContainer}>
                     <div className={styles.imgContent}>
-                        <div className={styles.img1}>
-                            <ImageTemplate img={`/img/brenda.jpeg`} alt='Tania' width={240} />
-                        </div>
                         <div className={styles.img2}>
-                            <ImageTemplate img={`/img/helenice.jpeg`} alt='Tania' width={240} />
+                            <ImageTemplate img={`/img/helenice.jpeg`} alt='Helenice' width={240} />
                         </div>
                         <div className={styles.img3}>
                             <ImageTemplate img={`/img/tania.png`} alt='Tania' width={240} />

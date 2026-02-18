@@ -49,11 +49,7 @@ export default function BannerTemplate({ data }: TemplateProps) {
                 </div>
             </div>
             <div className={styles.right}>
-                {
-                    data.bannerImg && <div className={styles.imageContainer}>
-                        <img className={styles.image} src={data.bannerImg} alt="imagem do banner" />
-                    </div>
-                }
+
             </div>
         </section>
     )
