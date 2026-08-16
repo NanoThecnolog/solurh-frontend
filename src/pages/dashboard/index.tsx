@@ -19,7 +19,7 @@ import { FaStar } from 'react-icons/fa'
 
 interface DashProps {
     user: User
-    jobs: JobsProps[],
+    jobs: JobsProps[]
     subs: InscricaoProps[]
 }
 
@@ -40,11 +40,11 @@ export default function Dashboard({ user, jobs, subs }: DashProps) {
             return <Vagas />
         }
         if (componentToRender === 'c') {
-            const normalSubs = subs.filter(sub => sub.vaga.id !== "ccc3b486-9da3-4af3-b702-6e422d343287")
+            const normalSubs = subs.filter((sub) => sub.vaga.id !== 'ccc3b486-9da3-4af3-b702-6e422d343287')
             return <Candidatos subs={normalSubs} />
         }
         if (componentToRender === 'd') {
-            const talentSubs = subs.filter(sub => sub.vaga.id === "ccc3b486-9da3-4af3-b702-6e422d343287")
+            const talentSubs = subs.filter((sub) => sub.vaga.id === 'ccc3b486-9da3-4af3-b702-6e422d343287')
             return <Candidatos subs={talentSubs} talentBank={true} />
         }
     }
@@ -61,17 +61,12 @@ export default function Dashboard({ user, jobs, subs }: DashProps) {
         }
     }
 
-
-
     return (
         <>
-            <SEO
-                title="Dashboard | Solurh - Soluções em Recursos Humanos"
-                description="Painel administrativo"
-            />
+            <SEO title="Dashboard | Solurh - Soluções em Recursos Humanos" description="Painel administrativo" />
             <main className={styles.main}>
                 <header className={styles.header}>
-                    <h2>Olá, {user.nome}!</h2>
+                    <h2>Olá, {user?.nome}!</h2>
                 </header>
                 <article className={styles.container}>
                     <aside className={styles.menu}>
@@ -79,13 +74,13 @@ export default function Dashboard({ user, jobs, subs }: DashProps) {
                             <li onClick={() => changeComponent('a')}>🏠 início</li>
                             <li onClick={() => changeComponent('b')}>📋 vagas</li>
                             <li onClick={() => changeComponent('c')}>👤 candidatos</li>
-                            <li onClick={() => changeComponent('d')}><FaStar /> banco de talentos</li>
+                            <li onClick={() => changeComponent('d')}>
+                                <FaStar /> banco de talentos
+                            </li>
                             <li onClick={handleLogout}>🚪 sair</li>
                         </ul>
                     </aside>
-                    <section className={styles.content}>
-                        {renderComponent()}
-                    </section>
+                    <section className={styles.content}>{renderComponent()}</section>
                 </article>
             </main>
         </>
@@ -98,8 +93,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         return {
             redirect: {
                 destination: '/login',
-                permanent: false
-            }
+                permanent: false,
+            },
         }
     }
     const vagas = await jobsService.findJobs()
@@ -107,9 +102,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const jobs = new Jobs(ctx)
     const subs: InscricaoProps[] = await jobs.getAllSubscriptions()
     //debug.log('Subs em getServerSideProps', subs)
-
-
-
 
     /*
     vagas .post => criar vaga
@@ -123,7 +115,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         props: {
             user: JSON.parse(user),
             jobs: vagas,
-            subs
-        }
+            subs,
+        },
     }
 }

@@ -1,6 +1,6 @@
-import { CreateJobProps, JobCreatedProps, JobsProps, SubscriptionDataProps, UpdateJobProps } from "@/@types/jobs"
-import { BackendService, ServerSideContext } from "./backendService"
-import { GetServerSidePropsContext } from "next"
+import { CreateJobProps, JobCreatedProps, JobsProps, SubscriptionDataProps, UpdateJobProps } from '@/@types/jobs'
+import { BackendService, ServerSideContext } from './backendService'
+import { GetServerSidePropsContext } from 'next'
 
 export class Jobs extends BackendService {
     constructor(ctx?: ServerSideContext | GetServerSidePropsContext) {
@@ -46,6 +46,7 @@ export class Jobs extends BackendService {
         this.debug.log('Candidato inscrito com sucesso!', createSub)
         return createSub
     }
+
     public async getAllSubscriptions() {
         const subs = await this.getAllSubs()
         if (!subs) {
