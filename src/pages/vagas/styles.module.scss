@@ -1,4 +1,428 @@
 .mainContainer {
+    width: 100%;
+    min-height: 100vh;
+    margin: 50px 0 150px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .talentsContainer {
+        width: 100%;
+        min-height: 280px;
+        padding: 50px 20px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+
+        background-image:
+            linear-gradient(135deg, rgba(10, 31, 68, 0.9), rgba(18, 76, 135, 0.75)), url('/img/fundo-azul.jpg');
+
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        color: var(--white);
+        text-align: center;
+
+        .text {
+            max-width: 800px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+
+            h1 {
+                margin: 0;
+
+                font-size: clamp(1.6rem, 3vw, 2.4rem);
+                font-weight: 700;
+                line-height: 1.2;
+            }
+        }
+    }
+
+    .titleContainer {
+        width: 100%;
+        max-width: 1400px;
+
+        padding: 60px 20px 30px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            margin: 0;
+
+            color: #1f2937;
+            font-size: clamp(1.7rem, 3vw, 2.2rem);
+            font-weight: 700;
+            text-align: center;
+        }
+    }
+
+    .articleContainer {
+        width: min(90%, 1400px);
+
+        display: grid;
+        grid-template-columns: 340px minmax(0, 1fr);
+        align-items: stretch;
+        gap: 24px;
+
+        .asideContainer {
+            width: 100%;
+            max-height: 700px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            padding: 12px;
+
+            overflow-y: auto;
+
+            background-color: var(--gray-soft);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 14px;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+
+            scrollbar-width: thin;
+
+            .jobsContainer {
+                width: 100%;
+                padding: 16px;
+
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+
+                background-color: var(--white);
+                border: 1px solid transparent;
+                border-radius: 10px;
+
+                cursor: pointer;
+
+                transition:
+                    transform 0.2s ease,
+                    border-color 0.2s ease,
+                    box-shadow 0.2s ease,
+                    background-color 0.2s ease;
+
+                h4 {
+                    margin: 0;
+
+                    color: #1f2937;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    line-height: 1.35;
+                }
+
+                h5 {
+                    margin: 0;
+
+                    color: #64748b;
+                    font-size: 0.85rem;
+                    font-weight: 400;
+                    line-height: 1.4;
+                }
+
+                p {
+                    margin: 4px 0 0;
+
+                    color: #334155;
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                }
+
+                &:hover {
+                    transform: translateY(-2px);
+
+                    border-color: var(--shadow-blue);
+
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+                }
+
+                &:active {
+                    transform: translateY(0);
+                }
+            }
+
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #cbd5e1;
+                border-radius: 10px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
+        }
+
+        .sectionContainer {
+            width: 100%;
+            min-height: 650px;
+
+            padding: 35px 40px;
+
+            display: flex;
+            flex-direction: column;
+
+            background-color: var(--gray-soft);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 14px;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+
+            > div {
+                &:first-child {
+                    margin-bottom: 8px;
+
+                    h1 {
+                        margin: 0;
+
+                        color: #1f2937;
+                        font-size: clamp(1.5rem, 2.5vw, 2rem);
+                        font-weight: 700;
+                        line-height: 1.25;
+                    }
+                }
+
+                span {
+                    display: block;
+
+                    margin-bottom: 6px;
+
+                    color: #64748b;
+                    font-size: 0.95rem;
+                }
+            }
+
+            .descriptionContainer {
+                margin-top: 25px;
+
+                color: #374151;
+                font-size: 1rem;
+                line-height: 1.7;
+
+                div {
+                    min-height: 200px;
+                }
+
+                p {
+                    margin: 0 0 1rem;
+                }
+
+                h1 {
+                    margin: 1.2rem 0 0.6rem;
+
+                    color: #1f2937;
+                    font-size: 1.7rem;
+                    font-weight: 700;
+                }
+
+                h2 {
+                    margin: 1rem 0 0.5rem;
+
+                    color: #1f2937;
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                }
+
+                h3 {
+                    margin: 1rem 0 0.5rem;
+
+                    color: #1f2937;
+                    font-size: 1.15rem;
+                    font-weight: 600;
+                }
+
+                ul,
+                ol {
+                    margin: 0.5rem 0 1rem;
+                    padding-left: 1.5rem;
+
+                    li {
+                        margin-bottom: 0.35rem;
+                        list-style: disc;
+                    }
+                }
+
+                ol {
+                    li {
+                        list-style: decimal;
+                    }
+                }
+
+                img {
+                    max-width: 100%;
+                    height: auto;
+                    margin: 1rem 0;
+
+                    border-radius: 8px;
+                }
+
+                a {
+                    color: #0066cc;
+                    text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            .buttonContainer {
+                margin-top: auto;
+                padding-top: 35px;
+
+                display: flex;
+                justify-content: flex-start;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .mainContainer {
+        .articleContainer {
+            width: 92%;
+            grid-template-columns: 280px minmax(0, 1fr);
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .mainContainer {
+        margin-top: 30px;
+
+        .talentsContainer {
+            min-height: 250px;
+            padding: 40px 20px;
+
+            .text {
+                h1 {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+
+        .titleContainer {
+            padding: 45px 20px 25px;
+
+            h1 {
+                font-size: 1.7rem;
+            }
+        }
+
+        .articleContainer {
+            width: 92%;
+
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+
+            .asideContainer {
+                width: 100%;
+                max-height: 320px;
+
+                padding: 10px;
+
+                .jobsContainer {
+                    padding: 14px;
+                }
+            }
+
+            .sectionContainer {
+                min-height: 550px;
+                padding: 25px 22px;
+
+                .descriptionContainer {
+                    margin-top: 20px;
+                    font-size: 0.95rem;
+                    line-height: 1.6;
+                }
+
+                .buttonContainer {
+                    padding-top: 30px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .mainContainer {
+        .talentsContainer {
+            min-height: 230px;
+
+            .text {
+                h1 {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+
+        .titleContainer {
+            padding: 35px 15px 20px;
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .articleContainer {
+            width: 94%;
+
+            .asideContainer {
+                max-height: 280px;
+            }
+
+            .sectionContainer {
+                min-height: 500px;
+                padding: 22px 18px;
+
+                > div {
+                    &:first-child {
+                        h1 {
+                            font-size: 1.4rem;
+                        }
+                    }
+
+                    span {
+                        font-size: 0.85rem;
+                    }
+                }
+
+                .descriptionContainer {
+                    font-size: 0.9rem;
+
+                    h1 {
+                        font-size: 1.4rem;
+                    }
+
+                    h2 {
+                        font-size: 1.2rem;
+                    }
+
+                    h3 {
+                        font-size: 1.05rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*.mainContainer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -131,7 +555,7 @@
                         cursor: pointer;
                         text-transform: capitalize;
                     }
-                }*/
+                }*
                 line-height: 1.6;
                 color: #333;
                 font-size: 1rem;
@@ -220,4 +644,4 @@
             }
         }
     }
-}
+}*/
