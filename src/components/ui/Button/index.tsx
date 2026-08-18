@@ -58,8 +58,8 @@ export default function Button({
         height,
         width,
         padding,
+        background: backgroundColor ? '' : 'var(--yellow-gradient)',
         backgroundColor,
-        background: backgroundColor ? undefined : 'var(--yellow-gradient)',
     }
 
     return (
