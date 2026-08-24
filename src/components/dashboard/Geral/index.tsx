@@ -1,9 +1,9 @@
 import { JobsProps } from '@/@types/jobs'
 import styles from './styles.module.scss'
-//import { debug } from '@/utils/DebugLogger'
-//import { ConvertValues } from '@/utils/conversions'
 import { InscricaoProps, VagaProps } from '@/@types/inscricoes'
-import { useEffect, useState } from 'react'
+import { useMemo } from 'react'
+import { INTERNAL_JOB_ID } from '@/utils/constants'
+import { FaBriefcase, FaFileAlt, FaStar } from 'react-icons/fa'
 
 interface GeralProps {
     vagas: JobsProps[],
@@ -11,59 +11,74 @@ interface GeralProps {
 }
 
 export default function Geral({ vagas, subs }: GeralProps) {
-    const [vagaMaisEscolhida, setVagaMaisEscolhida] = useState<{ vaga: VagaProps, total: number } | null>(null)
-    //const [ultimaVaga, /*setUltimaVaga*/] = useState<VagaProps>()
+    const totalVagas = vagas.filter((vaga) => vaga.id !== INTERNAL_JOB_ID).length
 
-    const vagaComMaisCurriculos = (): { vaga: VagaProps, total: number } | null => {
+    const vagaDestaque = useMemo<{ vaga: VagaProps; total: number } | null>(() => {
         const count = new Map<string, { vaga: VagaProps; total: number }>()
 
         for (const inscricao of subs) {
-            const vagaId = inscricao.vaga.id
-            if (!count.has(vagaId)) {
-                count.set(vagaId, { vaga: inscricao.vaga, total: 1 })
-            } else {
-                const atual = count.get(vagaId)
-                if (!atual) continue
-                atual.total++
-                count.set(vagaId, atual)
-            }
+            const atual = count.get(inscricao.vaga.id)
+            if (atual) atual.total++
+            else count.set(inscricao.vaga.id, { vaga: inscricao.vaga, total: 1 })
         }
-        let moreSubs: { vaga: VagaProps; total: number } | null = null
 
+        let destaque: { vaga: VagaProps; total: number } | null = null
         for (const entry of count.values()) {
-            if (!moreSubs || entry.total > moreSubs.total) {
-                moreSubs = entry
-            }
+            if (!destaque || entry.total > destaque.total) destaque = entry
         }
-        return moreSubs
-    }
-    //const data = subs.map(item => item.createdAt)
-
-    useEffect(() => {
-        if (!vagaMaisEscolhida) setVagaMaisEscolhida(vagaComMaisCurriculos())
-        else return
-    }, [vagaMaisEscolhida])
-    if (vagas.length === 0) return
+        return destaque
+    }, [subs])
 
     return (
-        <div className={styles.panorama}>
-            <h1>📊 Panorama Geral das Vagas</h1>
+        <div className={styles.section}>
+            <header className={styles.header}>
+                <h1>Panorama geral</h1>
+                <p>Acompanhe o desempenho das vagas e o volume de candidatos.</p>
+            </header>
 
-            <div className={styles.container}>
-                <div className={styles.card}>
-                    <h2>Vagas cadastradas</h2>
-                    <p className={styles.count}>{vagas.length - (vagas.some(vaga => vaga.id === "ee5d2858-9d60-4ebf-a222-2345c58a41e1") ? 1 : 0)}</p>
-                    <div className={styles.detail}>
-                        <h4>Vaga com mais currículos:</h4>
-                        <span>{vagaMaisEscolhida?.vaga.nome || 'Nenhuma ainda'}</span>
-                    </div>
+            {vagas.length === 0 ? (
+                <div className={styles.empty}>
+                    <FaBriefcase size={32} />
+                    <p>Nenhuma vaga cadastrada até o momento.</p>
                 </div>
+            ) : (
+                <div className={styles.cards}>
+                    <article className={styles.card}>
+                        <div className={`${styles.iconBadge} ${styles.blueBadge}`}>
+                            <FaBriefcase size={20} />
+                        </div>
+                        <div className={styles.cardInfo}>
+                            <span>Vagas cadastradas</span>
+                            <strong className={styles.count}>{totalVagas}</strong>
+                        </div>
+                    </article>
 
-                <div className={styles.card}>
-                    <h2>Currículos recebidos</h2>
-                    <p className={styles.count}>{subs.length}</p>
+                    <article className={styles.card}>
+                        <div className={`${styles.iconBadge} ${styles.greenBadge}`}>
+                            <FaFileAlt size={20} />
+                        </div>
+                        <div className={styles.cardInfo}>
+                            <span>Currículos recebidos</span>
+                            <strong className={styles.count}>{subs.length}</strong>
+                        </div>
+                    </article>
+
+                    <article className={`${styles.card} ${styles.highlight}`}>
+                        <div className={`${styles.iconBadge} ${styles.yellowBadge}`}>
+                            <FaStar size={20} />
+                        </div>
+                        <div className={styles.cardInfo}>
+                            <span>Vaga com mais candidatos</span>
+                            <strong>{vagaDestaque?.vaga.nome || 'Nenhuma ainda'}</strong>
+                            {vagaDestaque && (
+                                <em>
+                                    {vagaDestaque.total} candidato{vagaDestaque.total > 1 ? 's' : ''}
+                                </em>
+                            )}
+                        </div>
+                    </article>
                 </div>
-            </div>
+            )}
         </div>
     )
 }

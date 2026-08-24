@@ -15,7 +15,15 @@ import Vagas from '@/components/dashboard/Vagas'
 import { InscricaoProps } from '@/@types/inscricoes'
 import Candidatos from '@/components/dashboard/Candidatos'
 import SEO from '@/components/SEO'
-import { FaStar } from 'react-icons/fa'
+import { TALENT_BANK_JOB_ID } from '@/utils/constants'
+import {
+    FaBriefcase,
+    FaChartPie,
+    FaSignOutAlt,
+    FaStar,
+    FaUserFriends,
+} from 'react-icons/fa'
+import { IconType } from 'react-icons'
 
 interface DashProps {
     user: User
@@ -23,29 +31,38 @@ interface DashProps {
     subs: InscricaoProps[]
 }
 
+type SectionKey = 'geral' | 'vagas' | 'candidatos' | 'talentos'
+
+const sections: { key: SectionKey; label: string; icon: IconType }[] = [
+    { key: 'geral', label: 'Início', icon: FaChartPie },
+    { key: 'vagas', label: 'Vagas', icon: FaBriefcase },
+    { key: 'candidatos', label: 'Candidatos', icon: FaUserFriends },
+    { key: 'talentos', label: 'Banco de talentos', icon: FaStar },
+]
+
 export default function Dashboard({ user, jobs, subs }: DashProps) {
     const router = useRouter()
-    const [componentToRender, setComponentToRender] = useState('a')
-    debug.log('subs', subs)
+    const [activeSection, setActiveSection] = useState<SectionKey>('geral')
 
-    const changeComponent = (value: string) => {
-        setComponentToRender(value)
-    }
-    const renderComponent = () => {
-        //O filter utilizado aqui é referente ao banco de talentos
-        if (componentToRender === 'a') {
-            return <Geral vagas={jobs} subs={subs} />
-        }
-        if (componentToRender === 'b') {
-            return <Vagas />
-        }
-        if (componentToRender === 'c') {
-            const normalSubs = subs.filter((sub) => sub.vaga.id !== 'ccc3b486-9da3-4af3-b702-6e422d343287')
-            return <Candidatos subs={normalSubs} />
-        }
-        if (componentToRender === 'd') {
-            const talentSubs = subs.filter((sub) => sub.vaga.id === 'ccc3b486-9da3-4af3-b702-6e422d343287')
-            return <Candidatos subs={talentSubs} talentBank={true} />
+    const renderSection = () => {
+        switch (activeSection) {
+            case 'vagas':
+                return <Vagas />
+            case 'candidatos':
+                return (
+                    <Candidatos
+                        subs={subs.filter((sub) => sub.vaga.id !== TALENT_BANK_JOB_ID)}
+                    />
+                )
+            case 'talentos':
+                return (
+                    <Candidatos
+                        subs={subs.filter((sub) => sub.vaga.id === TALENT_BANK_JOB_ID)}
+                        talentBank
+                    />
+                )
+            default:
+                return <Geral vagas={jobs} subs={subs} />
         }
     }
 
@@ -65,23 +82,41 @@ export default function Dashboard({ user, jobs, subs }: DashProps) {
         <>
             <SEO title="Dashboard | Solurh - Soluções em Recursos Humanos" description="Painel administrativo" />
             <main className={styles.main}>
-                <header className={styles.header}>
-                    <h2>Olá, {user?.nome}!</h2>
+                <header className={styles.topbar}>
+                    <div>
+                        <p className={styles.eyebrow}>Painel administrativo</p>
+                        <h1>Olá, {user?.nome}!</h1>
+                    </div>
+                    <div className={styles.userChip}>
+                        <span className={styles.avatar}>{user?.nome?.charAt(0).toUpperCase()}</span>
+                        <span>{user?.nome}</span>
+                    </div>
                 </header>
-                <article className={styles.container}>
-                    <aside className={styles.menu}>
-                        <ul>
-                            <li onClick={() => changeComponent('a')}>🏠 início</li>
-                            <li onClick={() => changeComponent('b')}>📋 vagas</li>
-                            <li onClick={() => changeComponent('c')}>👤 candidatos</li>
-                            <li onClick={() => changeComponent('d')}>
-                                <FaStar /> banco de talentos
-                            </li>
-                            <li onClick={handleLogout}>🚪 sair</li>
+
+                <div className={styles.layout}>
+                    <aside className={styles.sidebar}>
+                        <ul className={styles.nav}>
+                            {sections.map(({ key, label, icon: Icon }) => (
+                                <li key={key}>
+                                    <button
+                                        type="button"
+                                        className={`${styles.navItem} ${activeSection === key ? styles.active : ''}`}
+                                        onClick={() => setActiveSection(key)}
+                                    >
+                                        <Icon size={18} />
+                                        <span>{label}</span>
+                                    </button>
+                                </li>
+                            ))}
                         </ul>
+                        <button type="button" className={styles.logout} onClick={handleLogout}>
+                            <FaSignOutAlt size={18} />
+                            <span>Sair</span>
+                        </button>
                     </aside>
-                    <section className={styles.content}>{renderComponent()}</section>
-                </article>
+
+                    <section className={styles.content}>{renderSection()}</section>
+                </div>
             </main>
         </>
     )

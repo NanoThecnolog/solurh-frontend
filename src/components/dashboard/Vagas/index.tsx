@@ -9,12 +9,20 @@ import { debug } from '@/utils/DebugLogger'
 import DOMPurify from 'dompurify'
 import CreateJobModal from '@/components/ui/modals/createJobModal'
 import UpdateJobModal from '@/components/ui/modals/updateJobModal'
+import { TALENT_BANK_JOB_ID } from '@/utils/constants'
+import {
+    FaBriefcase,
+    FaCalendarAlt,
+    FaExternalLinkAlt,
+    FaMapMarkerAlt,
+    FaMoneyBillWave,
+    FaPlus,
+    FaUsers,
+} from 'react-icons/fa'
 
-/*interface VagasProps {
-    vagas: JobsProps[]
-}*/
+const JOB_URL_BASE = 'https://solurh.pro/vaga'
 
-export default function Vagas(/*{ vagas }: VagasProps*/) {
+export default function Vagas() {
     const render = new Render()
     const [jobToShow, setJobToShow] = useState('')
     const [listaVagas, setListaVagas] = useState<JobsProps[]>([])
@@ -23,9 +31,7 @@ export default function Vagas(/*{ vagas }: VagasProps*/) {
     const [editModal, setEditModal] = useState(false)
     const [vaga, setVaga] = useState<JobsProps | null>(null)
 
-    const vagaToShow = () => {
-        return render.vaga(listaVagas, jobToShow)
-    }
+    const vagasPublicadas = listaVagas.filter((vaga) => vaga.id !== TALENT_BANK_JOB_ID)
 
     const refreshVagas = async () => {
         try {
@@ -70,27 +76,14 @@ export default function Vagas(/*{ vagas }: VagasProps*/) {
             const response = await axios.delete(`/api/job/remover/${id}`)
             debug.log('request para deletar vaga', response)
             toast.success(response.data.message)
-            //debug.log("vagas antes de setar listavagas", vagas)
             setJobToShow('')
             refreshVagas()
-            //router.refresh()
         } catch (err) {
             console.error('Erro ao remover vaga', err)
             toast.error("Erro inesperado ao remover vaga. Tente novamente mais tarde ou entre em contato com o Desenvolvedor.")
             return []
         }
     }
-
-    const handleCreate = () => {
-        setModalVisible(true)
-    }
-
-
-    /*useEffect(() => {
-        if (vagas.length > 0) setListaVagas(vagas)
-        //const vaga = vagaToShow()
-        //setVaga(vaga)
-    }, [vagas])*/
 
     useEffect(() => {
         if (vaga) {
@@ -99,79 +92,116 @@ export default function Vagas(/*{ vagas }: VagasProps*/) {
         }
     }, [vaga])
     useEffect(() => {
-        setVaga(vagaToShow())
+        setVaga(listaVagas.find((item) => item.id === jobToShow) ?? null)
     }, [jobToShow, listaVagas])
     useEffect(() => {
         refreshVagas()
     }, [])
 
     return (
-        <>
-            <div className={styles.container}>
-                <aside className={styles.listVagas}>
-                    {listaVagas.map((vaga) => {
-                        //filtra para remover a vaga de banco de talentos da lista
-                        if (vaga.id === "ccc3b486-9da3-4af3-b702-6e422d343287") return
-                        return (
-                            <div
-                                key={vaga.id}
-                                className={styles.listItem}
-                                onClick={() => setJobToShow(vaga.id)}
-                            >
-                                <h4>{vaga.nome}</h4>
-                                <p>
-                                    Salário: {render.salario(vaga.salario)} — {vaga.localizacao}
-                                </p>
-                            </div>
-                        )
-                    })}
+        <div className={styles.container}>
+            <header className={styles.header}>
+                <div>
+                    <h1>Vagas publicadas</h1>
+                    <p>Gerencie as vagas e acompanhe os candidatos.</p>
+                </div>
+                <Button
+                    text="Nova vaga"
+                    click={() => setModalVisible(true)}
+                    height="42px"
+                    backgroundColor="var(--primary)"
+                    color="var(--white)"
+                    Svg={FaPlus}
+                    svgSize={16}
+                />
+            </header>
+
+            <div className={styles.body}>
+                <aside className={styles.list}>
+                    {vagasPublicadas.map((item) => (
+                        <button
+                            type="button"
+                            key={item.id}
+                            className={`${styles.listItem} ${jobToShow === item.id ? styles.selected : ''}`}
+                            onClick={() => setJobToShow(item.id)}
+                        >
+                            <h4>{item.nome}</h4>
+                            <p>
+                                {render.salario(item.salario)} · {item.localizacao}
+                            </p>
+                        </button>
+                    ))}
+
+                    {vagasPublicadas.length === 0 && (
+                        <p className={styles.emptyList}>Nenhuma vaga cadastrada.</p>
+                    )}
                 </aside>
 
-                <section className={styles.vagaContainer}>
-                    {vaga && (
-                        <div key={vaga.id} className={styles.vaga}>
-                            <h3>{vaga.nome}</h3>
-                            <span className={styles.local}>{vaga.localizacao}</span>
-                            <span className={styles.salario}>Salário: {render.salario(vaga.salario)}</span>
+                <section className={styles.detailArea}>
+                    {vaga ? (
+                        <article key={vaga.id} className={styles.detail}>
+                            <div className={styles.detailHeader}>
+                                <h3>{vaga.nome}</h3>
+                                <a
+                                    href={`${JOB_URL_BASE}/${vaga.id}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Ver página pública <FaExternalLinkAlt size={12} />
+                                </a>
+                            </div>
+
+                            <div className={styles.metaGrid}>
+                                <span className={styles.metaItem}>
+                                    <FaMapMarkerAlt size={14} /> {vaga.localizacao}
+                                </span>
+                                <span className={styles.metaItem}>
+                                    <FaMoneyBillWave size={14} /> {render.salario(vaga.salario)}
+                                </span>
+                                <span className={styles.metaItem}>
+                                    <FaUsers size={14} />
+                                    {vaga.inscricoes.length}{' '}
+                                    {vaga.inscricoes.length === 1 ? 'candidato' : 'candidatos'}
+                                </span>
+                                <span className={styles.metaItem}>
+                                    <FaCalendarAlt size={14} /> Criada em {render.dates(vaga.createdAt)}
+                                </span>
+                            </div>
 
                             <div className={styles.descricao} dangerouslySetInnerHTML={{ __html: htmlDesc }} />
 
-                            <span className={styles.data}>Criada em: {render.dates(vaga.createdAt)}</span>
-                            <span className={styles.inscritos}>Candidatos: {vaga.inscricoes.length}</span>
-                            <span>link: https://solurh.pro/vaga/{vaga.id}</span>
-
-                            <div className={styles.buttonContainer}>
+                            <div className={styles.actions}>
                                 <Button
-                                    click={() => removerVaga(vaga.id)}
-                                    text="Excluir"
-                                    height="36px"
-                                    backgroundColor="red"
-                                    color="white"
-                                />
-                                <Button
+                                    text="Editar vaga"
                                     click={() => setEditModal(true)}
-                                    text="Editar Vaga"
-                                    height="36px"
-                                    backgroundColor="blue"
-                                    color="white"
+                                    height="40px"
+                                    backgroundColor="var(--primary)"
+                                    color="var(--white)"
                                 />
-
+                                <Button
+                                    text="Excluir"
+                                    click={() => removerVaga(vaga.id)}
+                                    height="40px"
+                                    backgroundColor="var(--red)"
+                                    color="var(--white)"
+                                />
                             </div>
+                        </article>
+                    ) : (
+                        <div className={styles.placeholder}>
+                            <FaBriefcase size={36} />
+                            <p>Selecione uma vaga na lista para ver os detalhes.</p>
                         </div>
                     )}
                 </section>
-                {modalVisible && (
-                    <CreateJobModal createJob={createVaga} setVisible={setModalVisible} />
-                )}
-                {editModal && vaga && (
-                    <UpdateJobModal updateJob={editVaga} setVisible={setEditModal} job={vaga} />
-                )}
             </div>
-            <section>
-                <Button text='Adicionar' click={handleCreate} color='var(--white)' width='150px' backgroundColor='var(--blue)' />
-            </section>
-        </>
 
-
+            {modalVisible && (
+                <CreateJobModal createJob={createVaga} setVisible={setModalVisible} />
+            )}
+            {editModal && vaga && (
+                <UpdateJobModal updateJob={editVaga} setVisible={setEditModal} job={vaga} />
+            )}
+        </div>
     )
 }
