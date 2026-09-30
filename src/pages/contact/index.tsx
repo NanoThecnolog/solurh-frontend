@@ -1,25 +1,21 @@
-import styles from './styles.module.scss';
-import { FaWhatsapp, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
-import SEO from '@/components/SEO';
-import { solurhInformation } from '@/variables/solurhInformation';
+import styles from './styles.module.scss'
+import { FaWhatsapp, FaEnvelope, FaPhoneAlt } from 'react-icons/fa'
+import SEO from '@/components/SEO'
+import { solurhInformation } from '@/variables/solurhInformation'
 
 export default function ContactPage() {
-
     const handleEmailClick = () => {
         window.open(`mailto:${solurhInformation.email}`, '_blank')
     }
     return (
         <>
-            <SEO
-                title="Contato | Solurh - Soluções em Recursos Humanos"
-                description="Entre em contato conosco!"
-            />
+            <SEO title="Contato | Solurh - Soluções em Recursos Humanos" description="Entre em contato conosco!" />
             <main className={styles.container}>
                 <section className={styles.header}>
                     <h1>📞 Fale Conosco</h1>
                     <p>
-                        Se você busca soluções estratégicas para o seu negócio ou deseja apoio em sua carreira,
-                        fale com a gente! Estamos prontos para entender sua necessidade e oferecer o melhor caminho.
+                        Se você busca soluções estratégicas para o seu negócio ou deseja apoio em sua carreira, fale com
+                        a gente! Estamos prontos para entender sua necessidade e oferecer o melhor caminho.
                     </p>
                 </section>
 
@@ -43,13 +39,16 @@ export default function ContactPage() {
                         <FaPhoneAlt className={styles.icon} />
                         <h2>Telefones</h2>
                         <ul>
-                            <li><strong>Rio de Janeiro:</strong> {solurhInformation.telefones.rj}</li>
-                            <li><strong>São Paulo:</strong> {solurhInformation.telefones.sp}</li>
-                            <li><strong>Minas Gerais:</strong> {solurhInformation.telefones.mg}</li>
+                            <li>
+                                <strong>Rio de Janeiro:</strong> {solurhInformation.telefones.rj}
+                            </li>
+                            <li>
+                                <strong>São Paulo:</strong> {solurhInformation.telefones.sp}
+                            </li>
                         </ul>
                     </div>
                 </section>
             </main>
         </>
-    );
+    )
 }
